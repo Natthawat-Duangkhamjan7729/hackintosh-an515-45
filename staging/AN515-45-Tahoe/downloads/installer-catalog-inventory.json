@@ -1,0 +1,359 @@
+[
+  {
+    "product": "042-45246",
+    "version": "11.7.10",
+    "build": "20G1427",
+    "date": "2023-09-11 17:15:11",
+    "distribution": "https://swdist.apple.com/content/downloads/14/38/042-45246-A_NLFOFLCJFZ/jk992zbv98sdzz3rgc7mrccjl3l22ruk1c/042-45246.English.dist",
+    "packages": [
+      {
+        "Digest": "01e1be1b5ea751633fdeb70c3824e56b76d2cf1a",
+        "Size": 12416490165,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/14/38/042-45246-A_NLFOFLCJFZ/jk992zbv98sdzz3rgc7mrccjl3l22ruk1c/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/14/38/042-45246-A_NLFOFLCJFZ/jk992zbv98sdzz3rgc7mrccjl3l22ruk1c/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/14/38/042-45246-A_NLFOFLCJFZ/jk992zbv98sdzz3rgc7mrccjl3l22ruk1c/InstallAssistant.pkg",
+        "IntegrityDataSize": 42728
+      }
+    ]
+  },
+  {
+    "product": "052-60131",
+    "version": "12.7.4",
+    "build": "21H1123",
+    "date": "2024-03-18 17:11:48",
+    "distribution": "https://swdist.apple.com/content/downloads/46/57/052-60131-A_KM2RH04C2D/9yzvba1uvpem2wuo95r459qno57qaizwf2/052-60131.English.dist",
+    "packages": [
+      {
+        "Digest": "944dfc7d3fff5bbf4c07a1fe6c396ac72659b197",
+        "Size": 12408638012,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/46/57/052-60131-A_KM2RH04C2D/9yzvba1uvpem2wuo95r459qno57qaizwf2/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/46/57/052-60131-A_KM2RH04C2D/9yzvba1uvpem2wuo95r459qno57qaizwf2/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/46/57/052-60131-A_KM2RH04C2D/9yzvba1uvpem2wuo95r459qno57qaizwf2/InstallAssistant.pkg",
+        "IntegrityDataSize": 42692
+      }
+    ]
+  },
+  {
+    "product": "093-22004",
+    "version": "13.7.8",
+    "build": "22H730",
+    "date": "2025-08-27 17:09:43",
+    "distribution": "https://swdist.apple.com/content/downloads/09/46/093-22004-A_QNZEDC334I/phigx2zvoggml6sh79my4y51fnvgy8hix4/093-22004.English.dist",
+    "packages": [
+      {
+        "Digest": "072098c6b951701714537d333f8e7dded6d64390",
+        "Size": 12205110942,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/09/46/093-22004-A_QNZEDC334I/phigx2zvoggml6sh79my4y51fnvgy8hix4/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/09/46/093-22004-A_QNZEDC334I/phigx2zvoggml6sh79my4y51fnvgy8hix4/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/09/46/093-22004-A_QNZEDC334I/phigx2zvoggml6sh79my4y51fnvgy8hix4/InstallAssistant.pkg",
+        "IntegrityDataSize": 41972
+      }
+    ]
+  },
+  {
+    "product": "047-32248",
+    "version": "11.7.11",
+    "build": "20G1443",
+    "date": "2026-02-02 18:46:21",
+    "distribution": "https://swdist.apple.com/content/downloads/10/18/047-32248-A_Y7S9K47C9M/rqg3zuwb6dkofsdilmz22awvxtq2sxwr15/047-32248.English.dist",
+    "packages": [
+      {
+        "Digest": "e6ca87c50853575044b7410424070b5740847f77",
+        "Size": 12413681835,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/10/18/047-32248-A_Y7S9K47C9M/rqg3zuwb6dkofsdilmz22awvxtq2sxwr15/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/10/18/047-32248-A_Y7S9K47C9M/rqg3zuwb6dkofsdilmz22awvxtq2sxwr15/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/10/18/047-32248-A_Y7S9K47C9M/rqg3zuwb6dkofsdilmz22awvxtq2sxwr15/InstallAssistant.pkg",
+        "IntegrityDataSize": 42692
+      }
+    ]
+  },
+  {
+    "product": "062-40406",
+    "version": "12.7.6",
+    "build": "21H1320",
+    "date": "2026-02-09 18:30:00",
+    "distribution": "https://swdist.apple.com/content/downloads/24/16/062-40406-A_LQ4WW26M04/j7bl9ygay5prezturwh72ai10fvseh2uhw/062-40406.English.dist",
+    "packages": [
+      {
+        "Digest": "a654cd91b86528bbf0e1b006e9a7e62967f73de8",
+        "Size": 12409187001,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/24/16/062-40406-A_LQ4WW26M04/j7bl9ygay5prezturwh72ai10fvseh2uhw/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/24/16/062-40406-A_LQ4WW26M04/j7bl9ygay5prezturwh72ai10fvseh2uhw/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/24/16/062-40406-A_LQ4WW26M04/j7bl9ygay5prezturwh72ai10fvseh2uhw/InstallAssistant.pkg",
+        "IntegrityDataSize": 42692
+      }
+    ]
+  },
+  {
+    "product": "122-77920",
+    "version": "15.7.7",
+    "build": "24G720",
+    "date": "2026-05-18 17:11:00",
+    "distribution": "https://swdist.apple.com/content/downloads/08/08/122-77920-A_24DGKW16ZQ/p2g06dyhtgf9mgf2yt1p4ihzvkkk91qvlf/122-77920.English.dist",
+    "packages": [
+      {
+        "Digest": "99a9c3548425bc7a4331624af31bfcad8a57c3f6",
+        "Size": 15655501868,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/08/08/122-77920-A_24DGKW16ZQ/p2g06dyhtgf9mgf2yt1p4ihzvkkk91qvlf/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/08/08/122-77920-A_24DGKW16ZQ/p2g06dyhtgf9mgf2yt1p4ihzvkkk91qvlf/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/08/08/122-77920-A_24DGKW16ZQ/p2g06dyhtgf9mgf2yt1p4ihzvkkk91qvlf/InstallAssistant.pkg",
+        "IntegrityDataSize": 53852
+      }
+    ]
+  },
+  {
+    "product": "122-77891",
+    "version": "14.8.7",
+    "build": "23J520",
+    "date": "2026-05-18 17:12:04",
+    "distribution": "https://swdist.apple.com/content/downloads/61/03/122-77891-A_GYK4YJ2CRM/8xrsgsownndvprmza1q0cvbsppw3ohtk85/122-77891.English.dist",
+    "packages": [
+      {
+        "Digest": "e303bd4bb17fd8e4b1d818280034680d131fe09a",
+        "Size": 13656161186,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/61/03/122-77891-A_GYK4YJ2CRM/8xrsgsownndvprmza1q0cvbsppw3ohtk85/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/61/03/122-77891-A_GYK4YJ2CRM/8xrsgsownndvprmza1q0cvbsppw3ohtk85/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/61/03/122-77891-A_GYK4YJ2CRM/8xrsgsownndvprmza1q0cvbsppw3ohtk85/InstallAssistant.pkg",
+        "IntegrityDataSize": 46976
+      }
+    ]
+  },
+  {
+    "product": "140-36226",
+    "version": "26.5.2",
+    "build": "25F84",
+    "date": "2026-07-07 17:36:47",
+    "distribution": "https://swdist.apple.com/content/downloads/63/03/140-36226-A_WUCZCLWK7K/1elqm2ix9y06je9fgy9rdqed1jod0jgxoe/140-36226.English.dist",
+    "packages": [
+      {
+        "Digest": "f241b9930b25157756230a14d18e33bba8a3c6eb",
+        "Size": 18304277765,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/63/03/140-36226-A_WUCZCLWK7K/1elqm2ix9y06je9fgy9rdqed1jod0jgxoe/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/63/03/140-36226-A_WUCZCLWK7K/1elqm2ix9y06je9fgy9rdqed1jod0jgxoe/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/63/03/140-36226-A_WUCZCLWK7K/1elqm2ix9y06je9fgy9rdqed1jod0jgxoe/InstallAssistant.pkg",
+        "IntegrityDataSize": 62924
+      }
+    ]
+  },
+  {
+    "product": "140-71750",
+    "version": "26.6",
+    "build": "25G72",
+    "date": "2026-07-27 18:01:08",
+    "distribution": "https://swdist.apple.com/content/downloads/56/57/140-71750-A_ZJ1ETGFD03/dnnk12px38rclkv5ettt24crfqd9w244ua/140-71750.English.dist",
+    "packages": [
+      {
+        "Digest": "eba295c15f6b0b07214b771441666c5987db0d0b",
+        "Size": 18373464112,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/56/57/140-71750-A_ZJ1ETGFD03/dnnk12px38rclkv5ettt24crfqd9w244ua/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/56/57/140-71750-A_ZJ1ETGFD03/dnnk12px38rclkv5ettt24crfqd9w244ua/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/56/57/140-71750-A_ZJ1ETGFD03/dnnk12px38rclkv5ettt24crfqd9w244ua/InstallAssistant.pkg",
+        "IntegrityDataSize": 63176
+      }
+    ]
+  },
+  {
+    "product": "140-71763",
+    "version": "15.7.8",
+    "build": "24G824",
+    "date": "2026-07-27 18:12:55",
+    "distribution": "https://swdist.apple.com/content/downloads/11/25/140-71763-A_J1EVMAEOWN/smk9mja1myiettgeafge6oha4levx39v2i/140-71763.English.dist",
+    "packages": [
+      {
+        "Digest": "464472b77662626e84e3885c353b775dbe61e2e6",
+        "Size": 15655690961,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/11/25/140-71763-A_J1EVMAEOWN/smk9mja1myiettgeafge6oha4levx39v2i/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/11/25/140-71763-A_J1EVMAEOWN/smk9mja1myiettgeafge6oha4levx39v2i/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/11/25/140-71763-A_J1EVMAEOWN/smk9mja1myiettgeafge6oha4levx39v2i/InstallAssistant.pkg",
+        "IntegrityDataSize": 53852
+      }
+    ]
+  },
+  {
+    "product": "140-75436",
+    "version": "14.8.8",
+    "build": "23J620",
+    "date": "2026-07-27 18:14:35",
+    "distribution": "https://swdist.apple.com/content/downloads/40/12/140-75436-A_GB8UWVHS9N/5xfegq6xrfx5iewmc26aruzvv4ykpubijg/140-75436.English.dist",
+    "packages": [
+      {
+        "Digest": "ae9f706a2e10a6ab1bd00248a834223a575bbd3d",
+        "Size": 13654004934,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/40/12/140-75436-A_GB8UWVHS9N/5xfegq6xrfx5iewmc26aruzvv4ykpubijg/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/40/12/140-75436-A_GB8UWVHS9N/5xfegq6xrfx5iewmc26aruzvv4ykpubijg/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/40/12/140-75436-A_GB8UWVHS9N/5xfegq6xrfx5iewmc26aruzvv4ykpubijg/InstallAssistant.pkg",
+        "IntegrityDataSize": 46976
+      }
+    ]
+  },
+  {
+    "product": "140-88558",
+    "version": "14.8.9",
+    "build": "23J631",
+    "date": "2026-08-24 22:50:35",
+    "distribution": "https://swdist.apple.com/content/downloads/13/30/140-88558-A_TN3FIE7J63/p61cqj3ktmcqilz3q64ls4ekp1os9c8qbp/140-88558.English.dist",
+    "packages": [
+      {
+        "Digest": "10632733f9b4ab1397fffc98b53e6790e4c2c1b0",
+        "Size": 13654790295,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/13/30/140-88558-A_TN3FIE7J63/p61cqj3ktmcqilz3q64ls4ekp1os9c8qbp/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/13/30/140-88558-A_TN3FIE7J63/p61cqj3ktmcqilz3q64ls4ekp1os9c8qbp/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/13/30/140-88558-A_TN3FIE7J63/p61cqj3ktmcqilz3q64ls4ekp1os9c8qbp/InstallAssistant.pkg",
+        "IntegrityDataSize": 46976
+      }
+    ]
+  },
+  {
+    "product": "140-85388",
+    "version": "15.7.9",
+    "build": "24G830",
+    "date": "2026-08-24 22:50:03",
+    "distribution": "https://swdist.apple.com/content/downloads/16/08/140-85388-A_3LX3Q36I6P/zxod6nr7zkovvsml6s628z44gdbc4exa5p/140-85388.English.dist",
+    "packages": [
+      {
+        "Digest": "9b45bc4ef6f36decb1e7b41915956193d98d01df",
+        "Size": 15655958320,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/16/08/140-85388-A_3LX3Q36I6P/zxod6nr7zkovvsml6s628z44gdbc4exa5p/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/16/08/140-85388-A_3LX3Q36I6P/zxod6nr7zkovvsml6s628z44gdbc4exa5p/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/16/08/140-85388-A_3LX3Q36I6P/zxod6nr7zkovvsml6s628z44gdbc4exa5p/InstallAssistant.pkg",
+        "IntegrityDataSize": 53852
+      }
+    ]
+  },
+  {
+    "product": "140-77964",
+    "version": "26.6.1",
+    "build": "25G76",
+    "date": "2026-08-06 17:22:02",
+    "distribution": "https://swdist.apple.com/content/downloads/10/29/140-77964-A_0UTOTNYQBE/i3xi6sdu6ix3hinx00nytw4u0tky6oyswt/140-77964.English.dist",
+    "packages": [
+      {
+        "Digest": "267bccf2d50e0efb5cb1d8ce2fd49f18b8b1f5b3",
+        "Size": 18368573458,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/10/29/140-77964-A_0UTOTNYQBE/i3xi6sdu6ix3hinx00nytw4u0tky6oyswt/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/10/29/140-77964-A_0UTOTNYQBE/i3xi6sdu6ix3hinx00nytw4u0tky6oyswt/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/10/29/140-77964-A_0UTOTNYQBE/i3xi6sdu6ix3hinx00nytw4u0tky6oyswt/InstallAssistant.pkg",
+        "IntegrityDataSize": 63140
+      }
+    ]
+  },
+  {
+    "product": "140-93587",
+    "version": "26.6.2",
+    "build": "25G83",
+    "date": "2026-08-24 22:49:27",
+    "distribution": "https://swdist.apple.com/content/downloads/37/33/140-93587-A_GRFFH93NOL/f944yaqo1cjhh2m0kxrl0zhcpg9yb9qphv/140-93587.English.dist",
+    "packages": [
+      {
+        "Digest": "9545b959cab5c536998c45f0fdd4b5d3832dc6f7",
+        "Size": 18384624402,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/37/33/140-93587-A_GRFFH93NOL/f944yaqo1cjhh2m0kxrl0zhcpg9yb9qphv/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/37/33/140-93587-A_GRFFH93NOL/f944yaqo1cjhh2m0kxrl0zhcpg9yb9qphv/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/37/33/140-93587-A_GRFFH93NOL/f944yaqo1cjhh2m0kxrl0zhcpg9yb9qphv/InstallAssistant.pkg",
+        "IntegrityDataSize": 63212
+      }
+    ]
+  },
+  {
+    "product": "142-15488",
+    "version": "27.0",
+    "build": "26A428",
+    "date": "2026-09-14 17:13:11",
+    "distribution": "https://swdist.apple.com/content/downloads/01/05/142-15488-A_9XNIAXWVVL/5ajxcy8xk014o98zz1uut0zrlaj2nx91ln/142-15488.English.dist",
+    "packages": [
+      {
+        "Digest": "d349196a226931596bfee58c323e4bb0fa7b8ae9",
+        "Size": 18400314350,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/01/05/142-15488-A_9XNIAXWVVL/5ajxcy8xk014o98zz1uut0zrlaj2nx91ln/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/01/05/142-15488-A_9XNIAXWVVL/5ajxcy8xk014o98zz1uut0zrlaj2nx91ln/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/01/05/142-15488-A_9XNIAXWVVL/5ajxcy8xk014o98zz1uut0zrlaj2nx91ln/InstallAssistant.pkg",
+        "IntegrityDataSize": 63248
+      }
+    ]
+  },
+  {
+    "product": "142-16670",
+    "version": "26.7",
+    "build": "25G229",
+    "date": "2026-09-14 17:20:59",
+    "distribution": "https://swdist.apple.com/content/downloads/52/44/142-16670-A_C1NGFF0VNT/e1mno92ap4g9s6epq5bbee9a57b5tm983g/142-16670.English.dist",
+    "packages": [
+      {
+        "Digest": "e0e5dc569161ea7806bb783d12361671afefc106",
+        "Size": 18381960622,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/52/44/142-16670-A_C1NGFF0VNT/e1mno92ap4g9s6epq5bbee9a57b5tm983g/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/52/44/142-16670-A_C1NGFF0VNT/e1mno92ap4g9s6epq5bbee9a57b5tm983g/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/52/44/142-16670-A_C1NGFF0VNT/e1mno92ap4g9s6epq5bbee9a57b5tm983g/InstallAssistant.pkg",
+        "IntegrityDataSize": 63212
+      }
+    ]
+  },
+  {
+    "product": "142-16660",
+    "version": "15.8",
+    "build": "24H23",
+    "date": "2026-09-14 17:22:22",
+    "distribution": "https://swdist.apple.com/content/downloads/24/14/142-16660-A_CTI1XX4VYC/dwxnuxoud4401qcf8to49p8iq1ij987j1e/142-16660.English.dist",
+    "packages": [
+      {
+        "Digest": "50d5bfc012bfd9d8bf77683383353e5a65adc30a",
+        "Size": 15664077639,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/24/14/142-16660-A_CTI1XX4VYC/dwxnuxoud4401qcf8to49p8iq1ij987j1e/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/24/14/142-16660-A_CTI1XX4VYC/dwxnuxoud4401qcf8to49p8iq1ij987j1e/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/24/14/142-16660-A_CTI1XX4VYC/dwxnuxoud4401qcf8to49p8iq1ij987j1e/InstallAssistant.pkg",
+        "IntegrityDataSize": 53852
+      }
+    ]
+  },
+  {
+    "product": "142-27367",
+    "version": "27.0.1",
+    "build": "26A434",
+    "date": "2026-09-28 17:20:12",
+    "distribution": "https://swdist.apple.com/content/downloads/04/52/142-27367-A_W3GHHHB05E/4kfhtjlg2i1qcv0obh62hlfcambu6kv15n/142-27367.English.dist",
+    "packages": [
+      {
+        "Digest": "43d2f8d96bf72d1911f18e88c0a455a8edac277e",
+        "Size": 18386308006,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/04/52/142-27367-A_W3GHHHB05E/4kfhtjlg2i1qcv0obh62hlfcambu6kv15n/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/04/52/142-27367-A_W3GHHHB05E/4kfhtjlg2i1qcv0obh62hlfcambu6kv15n/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/04/52/142-27367-A_W3GHHHB05E/4kfhtjlg2i1qcv0obh62hlfcambu6kv15n/InstallAssistant.pkg",
+        "IntegrityDataSize": 63212
+      }
+    ]
+  },
+  {
+    "product": "142-28081",
+    "version": "26.7.1",
+    "build": "25G241",
+    "date": "2026-09-28 17:27:06",
+    "distribution": "https://swdist.apple.com/content/downloads/51/17/142-28081-A_616Q67X32N/5atqz1miz61kmrim7fwkn7yi62xuzzcc0s/142-28081.English.dist",
+    "packages": [
+      {
+        "Digest": "b9162b38ba3143231e6c308e9c6d3c439a14714e",
+        "Size": 18380974544,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/51/17/142-28081-A_616Q67X32N/5atqz1miz61kmrim7fwkn7yi62xuzzcc0s/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/51/17/142-28081-A_616Q67X32N/5atqz1miz61kmrim7fwkn7yi62xuzzcc0s/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/51/17/142-28081-A_616Q67X32N/5atqz1miz61kmrim7fwkn7yi62xuzzcc0s/InstallAssistant.pkg",
+        "IntegrityDataSize": 63176
+      }
+    ]
+  },
+  {
+    "product": "142-27431",
+    "version": "15.8.1",
+    "build": "24H32",
+    "date": "2026-09-28 17:27:52",
+    "distribution": "https://swdist.apple.com/content/downloads/07/04/142-27431-A_VX0FXASAKC/m7trj81qnvp94e9nzr06e7qi9lqey7cwmu/142-27431.English.dist",
+    "packages": [
+      {
+        "Digest": "5edb8d574af56ff56cffc27160d4c998166b5882",
+        "Size": 15664523626,
+        "IntegrityDataURL": "https://swcdn.apple.com/content/downloads/07/04/142-27431-A_VX0FXASAKC/m7trj81qnvp94e9nzr06e7qi9lqey7cwmu/InstallAssistant.pkg.integrityDataV1",
+        "MetadataURL": "https://swdist.apple.com/content/downloads/07/04/142-27431-A_VX0FXASAKC/m7trj81qnvp94e9nzr06e7qi9lqey7cwmu/InstallAssistant.pkm",
+        "URL": "https://swcdn.apple.com/content/downloads/07/04/142-27431-A_VX0FXASAKC/m7trj81qnvp94e9nzr06e7qi9lqey7cwmu/InstallAssistant.pkg",
+        "IntegrityDataSize": 53852
+      }
+    ]
+  }
+]

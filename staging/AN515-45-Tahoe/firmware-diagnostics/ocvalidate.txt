@@ -1,0 +1,5 @@
+
+NOTE: This version of ocvalidate is only compatible with OpenCore version 1.0.8!
+
+
+Completed validating staging/AN515-45-Tahoe/firmware-diagnostics/EFI/OC/config.plist in 0 ms. No issues found.

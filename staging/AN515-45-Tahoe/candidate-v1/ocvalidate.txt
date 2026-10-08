@@ -1,0 +1,5 @@
+
+NOTE: This version of ocvalidate is only compatible with OpenCore version 1.0.8!
+
+
+Completed validating candidate-v1/EFI/OC/config.plist in 1 ms. No issues found.

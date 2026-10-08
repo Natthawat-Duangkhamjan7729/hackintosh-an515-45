@@ -1,0 +1,8 @@
+{
+  "purpose": "Firmware-only diagnostics; not a macOS boot configuration",
+  "opencore": "1.0.8 DEBUG",
+  "osScanning": false,
+  "platformSpoofing": false,
+  "source": "https://github.com/acidanthera/OpenCorePkg/releases/tag/1.0.8",
+  "hardwareBootTested": false
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "File": "BOOT\\BOOTx64.efi",
+    "CopiedIdentically": true
+  },
+  {
+    "File": "OC\\config.plist",
+    "CopiedIdentically": true
+  },
+  {
+    "File": "OC\\OpenCore.efi",
+    "CopiedIdentically": true
+  },
+  {
+    "File": "OC\\Tools\\MmapDump.efi",
+    "CopiedIdentically": true
+  },
+  {
+    "File": "OC\\Tools\\ResetSystem.efi",
+    "CopiedIdentically": true
+  }
+]

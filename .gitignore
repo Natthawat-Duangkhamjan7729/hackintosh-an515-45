@@ -1,0 +1,29 @@
+# Sensitive machine data: SMBIOS identity, firmware logs, Windows license table
+**/SysReport/
+**/firmware-evidence/opencore-*.txt
+**/MSDM*.aml
+**/MSDM*.dsl
+SSDTTime-master/
+SSDTTime-master.zip
+
+# Generated identity values must never be committed
+**/PlatformInfo*.plist
+**/*serial*
+**/*smbios-private*
+
+# Large or redistributable binaries; reproducible from pinned upstream sources (see checksums.json)
+**/installer/
+**/downloads/*.zip
+**/downloads/*.sucatalog
+**/packages/
+**/tools/*.exe
+**/tools/UTBMap.kext/
+*.efi
+**/components/Kexts/USBToolBox.kext/
+**/candidate-*/EFI/OC/Kexts/*
+!**/candidate-*/EFI/OC/Kexts/USBMap.kext/
+
+# Local tool state
+__pycache__/
+*.pyc
+.claude/settings.local.json

@@ -1,0 +1,22 @@
+[
+  {
+    "comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 10.13-10.14",
+    "before": "b80000000000",
+    "after": "b80800000000"
+  },
+  {
+    "comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 10.15-11.0",
+    "before": "ba0000000000",
+    "after": "ba0800000000"
+  },
+  {
+    "comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 12.0-13.2",
+    "before": "ba0000000090",
+    "after": "ba0800000090"
+  },
+  {
+    "comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 13.3+",
+    "before": "ba00000000",
+    "after": "ba08000000"
+  }
+]

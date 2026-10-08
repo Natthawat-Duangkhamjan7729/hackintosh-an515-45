@@ -1,0 +1,21 @@
+{
+  "updated": "2026-10-09",
+  "machine": "Acer Nitro 5 AN515-45-R375",
+  "macOS": {
+    "name": "Sequoia",
+    "version": "15.8.1",
+    "build": "24H32",
+    "installerVerified": "size+SHA256 recorded; Apple signature not checked"
+  },
+  "openCore": {
+    "version": "1.0.8",
+    "variant": "DEBUG"
+  },
+  "initialGraphics": "AMD Cezanne iGPU with NootedRed; internal display",
+  "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
+  "usbMap": "components/Kexts/UTBMap.kext",
+  "usbMapStatus": "Experimental; see USB-MAP-REVIEW.md",
+  "installation": "Separate spare SSD, not fitted; Windows preparation with offline installation plan pending",
+  "status": "candidate-v1 schema-validated (not boot-tested); installer 15.8.1 and Recovery 15.4.1 downloaded",
+  "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
+}

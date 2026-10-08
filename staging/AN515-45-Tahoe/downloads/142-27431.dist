@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+    <pkg-ref id="MajorOSInfo" packageIdentifier="com.apple.pkg.MajorOSInfo"/>
+    <pkg-ref id="InstallAssistant" packageIdentifier="com.apple.pkg.InstallAssistant.macOSSequoia"/>
+    <pkg-ref id="InstallInfo.plist" packageIdentifier="com.apple.plist.InstallInfo"/>
+    <pkg-ref id="com_apple_MobileAsset_MacSoftwareUpdate.plist" packageIdentifier="com.apple.plist.MobileAsset.MacSoftwareUpdate"/>
+    <pkg-ref id="UpdateBrain.zip" packageIdentifier="com.apple.zip.UpdateBrain"/>
+    <title>macOS Sequoia</title>
+    <product-generator name="IASUProductGenerator" version="26.0.1"/>
+    <options visibleOnlyForPredicate="true" customize="false" rootVolumeOnly="true" major-os-update="true" require-scripts="true"/>
+    <volume-check script="">
+        <allowed-os-versions>
+            <os-version min="10.13"/>
+        </allowed-os-versions>
+    </volume-check>
+    <auxinfo>
+        <dict>
+            <key>BUILD</key>
+            <string>24H32</string>
+            <key>VERSION</key>
+            <string>15.8.1</string>
+        </dict>
+    </auxinfo>
+    <tags>
+        <tag>SUBUNDLE:com.apple.InstallAssistant.macOSSequoia</tag>
+        <tag>CUSTOMER</tag>
+    </tags>
+    <choices-outline>
+        <line choice="InstallAssistantAuto"/>
+    </choices-outline>
+    <choices-outline ui="MajorOSInfo">
+        <line choice="MajorOSInfo"/>
+    </choices-outline>
+    <choices-outline ui="SoftwareUpdate">
+        <line choice="InstallAssistantAuto"/>
+    </choices-outline>
+    <choices-outline ui="InstallAssistant">
+        <line choice="InstallAssistantShell"/>
+    </choices-outline>
+    <choice id="MajorOSInfo" title="macOS Sequoia" start_enabled="true" start_selected="true">
+        <pkg-ref id="MajorOSInfo"/>
+    </choice>
+    <choice id="InstallAssistantAuto" start_enabled="true" start_selected="true" suDisabledGroupID="macOS Sequoia" versStr="15.8.1" title="macOS Sequoia">
+        <pkg-ref id="InstallAssistant"/>
+    </choice>
+    <choice id="InstallAssistantShell" title="macOS Sequoia" start_enabled="true" start_selected="true">
+        <pkg-ref id="InstallAssistant"/>
+        <pkg-ref id="InstallInfo.plist"/>
+        <pkg-ref id="com_apple_MobileAsset_MacSoftwareUpdate.plist"/>
+        <pkg-ref id="UpdateBrain.zip"/>
+    </choice>
+    <pkg-ref id="MajorOSInfo" auth="root" installKBytes="1308" version="24.7.32">MajorOSInfo.pkg</pkg-ref>
+    <pkg-ref id="InstallAssistant" auth="root" installKBytes="57312" version="24.7.32">InstallAssistant.pkg</pkg-ref>
+    <pkg-ref id="InstallInfo.plist" installKBytes="0" version="24.7.32">InstallInfo.plist</pkg-ref>
+    <pkg-ref id="com_apple_MobileAsset_MacSoftwareUpdate.plist" installKBytes="1394" version="24.7.32">com_apple_MobileAsset_MacSoftwareUpdate.plist</pkg-ref>
+    <pkg-ref id="UpdateBrain.zip" installKBytes="4053" version="24.7.32">UpdateBrain.zip</pkg-ref>
+    <script for="volume-check/@script"><![CDATA[
+var volumeCheck = function()
+{
+    if ( my.target == undefined )
+    {
+        my.result.message = "The target is nil.";
+        my.result.type = 'Fatal';
+        return false;
+    }
+    
+    var myTargetSystemVersion = (my.target.systemVersion || system.files.plistAtPath(my.target.mountpoint + "/System/Library/CoreServices/SystemVersion.plist"));
+    var minimumSupportedVersion = "10.13";
+    
+    if ( system.compareVersions(myTargetSystemVersion, minimumSupportedVersion) < 0 )
+    {
+        my.result.message = "The target volume is less than the minimum supported version: " + minimumSupportedVersion;
+        my.result.type = 'Fatal';
+        return false;
+    }
+    return true;
+}
+volumeCheck();
+]]></script>
+    <installation-check script=""/>
+    <script for="installation-check/@script"><![CDATA[var MacPlatformType = {
+    Unknown:        Symbol("Unknown"),
+    LegacyIntel:    Symbol("LegacyIntel"),
+    T1:             Symbol("T1"),
+    T2:             Symbol("T2"),
+    AppleSilicon:   Symbol("AppleSilicon"),
+}
+
+var fetchMacPlatform = function()
+{
+    if ( system.ioregistry.fromPath('IODeviceTree:/chosen/iBoot') != undefined )
+    {
+        return MacPlatformType.AppleSilicon;
+    }
+    
+    if ( system.ioregistry.fromPath('IODeviceTree:/efi') != undefined )
+    {
+        // Little endian since this returns data as a string
+        const coprocessor_str = system.ioregistry.fromPath('IODeviceTree:/efi/platform')["apple-coprocessor-version"];
+        if ( coprocessor_str != undefined )
+        {
+            const swapEndian = (hexString) => {
+                const byteArray = []
+                let idx = hexString.length - 2;
+                while ( idx >= 0 )
+                {
+                    let subByte = hexString.substr(idx, 2);
+                    byteArray.push(subByte);
+                    idx -= 2;
+                }
+                return byteArray.join('');
+            }
+            
+            const COPROCESSOR_VERSION_T1 = 0x00010000;
+            const COPROCESSOR_VERSION_T2 = 0x00020000;
+            
+            const coprocessorType = Number("0x" + swapEndian(coprocessor_str));
+            if ( coprocessorType === COPROCESSOR_VERSION_T2 )
+            {
+                return MacPlatformType.T2;
+            }
+            
+            if ( coprocessorType === COPROCESSOR_VERSION_T1 )
+            {
+                return MacPlatformType.T1;
+            }
+        }
+        return MacPlatformType.LegacyIntel;
+    }
+    return MacPlatformType.Unknown;
+}
+
+var isVirtualMachine = function()
+{
+    if ( system.sysctl( 'kern.hv_vmm_present') === 1 )
+    {
+        return true;
+    }
+    
+    // Fallback to legacy mechanism
+    var cpuFeatures = system.sysctl( 'machdep.cpu.features' );
+    if ( cpuFeatures != undefined )
+    {
+        cpuFeatures=cpuFeatures.split(" ");
+        for ( var i = 0; i < cpuFeatures.length; i++ )
+        {
+            if ( cpuFeatures[i] == "VMM" )
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+var virtualBoardID = function()
+{
+    const arch = system.sysctl('hw.machine');
+    if ( arch == undefined )
+        return undefined;
+    
+    return "VMM-" + arch;
+}
+
+var installCheck = function()
+{
+    var supportedBoardIDs = ['Mac-0CFF9C7C2B63DF8D', 'Mac-AF89B6D9451A490B', 'Mac-A61BADE1FDAD7B05', 'Mac-E7203C0F68AA0004', 'Mac-827FB448E656EC26', 'Mac-5F9802EFE386AA28', 'Mac-AA95B1DDAB278B95', 'Mac-CFF7D910A743CAAF', 'Mac-E1008331FDC96864', 'Mac-63001698E7A34814', 'Mac-7BA5B2D9E42DDD94', 'Mac-112818653D3AABFC', 'Mac-937A206F2EE63C01', 'Mac-1E7E29AD0135F9BC', 'Mac-7BA5B2DFE22DDD8C', 'Mac-53FDB3D8DB8CA971', 'Mac-27AD2F918AE68F61'];
+    
+    var supportedDeviceIDs = ['J316cAP', 'VMM-x86_64', 'J433AP', 'J293AP', 'J575dAP', 'J132AP', 'J475cAP', 'J514sAP', 'J137AP', 'J457AP', 'J416sAP', 'J604AP', 'J516mAP', 'J214AP', 'J623AP', 'J314cAP', 'J475dAP', 'J680AP', 'J514mAP', 'J375cAP', 'J414sAP', 'J773gAP', 'J316sAP', 'J230AP', 'J613AP', 'J160AP', 'J473AP', 'J223AP', 'J375dAP', 'J413AP', 'J314sAP', 'J213AP', 'J456AP', 'J616cAP', 'J615AP', 'J174AP', 'X86LEGACYAP', 'J415AP', 'J504AP', 'J434AP', 'J152FAP', 'J516cAP', 'J614cAP', 'J780AP', 'J215AP', 'J624AP', 'J185FAP', 'J616sAP', 'J713AP', 'J230KAP', 'VMA2MACOSAP', 'J514cAP', 'J416cAP', 'J180dAP', 'J575cAP', 'J474sAP', 'J614sAP', 'J214KAP', 'J313AP', 'J493AP', 'J516sAP', 'X589AMLUAP', 'J185AP', 'J715AP', 'J414cAP', 'J773sAP', 'J274AP'];
+    supportedDeviceIDs = supportedDeviceIDs.map(Function.prototype.call, String.prototype.toLowerCase);
+    
+    // Short circuit for virtual machines if they're in the supported devices list.
+    if ( isVirtualMachine() )
+    {
+        const virtualDevice = virtualBoardID();
+        if ( virtualDevice != undefined )
+        {
+            if ( supportedDeviceIDs.indexOf(virtualDevice.toLowerCase()) != -1 )
+            {
+                return true;
+            }
+        }
+    }
+    
+    let platform = fetchMacPlatform();
+    if ( platform === MacPlatformType.AppleSilicon )
+    {
+        var hwTarget = system.sysctl("hw.target");
+        if ( hwTarget == undefined )
+        {
+            my.result.message = "The AppleSilicon system lacks a hw.target.";
+            my.result.type = 'Fatal';
+            return false;
+        }
+        else
+        {
+            if ( supportedDeviceIDs.indexOf(hwTarget.toLowerCase()) == -1 )
+            {
+                my.result.message = "The system is not in the supported deviceID list.";
+                my.result.type = 'Fatal';
+                return false;
+            }
+        }
+    }
+    else if ( platform === MacPlatformType.T2 )
+    {
+        // Next compare T2 devices against the list of supported deviceIDs.
+        // Non T2 systems will have a hardwareModel so also verify that the bridgeVersion is set
+        var bridgeOSDeviceID = system.bridge.deviceIdentity.hardwareModel;
+        if ( bridgeOSDeviceID == undefined )
+        {
+            my.result.message = "This T2 system lacks a deviceID, which is unexpected.";
+            my.result.type = 'Fatal';
+            return false;
+        }
+        
+        if ( supportedDeviceIDs.indexOf(bridgeOSDeviceID.toLowerCase()) == -1 )
+        {
+            my.result.message = "This T2 system is not in the supported deviceID list.";
+            my.result.type = 'Fatal';
+            return false;
+        }
+    }
+    else if ( platform === MacPlatformType.T1 || 
+              platform === MacPlatformType.LegacyIntel )
+    {
+        // For legacy hardware T1 and older, we use boardIDs
+        var boardID = system.ioregistry.fromPath('IOService:/')['board-id'];
+        if ( boardID == undefined )
+        {
+            my.result.message = "The system does not have a board-id; which is a requirement for this hardware.";
+            my.result.type = 'Fatal';
+            return false;
+        }
+        
+        if ( supportedBoardIDs.indexOf(boardID) == -1 )
+        {
+            my.result.message = "The system is not in the supported boardID list.";
+            my.result.type = 'Fatal';
+            return false;
+        }
+    }
+    else
+    {
+        my.result.message = "This platform type is not supported for this version of macOS.";
+        my.result.type = 'Fatal';
+        return false;
+    }
+    
+    // Device is supported.
+    return true;
+}
+installCheck();
+]]></script>
+</installer-gui-script>
