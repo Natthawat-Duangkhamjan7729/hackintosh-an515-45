@@ -16,6 +16,6 @@
   "usbMap": "components/Kexts/UTBMap.kext",
   "usbMapStatus": "Experimental; see USB-MAP-REVIEW.md",
   "installation": "Separate spare SSD, not fitted; Windows preparation with offline installation plan pending",
-  "status": "candidate-v1 schema-validated (not boot-tested); installer 15.8.1 and Recovery 15.4.1 downloaded",
+  "status": "USB prepared (candidate-v1 + Recovery 15.4.1 + installer 15.8.1), not boot-tested; waiting for spare SSD",
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
