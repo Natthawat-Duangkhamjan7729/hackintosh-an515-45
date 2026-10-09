@@ -1,7 +1,7 @@
-"""Assemble candidate EFI (default candidate-v8) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
+"""Assemble candidate EFI (default candidate-v9) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test). Identity fields keep Sample.plist placeholders;
+evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
 Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name]
 """
@@ -11,10 +11,12 @@ import plistlib
 import shutil
 import sys
 
+EXPERIMENTAL_BT = "--bt" in sys.argv
+sys.argv = [a for a in sys.argv if a != "--bt"]
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v8") / "EFI"
+out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
@@ -44,13 +46,16 @@ bundles = [
     (pkg / "NootedRed-0.8.10-RELEASE" / "NootedRed.kext", "NootedRed.kext"),
     (pkg / "BrightnessKeys-1.0.3-RELEASE" / "BrightnessKeys.kext", "BrightnessKeys.kext"),
     (pkg / "AppleALC-1.9.8-RELEASE" / "AppleALC.kext", "AppleALC.kext"),
-    (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw.kext", "SimpleMtkBtFw.kext"),
-    (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtPatcher.kext", "SimpleMtkBtPatcher.kext"),
     (pkg / "VoodooPS2Controller-2.3.7-RELEASE" / "VoodooPS2Controller.kext", "VoodooPS2Controller.kext"),
     (pkg / "VoodooI2C-2.9.1-RELEASE" / "VoodooI2C.kext", "VoodooI2C.kext"),
     (pkg / "VoodooI2C-2.9.1-RELEASE" / "VoodooI2CHID.kext", "VoodooI2CHID.kext"),
     (pkg / "RealtekRTL8111-V3.0.0" / "RealtekRTL8111-V3.0.0" / "Release" / "RealtekRTL8111.kext", "RealtekRTL8111.kext"),
 ]
+if EXPERIMENTAL_BT:
+    bundles += [
+    (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw.kext", "SimpleMtkBtFw.kext"),
+    (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtPatcher.kext", "SimpleMtkBtPatcher.kext"),
+    ]
 for src, name in bundles:
     shutil.copytree(src, out / "OC" / "Kexts" / name)
 
@@ -97,8 +102,9 @@ bq["EnableWriteUnprotector"] = False
 bq["RebuildAppleMemoryMap"] = True
 bq["SyncRuntimePermissions"] = True
 
+# DeviceProperties paths must use PciRoot(0x1): macOS matches by ACPI _UID and \_SB.PCI0 has _UID 1 (PciRoot(0x0) silently failed in v7)
 # AppleALC: ALC295 layout 21 (Acer Nitro 5 Spin) verified on this machine via alcid=21 (speakers/mic/headset switching)
-cfg["DeviceProperties"]["Add"] = {"PciRoot(0x0)/Pci(0x8,0x1)/Pci(0x0,0x6)": {"layout-id": (21).to_bytes(4, "little")}}
+cfg["DeviceProperties"]["Add"] = {"PciRoot(0x1)/Pci(0x8,0x1)/Pci(0x0,0x6)": {"layout-id": (21).to_bytes(4, "little")}}
 cfg["DeviceProperties"]["Delete"] = {}
 
 # Kernel
@@ -117,8 +123,6 @@ cfg["Kernel"]["Add"] = [
     kext("NootedRed.kext", "Contents/MacOS/NootedRed"),
     kext("BrightnessKeys.kext", "Contents/MacOS/BrightnessKeys"),
     kext("AppleALC.kext", "Contents/MacOS/AppleALC"),
-    kext("SimpleMtkBtFw.kext", "Contents/MacOS/SimpleMtkBtFw", comment="EXPERIMENTAL: MediaTek BT firmware loader (04CA:3802)"),
-    kext("SimpleMtkBtPatcher.kext", "Contents/MacOS/SimpleMtkBtPatcher", comment="EXPERIMENTAL: Lilu patcher for SimpleMtkBtFw"),
     kext("VoodooPS2Controller.kext", "Contents/MacOS/VoodooPS2Controller"),
     kext("VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard.kext", "Contents/MacOS/VoodooPS2Keyboard"),
     kext("VoodooI2C.kext/Contents/PlugIns/VoodooGPIO.kext", "Contents/MacOS/VoodooGPIO"),
@@ -129,6 +133,12 @@ cfg["Kernel"]["Add"] = [
     kext("RealtekRTL8111.kext", "Contents/MacOS/RealtekRTL8111"),
     kext("USBMap.kext", ""),
 ]
+if EXPERIMENTAL_BT:  # insert right after AppleALC
+    i = [e["BundlePath"] for e in cfg["Kernel"]["Add"]].index("AppleALC.kext") + 1
+    cfg["Kernel"]["Add"][i:i] = [
+        kext("SimpleMtkBtFw.kext", "Contents/MacOS/SimpleMtkBtFw", comment="EXPERIMENTAL: MediaTek BT firmware loader (04CA:3802)"),
+        kext("SimpleMtkBtPatcher.kext", "Contents/MacOS/SimpleMtkBtPatcher", comment="EXPERIMENTAL: Lilu patcher for SimpleMtkBtFw"),
+    ]
 cfg["Kernel"]["Block"] = []
 cfg["Kernel"]["Force"] = []
 cfg["Kernel"]["Patch"] = plistlib.loads((stage / "components" / "AMD-Vanilla-5800H-8cores.plist").read_bytes())["Kernel"]["Patch"]
