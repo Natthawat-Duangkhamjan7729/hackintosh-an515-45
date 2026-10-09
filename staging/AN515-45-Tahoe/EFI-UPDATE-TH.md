@@ -28,9 +28,12 @@
 1. **แก้ใน staging เท่านั้น** — แก้ `tools/build_candidate.py` หรือ config ใน candidate ใหม่ (เช่น `candidate-v5`) ห้ามแก้ไฟล์บน EFI partition ตรงๆ
 2. **build + ตรวจ** — `py -3.12 -I tools/build_candidate.py . candidate-v5` แล้ว ocvalidate (สคริปต์ติดตั้งจะตรวจซ้ำอีกครั้ง)
 3. **ทดสอบจาก USB ก่อน** — วาง config/kext ใหม่ลง USB (`E:\EFI\OC`) แล้ว F12 → USB ถ้าบูตไม่ขึ้น ระบบบน Apacer ยังใช้ได้ตามเดิม
-4. **ติดตั้งลง Apacer เมื่อ USB ผ่านแล้ว** (build ด้วย `--private` ก่อน เพื่อใส่ serial จริงจาก `privatePlatformInfo.json` แล้วใช้ `-Source ...private-build<candidate>FIOC`):
+4. **ติดตั้งลง Apacer เมื่อ USB ผ่านแล้ว** — build อีกครั้งด้วย `--private` เพื่อใส่ serial จริงจาก `private\PlatformInfo.json` (ไม่เข้า git) แล้วติดตั้งจาก `private-build`:
    ```
-   powershell -ExecutionPolicy Bypass -File "D:\Hackintosh\staging\AN515-45-Tahoe\tools\Install-OpenCore-ESP.ps1" -Source "D:\Hackintosh\staging\AN515-45-Tahoe\candidate-v5\EFI\OC"
+   py -3.12 -I "D:\Hackintosh\staging\AN515-45-Tahoe\tools\build_candidate.py" "D:\Hackintosh\staging\AN515-45-Tahoe" candidate-v10 --private
+   ```
+   ```
+   powershell -ExecutionPolicy Bypass -File "D:\Hackintosh\staging\AN515-45-Tahoe\tools\Install-OpenCore-ESP.ps1" -Source "D:\Hackintosh\staging\AN515-45-Tahoe\private-build\candidate-v10\EFI\OC"
    ```
    ของเดิมจะถูกเก็บเป็น `EFI\OC.bak-<วันเวลา>` และสำรองทั้ง EFI partition ไว้ใน D: อีกชั้น
 5. **บันทึก** — อัปเดต PROGRESS แล้ว commit/push
