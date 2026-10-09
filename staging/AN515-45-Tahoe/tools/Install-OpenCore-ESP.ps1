@@ -43,9 +43,12 @@ try {
 
     # 1. Backup the whole ESP
     $bk = "D:\Backup-ESP-$stamp"
-    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /NFL /NDL | Out-Null
+    # The live BCD hive is locked by Windows, so it is excluded here and exported with bcdedit instead.
+    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /NFL /NDL /XD 'System Volume Information' /XF BCD | Out-Null
     if ($LASTEXITCODE -ge 8) { throw "ESP backup failed (robocopy $LASTEXITCODE)" }
-    Write-Host "ESP backed up to $bk"
+    bcdedit /export (Join-Path $bk 'BCD-export') | Out-Null
+    if ($LASTEXITCODE -ne 0 -or -not (Test-Path (Join-Path $bk 'BCD-export'))) { throw 'bcdedit /export of the BCD store failed' }
+    Write-Host "ESP backed up to $bk (BCD exported as BCD-export)"
 
     # 2. Keep previous OC, copy new OC
     $dst = "${root}EFI\OC"
