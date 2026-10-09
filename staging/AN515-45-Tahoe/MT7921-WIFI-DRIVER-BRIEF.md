@@ -10,7 +10,7 @@ Create a macOS kernel extension (kext) that drives the **MediaTek MT7921 PCIe Wi
 - **Stretch target (hard):** native integration with Apple's private IO80211Family, so the macOS Wi-Fi menu works, similar to AirportItlwm.
 - **Non-goals for now:** Bluetooth (separate USB device; see §9), AirDrop/Continuity, monitor mode, 6 GHz.
 
-As of 2026-10-09 no public macOS Wi-Fi driver for MT7921 is known. Community forums (EliteMacx86, AMD-OSX) report MediaTek Wi-Fi as unsupported. Treat this as a research project: expect months of work and a real chance of not reaching a usable driver.
+As of 2026-10-09 no released macOS Wi-Fi driver for MT7921 is known. The closest work is **laobamac/SimpleMtkWlan** (GPL-2.0, no releases, last push 2026-06-27): an experimental MT792x PCIe kext targeting 14c3:7961 with OpenBSD net80211; bring-up stage (attach, firmware, DMA, scan, association debugging). Evaluate continuing from it before starting from scratch. Community forums (EliteMacx86, AMD-OSX) report MediaTek Wi-Fi as unsupported. Treat this as a research project: expect months of work and a real chance of not reaching a usable driver.
 
 ## 2. Hardware facts (verified on this machine)
 
