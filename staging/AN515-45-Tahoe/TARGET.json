@@ -21,7 +21,7 @@
     "target": "Dual-boot on Apacer AS2280P4 512 GB (Windows NVMe), 256.00 GB unallocated after C: (s3) and before Windows Recovery (s4)",
     "method": "Offline install with UnPlugged from the exFAT USB partition",
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
-    "windowsState": "BitLocker off on C:; system image on D:; paging file still disabled and must be re-enabled before install"
+    "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
   "status": "macOS Sequoia installed on the Apacer Macintosh HD volume; reached Setup Assistant via the USB OpenCore. Apple Secure Boot disabled (SecureBootModel=Default failed system-volume sealing with MSU 1130).",
   "nextSteps": [
