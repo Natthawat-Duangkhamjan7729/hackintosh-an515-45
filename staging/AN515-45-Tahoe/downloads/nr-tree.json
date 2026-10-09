@@ -1,0 +1,1498 @@
+{
+  "sha": "8e93e82c497d28814d7066cb5cdd72ac9471d63f",
+  "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/8e93e82c497d28814d7066cb5cdd72ac9471d63f",
+  "tree": [
+    {
+      "path": ".clang-format",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9404c03cf8a88bd07d56252b6eaf81590fae973",
+      "size": 5027,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/e9404c03cf8a88bd07d56252b6eaf81590fae973"
+    },
+    {
+      "path": ".clang-tidy",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4522d476fc2cb073f627bca56dec69719403f56",
+      "size": 142,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f4522d476fc2cb073f627bca56dec69719403f56"
+    },
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d8031a407114a22e12ff98ecc141998195e717ce",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/d8031a407114a22e12ff98ecc141998195e717ce"
+    },
+    {
+      "path": ".github/FUNDING.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3346791d711845fd2ec58dcddfbe6cdfa2cab08",
+      "size": 119,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d3346791d711845fd2ec58dcddfbe6cdfa2cab08"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "522cf566aa34d2c31857998afd8755f9e3504ac7",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/522cf566aa34d2c31857998afd8755f9e3504ac7"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5d669e4c35b82b16066cc2a7d050fd854d8bc41",
+      "size": 3433,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d5d669e4c35b82b16066cc2a7d050fd854d8bc41"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4aeb279b71e5d426e61a1992e9f9d3ad33c3711",
+      "size": 298,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f4aeb279b71e5d426e61a1992e9f9d3ad33c3711"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70e84a2a7643368629ec68b4eac6c3e55e559a25",
+      "size": 3062,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/70e84a2a7643368629ec68b4eac6c3e55e559a25"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "66d57d7c74718bddf2cdb666552eae6aa1092876",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/66d57d7c74718bddf2cdb666552eae6aa1092876"
+    },
+    {
+      "path": ".github/workflows/main.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77f2de4004621474b14774b394b3e138ead54a13",
+      "size": 4562,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/77f2de4004621474b14774b394b3e138ead54a13"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "098a6510aed4881c777a57ed7b8455ff81c72dc1",
+      "size": 612,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/098a6510aed4881c777a57ed7b8455ff81c72dc1"
+    },
+    {
+      "path": ".gitmodules",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "230e248cf94395bf5873ad5963b911e7ffd1130c",
+      "size": 178,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/230e248cf94395bf5873ad5963b911e7ffd1130c"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa87907c0670850ae89749f23ac2e1e326bd32f6",
+      "size": 8239,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/fa87907c0670850ae89749f23ac2e1e326bd32f6"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "992fe643023c5f5a4027de4ca8ef730395e6d190",
+      "size": 10562,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/992fe643023c5f5a4027de4ca8ef730395e6d190"
+    },
+    {
+      "path": "Lilu",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "0515f40b7f2a096adc85e832a4c6104fbd07f936"
+    },
+    {
+      "path": "MacKernelSDK",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "7af1933c27aefcbdf4809ee44478829aad30f9c1"
+    },
+    {
+      "path": "NootedRed.xcodeproj",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "35ccf88cc8ab933470cca52e56e87cdad39f1236",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/35ccf88cc8ab933470cca52e56e87cdad39f1236"
+    },
+    {
+      "path": "NootedRed.xcodeproj/project.pbxproj",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f929a584d32f1bd4e265f0fcb42ba4ff6d18aba",
+      "size": 80970,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/2f929a584d32f1bd4e265f0fcb42ba4ff6d18aba"
+    },
+    {
+      "path": "NootedRed",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "eb0ce9d0d7b600cc4805bc8e1790c4575090e8e9",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/eb0ce9d0d7b600cc4805bc8e1790c4575090e8e9"
+    },
+    {
+      "path": "NootedRed/AGDC",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b954954940d61c0bad8072176f72e73b6ec830db",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/b954954940d61c0bad8072176f72e73b6ec830db"
+    },
+    {
+      "path": "NootedRed/AGDC/VendorInfo.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "970a23d6ed6af5d1cf729615481d17d5ea539b89",
+      "size": 924,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/970a23d6ed6af5d1cf729615481d17d5ea539b89"
+    },
+    {
+      "path": "NootedRed/AGDP.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38bd56b462ae9c06c6e2e8de32a441b845c1992b",
+      "size": 2243,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/38bd56b462ae9c06c6e2e8de32a441b845c1992b"
+    },
+    {
+      "path": "NootedRed/AGDP.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b42049bca43ba76611c2fab13113105e60c5e6f8",
+      "size": 370,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b42049bca43ba76611c2fab13113105e60c5e6f8"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCN1Display.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d662f3074784b0926c6a38485d23862c204ee43c",
+      "size": 4085,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d662f3074784b0926c6a38485d23862c204ee43c"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCN1Display.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88fc63df1502c86abaa7acb5a15ee202baae7f4a",
+      "size": 684,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/88fc63df1502c86abaa7acb5a15ee202baae7f4a"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCN2Display.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a3d4b60e378811d1212343691b708e49ae8e133",
+      "size": 4031,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/0a3d4b60e378811d1212343691b708e49ae8e133"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCN2Display.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "007db89b6369bcd5ccfc5997f94be1cf190dc8ee",
+      "size": 684,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/007db89b6369bcd5ccfc5997f94be1cf190dc8ee"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCNDisplay.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a664e6a9ee53803cc124879799837bfd951a9f5c",
+      "size": 25321,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a664e6a9ee53803cc124879799837bfd951a9f5c"
+    },
+    {
+      "path": "NootedRed/AMDGFX9DCNDisplay.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f78b03b7bfa38c6ff26e7070cc09567f130a7730",
+      "size": 5113,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f78b03b7bfa38c6ff26e7070cc09567f130a7730"
+    },
+    {
+      "path": "NootedRed/ASICCaps.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d09c3e7f1342740baa4888f3a491b0a6156e28b",
+      "size": 1114,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6d09c3e7f1342740baa4888f3a491b0a6156e28b"
+    },
+    {
+      "path": "NootedRed/AmdAtomPspDirectoryDummy.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87bd68620ad763b7261684c335df8d703d421172",
+      "size": 583,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/87bd68620ad763b7261684c335df8d703d421172"
+    },
+    {
+      "path": "NootedRed/AmdAtomPspDirectoryDummy.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2e136a6a825dece027f8be98cb2b7444f110985",
+      "size": 501,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f2e136a6a825dece027f8be98cb2b7444f110985"
+    },
+    {
+      "path": "NootedRed/AmdAtomVramInfoIGP.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e77c55fff30f3f5e67a01d7b6badf109ecddcdd5",
+      "size": 4112,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/e77c55fff30f3f5e67a01d7b6badf109ecddcdd5"
+    },
+    {
+      "path": "NootedRed/AmdAtomVramInfoIGP.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f18cc5e4fedc9b92d6a359e77787d1bb2c0b63e5",
+      "size": 1184,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f18cc5e4fedc9b92d6a359e77787d1bb2c0b63e5"
+    },
+    {
+      "path": "NootedRed/AppleGFXHDA.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "973c9649b4dc86346846ebf1c0fcd7314482b55d",
+      "size": 4894,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/973c9649b4dc86346846ebf1c0fcd7314482b55d"
+    },
+    {
+      "path": "NootedRed/AppleGFXHDA.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "525f38953951c2ddd1232288bfc517d3de3a0f85",
+      "size": 3695,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/525f38953951c2ddd1232288bfc517d3de3a0f85"
+    },
+    {
+      "path": "NootedRed/Backlight.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53bc823cd86bac6677f41bd92cf56c8eb7dc9a1f",
+      "size": 14366,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/53bc823cd86bac6677f41bd92cf56c8eb7dc9a1f"
+    },
+    {
+      "path": "NootedRed/Backlight.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24bcdd1e52eff1fa07c9c5765209ed22ef50efb0",
+      "size": 2496,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/24bcdd1e52eff1fa07c9c5765209ed22ef50efb0"
+    },
+    {
+      "path": "NootedRed/DebugEnabler.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8243153f49c3b293f0aeb0af4f77fdfb4fd8b5c",
+      "size": 16956,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d8243153f49c3b293f0aeb0af4f77fdfb4fd8b5c"
+    },
+    {
+      "path": "NootedRed/DebugEnabler.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14f3000a980cf91077a7f96c8eab1a0c2d853f4b",
+      "size": 1576,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/14f3000a980cf91077a7f96c8eab1a0c2d853f4b"
+    },
+    {
+      "path": "NootedRed/DevCaps.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6d65a23df31a2bc6269a03c4d00f3fc7cdbd10a",
+      "size": 254,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a6d65a23df31a2bc6269a03c4d00f3fc7cdbd10a"
+    },
+    {
+      "path": "NootedRed/DriverInjector.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c976a2997f8317125ab045bad532f759d310fc5e",
+      "size": 3347,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c976a2997f8317125ab045bad532f759d310fc5e"
+    },
+    {
+      "path": "NootedRed/DriverInjector.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3867206d196c32da4bdf6b880d9acf554feb88ee",
+      "size": 1636,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3867206d196c32da4bdf6b880d9acf554feb88ee"
+    },
+    {
+      "path": "NootedRed/Firmware",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6daa13ebfa1b7c4c6890cace75cb5eadf2a071ab",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/6daa13ebfa1b7c4c6890cace75cb5eadf2a071ab"
+    },
+    {
+      "path": "NootedRed/Firmware/LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ae74951729e35407ea48f2e57c8cb030446ea88",
+      "size": 60,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6ae74951729e35407ea48f2e57c8cb030446ea88"
+    },
+    {
+      "path": "NootedRed/Firmware/atidmcub_rn.dat",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e5a67235d21d9a18c7a291b44bd0516ed81f8b0",
+      "size": 121352,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7e5a67235d21d9a18c7a291b44bd0516ed81f8b0"
+    },
+    {
+      "path": "NootedRed/Firmware/ativvaxy_nv.dat",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6360e1bc22008359399085045625e0243b90f86b",
+      "size": 403904,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6360e1bc22008359399085045625e0243b90f86b"
+    },
+    {
+      "path": "NootedRed/Firmware/ativvaxy_rv.dat",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8968d87ab77b887b8be064f6e52721e4e5f773ba",
+      "size": 367360,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8968d87ab77b887b8be064f6e52721e4e5f773ba"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn10_abm_2_1.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac947bb80ac4c86f5ca2bd3dd0c09864928cd312",
+      "size": 22384,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ac947bb80ac4c86f5ca2bd3dd0c09864928cd312"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn10_abm_2_2.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d91c95acda02333ae3763fda8cf6225a00e3bb9",
+      "size": 20288,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7d91c95acda02333ae3763fda8cf6225a00e3bb9"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn10_abm_2_3.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c16667ee963db58c813e05c5ddad5b34cc3b3bed",
+      "size": 22240,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c16667ee963db58c813e05c5ddad5b34cc3b3bed"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn21_abm_2_1.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "625829e12481486aa3cea83bfdba1e6e3c4b4dee",
+      "size": 23520,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/625829e12481486aa3cea83bfdba1e6e3c4b4dee"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn21_abm_2_2.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f237fcde56f73d1175ccadfa4a51621655a85985",
+      "size": 21536,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f237fcde56f73d1175ccadfa4a51621655a85985"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn21_abm_2_3.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3295c0c10439f88892d86e07cf50b0104a160124",
+      "size": 23504,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3295c0c10439f88892d86e07cf50b0104a160124"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_eram_dcn21_abm_2_4.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e1573960685d733a0c32e0132a3cd684fee688b",
+      "size": 23696,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/1e1573960685d733a0c32e0132a3cd684fee688b"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn10_abm_2_1.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0935fd41b5442fc4bf3af84db8c42ad70505a66e",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/0935fd41b5442fc4bf3af84db8c42ad70505a66e"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn10_abm_2_2.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25782cc5eb9b6b5ab37008b24523c5f9522c21bb",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/25782cc5eb9b6b5ab37008b24523c5f9522c21bb"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn10_abm_2_3.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e35027041d54c642c9377a2ebe3b2eeec32a3a5",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3e35027041d54c642c9377a2ebe3b2eeec32a3a5"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn21_abm_2_1.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57d2ba22eb6bacd0675162a8b8fcd71ecff2858c",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/57d2ba22eb6bacd0675162a8b8fcd71ecff2858c"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn21_abm_2_2.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29e0d0b9fdbc345ac5872f3f04fae12bdbb2832d",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/29e0d0b9fdbc345ac5872f3f04fae12bdbb2832d"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn21_abm_2_3.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf1459642986d9b3817de3a3c4da39cdd31b2534",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/cf1459642986d9b3817de3a3c4da39cdd31b2534"
+    },
+    {
+      "path": "NootedRed/Firmware/dmcu_intvectors_dcn21_abm_2_4.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b17e7c4513ae88dde64cf89df8ba1beebeed3796",
+      "size": 544,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b17e7c4513ae88dde64cf89df8ba1beebeed3796"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_ce_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2dc4bd60d0f4137a4806ffa206f68a8a2c037e94",
+      "size": 9088,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/2dc4bd60d0f4137a4806ffa206f68a8a2c037e94"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_me_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc13c33e7a02df0a986b28ad36a5ef33d6db820a",
+      "size": 17280,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/bc13c33e7a02df0a986b28ad36a5ef33d6db820a"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_mec_jt_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e15431e1f178bc6b297bdb49992717c151466a74",
+      "size": 896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/e15431e1f178bc6b297bdb49992717c151466a74"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_mec_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b8a008d7ec0b9e68fc8f7ffe378608e4ac2de40",
+      "size": 267072,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8b8a008d7ec0b9e68fc8f7ffe378608e4ac2de40"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_pfp_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e3f84b64c46e695f520c5bc952433a34c187a08",
+      "size": 21376,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/1e3f84b64c46e695f520c5bc952433a34c187a08"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlc_srlist_cntl.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfd8f5824b35e2c852072e29ef6e2e5c2dd569b8",
+      "size": 608,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/cfd8f5824b35e2c852072e29ef6e2e5c2dd569b8"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlc_srlist_gpm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04429d2fbb6dc8ee09da13cd2dee7ba22ef69d8c",
+      "size": 1312,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/04429d2fbb6dc8ee09da13cd2dee7ba22ef69d8c"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlc_srlist_srm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e98fbc621583452c6347087fe939b80331e55aa",
+      "size": 10144,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/5e98fbc621583452c6347087fe939b80331e55aa"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlc_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b307a445e057922020ad8c998dabd6d2d7b80368",
+      "size": 16896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b307a445e057922020ad8c998dabd6d2d7b80368"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlc_ucode_a0.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31b0e67d9e3082330651246814298b19c5a83b16",
+      "size": 16896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/31b0e67d9e3082330651246814298b19c5a83b16"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_1_rlcv_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97fa5e4f35d3f21a6745bda9121e78edbe4323c6",
+      "size": 8704,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/97fa5e4f35d3f21a6745bda9121e78edbe4323c6"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_ce_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ce3fbcc7be2656143c5a07650ba4f4c44f80ab9",
+      "size": 9088,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7ce3fbcc7be2656143c5a07650ba4f4c44f80ab9"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_me_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11a947d0de97b61e82d4dfc047253fb60c1c6f3d",
+      "size": 17280,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/11a947d0de97b61e82d4dfc047253fb60c1c6f3d"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_mec_jt_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56f44b25102461964374d1dae8ed302984906615",
+      "size": 896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/56f44b25102461964374d1dae8ed302984906615"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_mec_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "078689efdb49d86d8046278ddab49eda60ad4535",
+      "size": 267072,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/078689efdb49d86d8046278ddab49eda60ad4535"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_pfp_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26eece0dc14c17ee6f71959bb1ba7f00bcfcaec6",
+      "size": 21376,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/26eece0dc14c17ee6f71959bb1ba7f00bcfcaec6"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_rlc_srlist_cntl.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b316cf05c7ce035fd429b7072ba7ba7c4a226e41",
+      "size": 608,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b316cf05c7ce035fd429b7072ba7ba7c4a226e41"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_rlc_srlist_gpm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1eb0179037e13b19bc33bdaa229f7be02947313f",
+      "size": 1312,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/1eb0179037e13b19bc33bdaa229f7be02947313f"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_rlc_srlist_srm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4925db78d6773d3f11c2ae71e0f3f5fabb9e03d5",
+      "size": 9752,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/4925db78d6773d3f11c2ae71e0f3f5fabb9e03d5"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_rlc_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a40125e8d296194c8c8f2c40a769caeada22cf50",
+      "size": 16896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a40125e8d296194c8c8f2c40a769caeada22cf50"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_2_rlcv_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6359a93d16136c75bec785c3482675e0d28f1dc2",
+      "size": 8704,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6359a93d16136c75bec785c3482675e0d28f1dc2"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_ce_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a0b0a60908b28310835e8a5b29ee4d2079c55e0",
+      "size": 9088,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/0a0b0a60908b28310835e8a5b29ee4d2079c55e0"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_me_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1d47dcbfb63c1854d1c37749cb6d571bdd370b7",
+      "size": 17280,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b1d47dcbfb63c1854d1c37749cb6d571bdd370b7"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_mec_jt_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3334d48de21520326afafbe76763cbc8d7fe70ed",
+      "size": 896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3334d48de21520326afafbe76763cbc8d7fe70ed"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_mec_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75b4c8d027a819838fa35df8bf4ae75e2a068a79",
+      "size": 267072,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/75b4c8d027a819838fa35df8bf4ae75e2a068a79"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_pfp_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab0290c8a8d8aafa5cb0a9e351733b874e3479bf",
+      "size": 21376,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ab0290c8a8d8aafa5cb0a9e351733b874e3479bf"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_rlc_srlist_cntl.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d000caad9fa58b62f6ad82e892101b75950280d8",
+      "size": 592,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d000caad9fa58b62f6ad82e892101b75950280d8"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_rlc_srlist_gpm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d78d4050bbc18346fcc14726fdf2d5c5b51ddc1b",
+      "size": 2560,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d78d4050bbc18346fcc14726fdf2d5c5b51ddc1b"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_rlc_srlist_srm_mem.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b3093d18614b7929969739edc4eae307c2cedb4",
+      "size": 9944,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3b3093d18614b7929969739edc4eae307c2cedb4"
+    },
+    {
+      "path": "NootedRed/Firmware/gc_9_3_rlc_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba3ebb43cb1786178842ca9f63cd3908f9796f8c",
+      "size": 16896,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ba3ebb43cb1786178842ca9f63cd3908f9796f8c"
+    },
+    {
+      "path": "NootedRed/Firmware/psp_asd.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c9c967d676cc3b66664c4965f829f77588a8159",
+      "size": 180480,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/4c9c967d676cc3b66664c4965f829f77588a8159"
+    },
+    {
+      "path": "NootedRed/Firmware/psp_auc.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f54607fe393df4c243c8afa83cc771fb36446b14",
+      "size": 24832,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f54607fe393df4c243c8afa83cc771fb36446b14"
+    },
+    {
+      "path": "NootedRed/Firmware/psp_dtm.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7c85e38bf28a362e975d5b68d888cc7145b6ef5",
+      "size": 8448,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b7c85e38bf28a362e975d5b68d888cc7145b6ef5"
+    },
+    {
+      "path": "NootedRed/Firmware/psp_fp.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae71ac4ed9df5269b690356f2099b4c15b146dcc",
+      "size": 28928,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ae71ac4ed9df5269b690356f2099b4c15b146dcc"
+    },
+    {
+      "path": "NootedRed/Firmware/psp_hdcp.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8440fb25f6f40ed9b6de0ea7638bf3a60222b029",
+      "size": 24832,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8440fb25f6f40ed9b6de0ea7638bf3a60222b029"
+    },
+    {
+      "path": "NootedRed/Firmware/sdma_4_1_ucode.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b54a8741cf097ce9f5602588c18cd5bd967c307f",
+      "size": 17152,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b54a8741cf097ce9f5602588c18cd5bd967c307f"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ba6f8d098865cec68302e205acbb9603a524de63",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/ba6f8d098865cec68302e205acbb9603a524de63"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/ATOMBIOS.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7965bcbc13a2e2b3ef2c8361bd83caed0064d119",
+      "size": 4070,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7965bcbc13a2e2b3ef2c8361bd83caed0064d119"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "942a24fb7605cae93be9a91c87b90dc4cb67551b",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/942a24fb7605cae93be9a91c87b90dc4cb67551b"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWAlignManager.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73b4d4b121610f337971737edef1b829aa8ffc70",
+      "size": 4198,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/73b4d4b121610f337971737edef1b829aa8ffc70"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWAlignManager.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8233227a7dea8da6688f5539e5fc79601398b72",
+      "size": 15699,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a8233227a7dea8da6688f5539e5fc79601398b72"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWDisplay.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63336d8e5fc227117dbacb03d282994c3e953703",
+      "size": 1279,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/63336d8e5fc227117dbacb03d282994c3e953703"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWDisplay.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be3dd2810ad34413fc1d895be43cf58b1c0b0087",
+      "size": 18273,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/be3dd2810ad34413fc1d895be43cf58b1c0b0087"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWEngine.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dab1823c8170668f649bc88fd02ff49a1328ee69",
+      "size": 515,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/dab1823c8170668f649bc88fd02ff49a1328ee69"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWInterface.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "00ff28186f32df1cf0df41fc31253024173f619d",
+      "size": 334,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/00ff28186f32df1cf0df41fc31253024173f619d"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWInterface.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b548431821148249505231147edf3612c9c58a4",
+      "size": 2144,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/0b548431821148249505231147edf3612c9c58a4"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWMemory.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c76269ca9b2436974aa408688c7fb7399c1a1f51",
+      "size": 322,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c76269ca9b2436974aa408688c7fb7399c1a1f51"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWMemory.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b51b97fa93273384df31e76cc7284f89d6d99901",
+      "size": 695,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b51b97fa93273384df31e76cc7284f89d6d99901"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Accel/HWRegisters.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f23500ef27da0e6861f2d87f5a41a1f86455416a",
+      "size": 694,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f23500ef27da0e6861f2d87f5a41a1f86455416a"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/AddrLib.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f223622a0fd6d8d95011d32b9cb2a6d52e2096d7",
+      "size": 6231,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f223622a0fd6d8d95011d32b9cb2a6d52e2096d7"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1970b678e106d0bb34338766dd072568b1c0e7fc",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/1970b678e106d0bb34338766dd072568b1c0e7fc"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/ASICCaps.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3864a7dabc78740eba292381b451cc79f5ac5eec",
+      "size": 1230,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3864a7dabc78740eba292381b451cc79f5ac5eec"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/DevCaps.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba8d7bdb95a659ba051ebc1efcabc6ac15dcbb32",
+      "size": 730,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ba8d7bdb95a659ba051ebc1efcabc6ac15dcbb32"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/DeviceType.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6cfb84d7a6be20a8c16dd456431c154d4407f6ed",
+      "size": 570,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6cfb84d7a6be20a8c16dd456431c154d4407f6ed"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/GoldenSettings.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8bd3801db4bc7538587521c133e1e13ad9db9ba0",
+      "size": 1219,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8bd3801db4bc7538587521c133e1e13ad9db9ba0"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/HWBlock.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47b5cd00daffa79fec074951acc5a0dcfd8f51ff",
+      "size": 2118,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/47b5cd00daffa79fec074951acc5a0dcfd8f51ff"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/CAIL/Result.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "daae4efe2b9125a266ba4059e7bf1ee9abbb3be2",
+      "size": 432,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/daae4efe2b9125a266ba4059e7bf1ee9abbb3be2"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/DC",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d9c7da7f2a685289e63c625f8aa80d0b7e56ece8",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/d9c7da7f2a685289e63c625f8aa80d0b7e56ece8"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/DC/DPCD.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02d4d86559352160ab87fa0a03987129823c4479",
+      "size": 472,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/02d4d86559352160ab87fa0a03987129823c4479"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/DC/SignalTypes.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce49183e13f2ba15c9ab52e4ee9600be10b4dd6c",
+      "size": 682,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ce49183e13f2ba15c9ab52e4ee9600be10b4dd6c"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ab6822cce4a39b27db1b7f145499b253a06678b1",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/ab6822cce4a39b27db1b7f145499b253a06678b1"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/AmdAsicInfo.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3938d9e5321f6e752eeb578fb85def6d7e310dde",
+      "size": 856,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3938d9e5321f6e752eeb578fb85def6d7e310dde"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/AmdDeviceMemoryManager.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f74a9db7b084f3d7808cf362b613a58c54c8e818",
+      "size": 697,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f74a9db7b084f3d7808cf362b613a58c54c8e818"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/Attributes.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dceac9d6c2b343e34396eefca9efe3927f07224",
+      "size": 541,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/4dceac9d6c2b343e34396eefca9efe3927f07224"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/BiosParser.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21e5133b2e38b4564305696b43fedfd84063e84f",
+      "size": 3366,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/21e5133b2e38b4564305696b43fedfd84063e84f"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/BiosParser.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b99a5e7a372ead0c963d44d357b9c66c7d99381",
+      "size": 9685,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/9b99a5e7a372ead0c963d44d357b9c66c7d99381"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/FramebufferInfo.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28d5aa10fa496e0916abcf120c46f8395304c216",
+      "size": 536,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/28d5aa10fa496e0916abcf120c46f8395304c216"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/SurfaceInfo.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a391086d50c1afb8b336f076369d1cb30c325536",
+      "size": 426,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a391086d50c1afb8b336f076369d1cb30c325536"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/FB/VidMemType.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64d8600627e7d2a8dbd78215b12e9a46e6c1e810",
+      "size": 416,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/64d8600627e7d2a8dbd78215b12e9a46e6c1e810"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Family.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afb90fd28211c5331aa479e391428967a4f234d6",
+      "size": 280,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/afb90fd28211c5331aa479e391428967a4f234d6"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/PSP.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edf2f75114ff1f3dd19f0a4d91cc06f619baef33",
+      "size": 1655,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/edf2f75114ff1f3dd19f0a4d91cc06f619baef33"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/Packet3.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7866090137d1a53501ce640dc5c3482df99b4f95",
+      "size": 960,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7866090137d1a53501ce640dc5c3482df99b4f95"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/PowerPlay.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a402f9f1e017c46b5f6b967e26e9506960981998",
+      "size": 1148,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a402f9f1e017c46b5f6b967e26e9506960981998"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/RavenIPOffset.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdef5064bb70a9a691609886f4db5264a33efb6b",
+      "size": 439,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/cdef5064bb70a9a691609886f4db5264a33efb6b"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/RavenPPSMC.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "357d62150dba10bfae3b77e273f2145d4848dfcb",
+      "size": 601,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/357d62150dba10bfae3b77e273f2145d4848dfcb"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/RenoirPPSMC.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9e74f9c68b119d91a4586e1210d3097ee6778c8",
+      "size": 657,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c9e74f9c68b119d91a4586e1210d3097ee6778c8"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/SMU.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63c53f612f5b9072fba3673d3e40658254ecb518",
+      "size": 472,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/63c53f612f5b9072fba3673d3e40658254ecb518"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "44e7f5c49cb1dd8f085b71f8fe0198076de9a772",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/44e7f5c49cb1dd8f085b71f8fe0198076de9a772"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/COS.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f9d8da3cb6b7b3ec708c4cc12542e950deb86bd",
+      "size": 531,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6f9d8da3cb6b7b3ec708c4cc12542e950deb86bd"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/Event.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd9836cfc6036ce5ce66c20417e69dcff4e0876e",
+      "size": 575,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/bd9836cfc6036ce5ce66c20417e69dcff4e0876e"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "28cedbf288043f62db704b9ea2f2749efebf5376",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/28cedbf288043f62db704b9ea2f2749efebf5376"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP/DMCU.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c0cd5ffa8ad924ee4795681c801aa2ca6d144a7",
+      "size": 941,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3c0cd5ffa8ad924ee4795681c801aa2ca6d144a7"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP/GC.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "199888b107669ccb7f62d01ed987a621fe7f3b40",
+      "size": 2376,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/199888b107669ccb7f62d01ed987a621fe7f3b40"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP/IPVersion.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e53597bf9b553b56fe8a0f71f7d1de137b6e80bb",
+      "size": 546,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/e53597bf9b553b56fe8a0f71f7d1de137b6e80bb"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP/SDMA.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0a7aad1e1097379ce750d6376724c6c9d79f1c7",
+      "size": 808,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/f0a7aad1e1097379ce750d6376724c6c9d79f1c7"
+    },
+    {
+      "path": "NootedRed/GPUDriversAMD/TTL/SWIP/SMU.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "431cfdd1c3454d01d186ab1befa56bacdc7aa8d1",
+      "size": 1874,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/431cfdd1c3454d01d186ab1befa56bacdc7aa8d1"
+    },
+    {
+      "path": "NootedRed/GoldenSettings.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b694314a8351507cf52f6ff3418edc084813d4c",
+      "size": 8808,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/2b694314a8351507cf52f6ff3418edc084813d4c"
+    },
+    {
+      "path": "NootedRed/HWLibs.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1fbbe51a07d9cfadaf4839f37a0600e86db47433",
+      "size": 74201,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/1fbbe51a07d9cfadaf4839f37a0600e86db47433"
+    },
+    {
+      "path": "NootedRed/HWLibs.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43e8b192279855e58aceba02d335edca78d222a2",
+      "size": 6788,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/43e8b192279855e58aceba02d335edca78d222a2"
+    },
+    {
+      "path": "NootedRed/Info.plist",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b75cd4f9fbf29948cd9c4239a21bd18b65779f15",
+      "size": 2100,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/b75cd4f9fbf29948cd9c4239a21bd18b65779f15"
+    },
+    {
+      "path": "NootedRed/Kexts.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01b18e040ccf12f817b1feeb86cc2a2492abe275",
+      "size": 2400,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/01b18e040ccf12f817b1feeb86cc2a2492abe275"
+    },
+    {
+      "path": "NootedRed/Kexts.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6aaea40c53f02b0684c8930a26677f6c9cd6d7b",
+      "size": 561,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a6aaea40c53f02b0684c8930a26677f6c9cd6d7b"
+    },
+    {
+      "path": "NootedRed/NRed.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1080f9c3677f11f04b42a2d0ef6cd2a75c05f1b",
+      "size": 7553,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d1080f9c3677f11f04b42a2d0ef6cd2a75c05f1b"
+    },
+    {
+      "path": "NootedRed/NRed.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f2d6d29a72b5eef82df219d53ccbd8bb32133b6",
+      "size": 2853,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/6f2d6d29a72b5eef82df219d53ccbd8bb32133b6"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bd9b7a99faffb5ee54bf8bb0db8d5406d48e3869",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/bd9b7a99faffb5ee54bf8bb0db8d5406d48e3869"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/EnableIf.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f94e3f3e7ae2d99a4dfec04b13eeeb5534c3be6",
+      "size": 612,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/2f94e3f3e7ae2d99a4dfec04b13eeeb5534c3be6"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/IsFunction.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3229d5372e43c8362df1a9855134c1f6983b1d8e",
+      "size": 448,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3229d5372e43c8362df1a9855134c1f6983b1d8e"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/KernelVersion.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "873a0b7d9c2eb28fc6e89f1f04bf5d81d58add3d",
+      "size": 817,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/873a0b7d9c2eb28fc6e89f1f04bf5d81d58add3d"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/KernelVersion.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a2751ed399b7e83f6d7b5dfb0649786f1fa3b0e1",
+      "size": 5438,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/a2751ed399b7e83f6d7b5dfb0649786f1fa3b0e1"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/New.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d03726c2e1e1382a87245c70865e26285d8b264",
+      "size": 539,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8d03726c2e1e1382a87245c70865e26285d8b264"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/ObjectField.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05298ae0ef962bee1256235b646c9afe99e8f0aa",
+      "size": 936,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/05298ae0ef962bee1256235b646c9afe99e8f0aa"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/PatcherPlus.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9a897f9b0a7568c23fbe7438a1aa76007754877",
+      "size": 13558,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c9a897f9b0a7568c23fbe7438a1aa76007754877"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/PatcherPlus.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1161157104a4f1032f6b4bb74cdc4fcf3f6e4f5a",
+      "size": 12730,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/1161157104a4f1032f6b4bb74cdc4fcf3f6e4f5a"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/RuntimeMC.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4ddfef00a392347a72d9099609eb2f07ff312da",
+      "size": 4098,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/c4ddfef00a392347a72d9099609eb2f07ff312da"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/RuntimeMC.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "499ad3a9e221692e08790b06b0dd19265100f13b",
+      "size": 6302,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/499ad3a9e221692e08790b06b0dd19265100f13b"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/RuntimeVFT.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b8e6922d2e776773d7b3ce26fffa69698a7af73",
+      "size": 3121,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8b8e6922d2e776773d7b3ce26fffa69698a7af73"
+    },
+    {
+      "path": "NootedRed/PenguinWizardry/TypeName.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de23c04a675d8888886b8744f8fc1cfde04cc767",
+      "size": 338,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/de23c04a675d8888886b8744f8fc1cfde04cc767"
+    },
+    {
+      "path": "NootedRed/Personalities",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e6dbbc5c55ced28008d37649aefa9a66d1a6ba1f",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/e6dbbc5c55ced28008d37649aefa9a66d1a6ba1f"
+    },
+    {
+      "path": "NootedRed/Personalities/com.apple.driver.AppleGFXHDA.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "714ecfdcdeec8dbfda06df5bc4090afdd1d2c57e",
+      "size": 791,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/714ecfdcdeec8dbfda06df5bc4090afdd1d2c57e"
+    },
+    {
+      "path": "NootedRed/Personalities/com.apple.kext.AMDRadeonX5000.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "44e5aa47a5eeadd8c3049f5abb479ff1f9b1ad82",
+      "size": 9209,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/44e5aa47a5eeadd8c3049f5abb479ff1f9b1ad82"
+    },
+    {
+      "path": "NootedRed/Personalities/com.apple.kext.AMDRadeonX5000HWServices.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51b013a31ff481751766163592e1492558accdb8",
+      "size": 632,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/51b013a31ff481751766163592e1492558accdb8"
+    },
+    {
+      "path": "NootedRed/Personalities/com.apple.kext.AMDRadeonX6000Framebuffer.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "926a78ee5401e301466cf4eaf5d16a042134873b",
+      "size": 3399,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/926a78ee5401e301466cf4eaf5d16a042134873b"
+    },
+    {
+      "path": "NootedRed/Plugin.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd4d8a619ad0f76bc1cee80765fb5d1b143fb7ec",
+      "size": 809,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/bd4d8a619ad0f76bc1cee80765fb5d1b143fb7ec"
+    },
+    {
+      "path": "NootedRed/Regs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0eafe642f9bd08df44688ac0a3f591ee745a8d4e",
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/trees/0eafe642f9bd08df44688ac0a3f591ee745a8d4e"
+    },
+    {
+      "path": "NootedRed/Regs/DCN1.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e72ae83f791f883e99f7af7da66862b6a1507834",
+      "size": 1160,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/e72ae83f791f883e99f7af7da66862b6a1507834"
+    },
+    {
+      "path": "NootedRed/Regs/DCN2.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e500b1e68d7bb1cbcec29d12fc47bcd6d3e2f37",
+      "size": 1155,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/8e500b1e68d7bb1cbcec29d12fc47bcd6d3e2f37"
+    },
+    {
+      "path": "NootedRed/Regs/GC.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe908d5c1c356ebbe44161ec5c8588a057185d02",
+      "size": 5386,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/fe908d5c1c356ebbe44161ec5c8588a057185d02"
+    },
+    {
+      "path": "NootedRed/Regs/NBIO.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcc4201517246e383831ae8e93cd0030e56bbe8d",
+      "size": 506,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/bcc4201517246e383831ae8e93cd0030e56bbe8d"
+    },
+    {
+      "path": "NootedRed/Regs/OSSSYS_4.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb7dd9a7f75970aaf82dd58e253712032d9be0db",
+      "size": 513,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/bb7dd9a7f75970aaf82dd58e253712032d9be0db"
+    },
+    {
+      "path": "NootedRed/Regs/SDMA0.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3118efc3e81b945d2e63d05670e98e6dae75f299",
+      "size": 1868,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/3118efc3e81b945d2e63d05670e98e6dae75f299"
+    },
+    {
+      "path": "NootedRed/Regs/SMU.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7a8ac2b363a28787372c9462aff743e11368f1b",
+      "size": 783,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/d7a8ac2b363a28787372c9462aff743e11368f1b"
+    },
+    {
+      "path": "NootedRed/Regs/SMUIO.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac1488155013aa12e94f22767bce73fb18a1bf75",
+      "size": 238,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ac1488155013aa12e94f22767bce73fb18a1bf75"
+    },
+    {
+      "path": "NootedRed/X5000.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab03c250b83558049bd2ee88d1ebcfbee98e5a42",
+      "size": 37619,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/ab03c250b83558049bd2ee88d1ebcfbee98e5a42"
+    },
+    {
+      "path": "NootedRed/X5000.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32196986f78ba7fa2687a387282a6994abed32d1",
+      "size": 3256,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/32196986f78ba7fa2687a387282a6994abed32d1"
+    },
+    {
+      "path": "NootedRed/X6000FB.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0729b0ebb2feb4092be039b10719dd4bb0d781ca",
+      "size": 46131,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/0729b0ebb2feb4092be039b10719dd4bb0d781ca"
+    },
+    {
+      "path": "NootedRed/X6000FB.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2cbb68903812a27ce809e7ad3d5e72efe3a81469",
+      "size": 4060,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/2cbb68903812a27ce809e7ad3d5e72efe3a81469"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7098f2ee26f75eb36cc43ceea5a1cdcea7bc96d2",
+      "size": 2595,
+      "url": "https://api.github.com/repos/ChefKissInc/NootedRed/git/blobs/7098f2ee26f75eb36cc43ceea5a1cdcea7bc96d2"
+    }
+  ],
+  "truncated": false
+}
