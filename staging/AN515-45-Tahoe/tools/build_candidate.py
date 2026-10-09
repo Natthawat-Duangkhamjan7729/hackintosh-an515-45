@@ -1,7 +1,7 @@
-"""Assemble candidate EFI (default candidate-v6) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
+"""Assemble candidate EFI (default candidate-v7) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC). Identity fields keep Sample.plist placeholders;
+evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
 Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name]
 """
@@ -14,7 +14,7 @@ import sys
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v6") / "EFI"
+out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v7") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
@@ -95,7 +95,8 @@ bq["EnableWriteUnprotector"] = False
 bq["RebuildAppleMemoryMap"] = True
 bq["SyncRuntimePermissions"] = True
 
-cfg["DeviceProperties"]["Add"] = {}
+# AppleALC: ALC295 layout 21 (Acer Nitro 5 Spin) verified on this machine via alcid=21 (speakers/mic/headset switching)
+cfg["DeviceProperties"]["Add"] = {"PciRoot(0x0)/Pci(0x8,0x1)/Pci(0x0,0x6)": {"layout-id": (21).to_bytes(4, "little")}}
 cfg["DeviceProperties"]["Delete"] = {}
 
 # Kernel
@@ -143,7 +144,7 @@ cfg["Misc"]["Tools"] = []
 # NVRAM
 guid = "7C436110-AB2A-4BBB-A880-FE41995C9F82"
 add = cfg["NVRAM"]["Add"][guid]
-add["boot-args"] = "-v keepsyms=1 debug=0x100 alcid=21"  # alcid: AppleALC ALC295 layout under test (21 = Acer Nitro 5 Spin)
+add["boot-args"] = "-v keepsyms=1 debug=0x100"
 add["csr-active-config"] = bytes(4)
 add["prev-lang:kbd"] = b"en-US:0"
 cfg["NVRAM"]["WriteFlash"] = True
