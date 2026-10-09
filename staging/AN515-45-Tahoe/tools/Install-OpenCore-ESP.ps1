@@ -43,9 +43,9 @@ try {
 
     # 1. Backup the whole ESP
     $bk = "D:\Backup-ESP-$stamp"
-    # The live BCD hive is locked by Windows, so it is excluded here and exported with bcdedit instead.
+    # The live BCD hive and its BCD.LOG* transaction logs are locked by Windows, so they are excluded here and exported with bcdedit instead.
     $log = "$bk.robocopy.log"
-    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /XD 'System Volume Information' /XF BCD /LOG:$log | Out-Null
+    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /XD 'System Volume Information' /XF BCD 'BCD.LOG*' /LOG:$log | Out-Null
     $rc = $LASTEXITCODE
     if ($rc -ge 8) {
         Get-Content $log | Select-String -Pattern 'ERROR' -Context 0,1 | Out-Host
