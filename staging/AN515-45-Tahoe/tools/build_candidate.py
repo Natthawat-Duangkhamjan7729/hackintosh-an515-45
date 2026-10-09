@@ -1,7 +1,7 @@
-"""Assemble candidate EFI (default candidate-v3) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
+"""Assemble candidate EFI (default candidate-v4) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix). Identity fields keep Sample.plist placeholders;
+evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
 Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name]
 """
@@ -14,7 +14,7 @@ import sys
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v3") / "EFI"
+out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v4") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
@@ -130,7 +130,7 @@ mb.update(HideAuxiliary=False, PickerMode="Builtin", ShowPicker=True, Timeout=5)
 md = cfg["Misc"]["Debug"]
 md.update(AppleDebug=True, ApplePanic=True, DisableWatchDog=True, Target=67)
 ms = cfg["Misc"]["Security"]
-ms.update(AllowSetDefault=True, ScanPolicy=0, SecureBootModel="Default", Vault="Optional")
+ms.update(AllowSetDefault=True, ScanPolicy=0, SecureBootModel="Disabled", Vault="Optional")  # Default (j214k) failed system-volume sealing (BORD, MSU 1130)
 cfg["Misc"]["Entries"] = []
 cfg["Misc"]["Tools"] = []
 

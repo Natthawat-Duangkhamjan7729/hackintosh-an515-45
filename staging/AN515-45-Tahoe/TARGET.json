@@ -12,8 +12,8 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-v3-test-noNR-sbdisabled (candidate-v3 with NootedRed disabled and SecureBootModel=Disabled)",
-  "initialGraphics": "Firmware GOP framebuffer for installation; NootedRed (AMD Cezanne iGPU) deferred to post-install because it gives a black internal panel",
+  "activeConfig": "candidate-v4 (SSDT-CPUR, NVMeFix, NootedRed on, SecureBootModel=Disabled); USB runs the behaviourally identical candidate-v3-sbd-test-NR",
+  "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
   "usbMapStatus": "Experimental; see USB-MAP-REVIEW.md",
@@ -23,11 +23,13 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "macOS Sequoia installed on the Apacer Macintosh HD volume; reached Setup Assistant via the USB OpenCore. Apple Secure Boot disabled (SecureBootModel=Default failed system-volume sealing with MSU 1130).",
+  "status": "macOS Sequoia 15.8.1 installed on Apacer Macintosh HD; boots via USB OpenCore with NootedRed acceleration",
   "nextSteps": [
-    "Finish Setup Assistant offline; skip Apple ID until real PlatformInfo is set",
-    "Verify macOS version and that Windows still boots",
-    "Post-install: PlatformInfo, NootedRed display, USB map, MT7921, OpenCore to Apacer EFI only on request"
+    "Verify Windows still boots",
+    "Real PlatformInfo via GenSMBIOS (user-local)",
+    "Backlight (SSDT-PNLF/ALS0, SMCLightSensor, BrightnessKeys)",
+    "USB map review, MT7921 Wi-Fi/BT, audio ALC295",
+    "Move OpenCore to Apacer EFI only on explicit request"
   ],
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
