@@ -1,0 +1,10 @@
+{
+  "SimpleMtkWlan": {
+    "url": "https://github.com/laobamac/SimpleMtkWlan.git",
+    "commit": "37ba676ad18273b7e622ec6db45afc25db238109"
+  },
+  "MacKernelSDK": {
+    "url": "https://github.com/acidanthera/MacKernelSDK.git",
+    "commit": "3f750085caa17ec3a7880f11c11bf4f48cd6a164"
+  }
+}

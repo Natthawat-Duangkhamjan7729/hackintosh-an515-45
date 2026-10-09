@@ -1,0 +1,25 @@
+{
+  "sources": {
+    "SimpleMtkWlan": {
+      "url": "https://github.com/laobamac/SimpleMtkWlan.git",
+      "commit": "37ba676ad18273b7e622ec6db45afc25db238109"
+    },
+    "MacKernelSDK": {
+      "url": "https://github.com/acidanthera/MacKernelSDK.git",
+      "commit": "3f750085caa17ec3a7880f11c11bf4f48cd6a164"
+    }
+  },
+  "pci_match": "0x796114c3 0x060814c3 0x792214c3",
+  "firmware": {
+    "mwx_mt7961_patch_mcu_1_2_hdr": {
+      "bytes": 92192,
+      "sha256": "7085fc6ef8cd054e7ec29c9b4a4bf0ce34f43d479f8e7565c867cc5bb420ae5f"
+    },
+    "mwx_mt7961_ram_code_1": {
+      "bytes": 797300,
+      "sha256": "91f2a24c3238668a6e6d5b6c7ce69c1c1ed0e20238ffe594be95279d0fe8792c"
+    }
+  },
+  "absolute_header_paths_to_replace": 4,
+  "validation": "static input checks only; no compilation or hardware test"
+}
