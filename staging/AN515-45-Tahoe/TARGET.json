@@ -12,7 +12,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-v9 on the Apacer ESP (v5 + AppleALC 1.9.8 with layout-id 21 on PciRoot(0x1)/Pci(0x8,0x1)/Pci(0x0,0x6))",
+  "activeConfig": "private-build/candidate-v9 on the Apacer ESP (candidate-v9 + private PlatformInfo, gitignored)",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
@@ -25,12 +25,12 @@
   },
   "status": "macOS 15.8.1 + Windows dual-boot via OpenCore on Apacer ESP; graphics acceleration, backlight and audio working; Bluetooth (SimpleMtkBtFw) experimental, not deployed",
   "nextSteps": [
-    "Real PlatformInfo via GenSMBIOS (user-local)",
     "Bluetooth: retest SimpleMtkBtFw with logs (build with --bt)",
     "Wi-Fi: external MT7921 driver effort (see MT7921-WIFI-DRIVER-BRIEF.md) or card swap",
     "USB map review",
     "Optional: clean old OC.bak-* on ESP; OpenCore first in boot order",
     "Later, user-led: NVIDIA RTX 3060 experiment"
   ],
-  "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
+  "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1",
+  "identity": "Real PlatformInfo generated locally (macserial); stored only in private/PlatformInfo.json; always build with --private for ESP updates"
 }
