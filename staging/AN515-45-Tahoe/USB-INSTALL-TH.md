@@ -1,6 +1,6 @@
 # วิธีติดตั้ง macOS Sequoia แบบ offline ด้วย USB นี้ (dual-boot บน Apacer)
 
-สถานะ (อัปเดต 2026-10-09): Recovery 15.4.1 บูตได้เสถียรด้วย `candidate-v3-test-noNR` เมื่อถอด Micron 2200V ออก (ทัชแพดใช้ได้ mount exFAT ได้) ปลายทางคือ volume **Macintosh HD** (`disk22s1`) ใน APFS container บน `disk1s6` ของ Apacer ซึ่งสร้างไว้แล้ว ยังไม่เคยติดตั้ง macOS จริงบนเครื่องนี้
+สถานะ (อัปเดต 2026-10-09): Recovery 15.4.1 บูตได้เสถียรด้วย `candidate-v3-test-noNR` เมื่อถอด Micron 2200V ออก (ทัชแพดใช้ได้ mount exFAT ได้) ปลายทางคือ volume **Macintosh HD** ใน APFS container ขนาด 274.9 GB บน Apacer (เลขดิสก์เปลี่ยนตามการบูต) ซึ่งสร้างไว้แล้ว ยังไม่เคยติดตั้ง macOS จริงบนเครื่องนี้
 
 > ⚠️ **ห้าม Erase ดิสก์ใดๆ ใน Disk Utility** — Apacer มี Windows อยู่ การ Erase ทั้งลูกจะลบ Windows ทั้งหมด
 
@@ -30,15 +30,16 @@
    diskutil list physical
    diskutil apfs list
    ```
-   ต้องเห็น Apacer (512.1 GB) มี `Apple_APFS` 274.9 GB และ volume **Macintosh HD**; หา partition `UnPlugged` ของ USB (ปกติ `disk3s2`)
-4. Mount exFAT แล้วรันสคริปต์ (ใน Recovery ไม่มีคำสั่ง `clear`; ต้อง `mkdir` ใหม่ทุกครั้งที่รีบูต):
+   ต้องเห็น Apacer (512.1 GB) มี `Apple_APFS` 274.9 GB และ volume **Macintosh HD**; หา partition `UnPlugged` ของ USB (บรรทัด `Windows_NTFS UnPlugged 57.9 GB`)
+   > ⚠️ **หมายเลขดิสก์เปลี่ยนได้ทุกครั้งที่บูต** — หลังสร้าง APFS แล้ว Apacer กลายเป็น `disk2`, HDD เป็น `disk1`, USB เป็น `disk4` (UnPlugged = `disk4s2`) ใช้ค่าจากหน้าจอรอบนั้นเสมอ อย่าจำเลขจากรอบก่อน
+4. Mount exFAT แล้วรันสคริปต์ (ใน Recovery ไม่มีคำสั่ง `clear`; ต้อง `mkdir` ใหม่ทุกครั้งที่รีบูต) แทน `diskNsM` ด้วยตัวระบุของ UnPlugged ที่เห็นในข้อ 3:
    ```
-   mkdir /Volumes/UnPlugged
-   /sbin/mount_exfat /dev/disk3s2 /Volumes/UnPlugged
+   mkdir -p /Volumes/UnPlugged
+   /sbin/mount_exfat /dev/diskNsM /Volumes/UnPlugged
    cd /Volumes/UnPlugged
    bash UnPlugged.command
    ```
-   (ถ้า identifier ในข้อ 3 ไม่ใช่ `disk3s2` ให้ใช้ค่าที่เห็นจริง)
+   ถ้าขึ้น `No such file or directory` แปลว่าตัวระบุดิสก์ผิดหรือยังไม่ได้ `mkdir`
 5. ตอบคำถามของสคริปต์ตามลำดับ:
    - **Select the volume where you are installing macOS** → หมายเลขของ **Macintosh HD** เท่านั้น (ห้ามเลือก UnPlugged, OPENCORE หรือ volume อื่น)
    - ถ้าถามเรื่อง prior attempts → `y` ได้
