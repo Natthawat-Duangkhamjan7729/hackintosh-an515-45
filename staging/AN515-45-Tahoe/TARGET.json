@@ -12,7 +12,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-v3-test-noNR (candidate-v3 with NootedRed disabled); boots Recovery stably with the Micron 2200V removed",
+  "activeConfig": "candidate-v3-test-noNR-sbdisabled (candidate-v3 with NootedRed disabled and SecureBootModel=Disabled)",
   "initialGraphics": "Firmware GOP framebuffer for installation; NootedRed (AMD Cezanne iGPU) deferred to post-install because it gives a black internal panel",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
@@ -23,11 +23,11 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file still disabled and must be re-enabled before install"
   },
-  "status": "Recovery 15.4.1 boots stably (touchpad works, exFAT mounts); APFS partition not yet created; macOS not yet installed",
+  "status": "macOS Sequoia installed on the Apacer Macintosh HD volume; reached Setup Assistant via the USB OpenCore. Apple Secure Boot disabled (SecureBootModel=Default failed system-volume sealing with MSU 1130).",
   "nextSteps": [
-    "Re-enable the Windows paging file and confirm the 256 GB gap remains",
-    "In Recovery, verify identifiers with diskutil list physical before creating APFS after the C: partition",
-    "Install with UnPlugged.command; boot each stage via the USB OpenCore picker"
+    "Finish Setup Assistant offline; skip Apple ID until real PlatformInfo is set",
+    "Verify macOS version and that Windows still boots",
+    "Post-install: PlatformInfo, NootedRed display, USB map, MT7921, OpenCore to Apacer EFI only on request"
   ],
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
