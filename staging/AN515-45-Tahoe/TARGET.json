@@ -12,7 +12,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-v7 on the Apacer ESP (v5 + AppleALC 1.9.8, ALC295 layout-id 21)",
+  "activeConfig": "candidate-v9 on the Apacer ESP (v5 + AppleALC 1.9.8 with layout-id 21 on PciRoot(0x1)/Pci(0x8,0x1)/Pci(0x0,0x6))",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
@@ -23,13 +23,14 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "macOS 15.8.1 + Windows dual-boot via OpenCore on Apacer ESP; graphics acceleration, backlight and audio working",
+  "status": "macOS 15.8.1 + Windows dual-boot via OpenCore on Apacer ESP; graphics acceleration, backlight and audio working; Bluetooth (SimpleMtkBtFw) experimental, not deployed",
   "nextSteps": [
     "Real PlatformInfo via GenSMBIOS (user-local)",
-    "MT7921 Wi-Fi/BT feasibility",
-    "USB map review (USB-C, companion ports)",
-    "Optional: OpenCore first in firmware boot order; hide stray 'Mac OS X' entries",
-    "Later, user-led: NVIDIA RTX 3060 experiment (NullMoth); do not disable dGPU meanwhile"
+    "Bluetooth: retest SimpleMtkBtFw with logs (build with --bt)",
+    "Wi-Fi: external MT7921 driver effort (see MT7921-WIFI-DRIVER-BRIEF.md) or card swap",
+    "USB map review",
+    "Optional: clean old OC.bak-* on ESP; OpenCore first in boot order",
+    "Later, user-led: NVIDIA RTX 3060 experiment"
   ],
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
