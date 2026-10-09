@@ -23,13 +23,13 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "macOS Sequoia 15.8.1 installed on Apacer Macintosh HD; boots via USB OpenCore with NootedRed acceleration",
+  "status": "macOS Sequoia 15.8.1 installed on Apacer; OpenCore (candidate-v4) on the Apacer ESP boots macOS and Windows; USB no longer needed",
   "nextSteps": [
-    "Verify Windows still boots",
+    "Optional: make OpenCore first in firmware boot order",
     "Real PlatformInfo via GenSMBIOS (user-local)",
     "Backlight (SSDT-PNLF/ALS0, SMCLightSensor, BrightnessKeys)",
-    "USB map review, MT7921 Wi-Fi/BT, audio ALC295",
-    "Move OpenCore to Apacer EFI only on explicit request"
+    "Audio ALC295, MT7921 Wi-Fi/BT, USB map review",
+    "Update EFI per EFI-UPDATE-TH.md (staging -> USB test -> Install-OpenCore-ESP.ps1)"
   ],
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
