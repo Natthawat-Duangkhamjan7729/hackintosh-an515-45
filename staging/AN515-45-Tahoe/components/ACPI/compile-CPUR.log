@@ -1,0 +1,57 @@
+
+Intel ACPI Component Architecture
+ASL+ Optimizing Compiler/Disassembler version 20260408
+Copyright (c) 2000 - 2026 Intel Corporation
+
+ASL Input:     components/ACPI/SSDT-CPUR.dsl -    5032 bytes     81 keywords      0 source lines
+AML Output:    components/ACPI/SSDT-CPUR.aml -     668 bytes     48 opcodes      33 named objects
+
+Compilation successful. 0 Errors, 16 Warnings, 0 Remarks, 0 Optimizations
+components/ACPI/SSDT-CPUR.dsl     13:         Processor (PR00, 0x00, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     26:         Processor (PR01, 0x01, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     39:         Processor (PR02, 0x02, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     52:         Processor (PR03, 0x03, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     65:         Processor (PR04, 0x04, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     78:         Processor (PR05, 0x05, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl     91:         Processor (PR06, 0x06, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    104:         Processor (PR07, 0x07, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    117:         Processor (PR08, 0x08, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    130:         Processor (PR09, 0x09, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    143:         Processor (PR10, 0x0A, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    156:         Processor (PR11, 0x0B, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    169:         Processor (PR12, 0x0C, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    182:         Processor (PR13, 0x0D, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    195:         Processor (PR14, 0x0E, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
+components/ACPI/SSDT-CPUR.dsl    208:         Processor (PR15, 0x0F, 0x00000000, 0x00)
+Warning  3168 -                                            ^ Legacy Processor() keyword detected. Use Device() keyword instead.
+
