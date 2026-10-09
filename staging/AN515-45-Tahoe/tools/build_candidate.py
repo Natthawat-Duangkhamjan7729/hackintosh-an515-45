@@ -12,11 +12,12 @@ import shutil
 import sys
 
 EXPERIMENTAL_BT = "--bt" in sys.argv
-sys.argv = [a for a in sys.argv if a != "--bt"]
+PRIVATE = "--private" in sys.argv  # apply private/PlatformInfo.json and write to the gitignored private-build/ folder
+sys.argv = [a for a in sys.argv if a not in ("--bt", "--private")]
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
+out = stage / ("private-build" if PRIVATE else ".") / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
@@ -166,6 +167,16 @@ cfg["NVRAM"]["WriteFlash"] = True
 # PlatformInfo: model only; serial/MLB/UUID/ROM stay as Sample.plist placeholders
 cfg["PlatformInfo"]["Generic"]["SystemProductName"] = "MacBookPro16,2"
 cfg["PlatformInfo"]["UpdateSMBIOSMode"] = "Create"
+if PRIVATE:
+    import json
+    ident = json.loads((stage / "private" / "PlatformInfo.json").read_text(encoding="utf-8-sig"))
+    assert ident["SystemProductName"] == cfg["PlatformInfo"]["Generic"]["SystemProductName"]
+    g = cfg["PlatformInfo"]["Generic"]
+    g["SystemSerialNumber"] = ident["SystemSerialNumber"]
+    g["MLB"] = ident["MLB"]
+    g["SystemUUID"] = ident["SystemUUID"]
+    g["ROM"] = bytes.fromhex(ident["ROM"])
+    assert len(g["ROM"]) == 6
 
 # UEFI
 def drv(path, comment):

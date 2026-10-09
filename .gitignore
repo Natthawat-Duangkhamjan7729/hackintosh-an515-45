@@ -31,3 +31,7 @@ __pycache__/
 
 # Third-party upstream clones used for research (separate git repos)
 research/**/upstream/
+
+# Private SMBIOS identity and builds that contain it (never commit)
+**/private/
+**/private-build/
