@@ -44,8 +44,13 @@ try {
     # 1. Backup the whole ESP
     $bk = "D:\Backup-ESP-$stamp"
     # The live BCD hive is locked by Windows, so it is excluded here and exported with bcdedit instead.
-    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /NFL /NDL /XD 'System Volume Information' /XF BCD | Out-Null
-    if ($LASTEXITCODE -ge 8) { throw "ESP backup failed (robocopy $LASTEXITCODE)" }
+    $log = "$bk.robocopy.log"
+    robocopy $root $bk /E /COPY:DAT /R:1 /W:1 /NP /XD 'System Volume Information' /XF BCD /LOG:$log | Out-Null
+    $rc = $LASTEXITCODE
+    if ($rc -ge 8) {
+        Get-Content $log | Select-String -Pattern 'ERROR' -Context 0,1 | Out-Host
+        throw "ESP backup failed (robocopy $rc); see $log"
+    }
     bcdedit /export (Join-Path $bk 'BCD-export') | Out-Null
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path (Join-Path $bk 'BCD-export'))) { throw 'bcdedit /export of the BCD store failed' }
     Write-Host "ESP backed up to $bk (BCD exported as BCD-export)"
