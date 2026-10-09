@@ -5,17 +5,29 @@
     "name": "Sequoia",
     "version": "15.8.1",
     "build": "24H32",
-    "installerVerified": "size+SHA256 recorded; Apple signature not checked"
+    "installerVerified": "size+SHA256 recorded; Apple signature not checked",
+    "recovery": "15.4.1 (24E263), chunklist verified by macrecovery"
   },
   "openCore": {
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "initialGraphics": "AMD Cezanne iGPU with NootedRed; internal display",
+  "activeConfig": "candidate-v3-test-noNR (candidate-v3 with NootedRed disabled); boots Recovery stably with the Micron 2200V removed",
+  "initialGraphics": "Firmware GOP framebuffer for installation; NootedRed (AMD Cezanne iGPU) deferred to post-install because it gives a black internal panel",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
   "usbMapStatus": "Experimental; see USB-MAP-REVIEW.md",
-  "installation": "Separate spare SSD, not fitted; Windows preparation with offline installation plan pending",
-  "status": "USB prepared (candidate-v1 + Recovery 15.4.1 + installer 15.8.1), not boot-tested; waiting for spare SSD",
+  "installation": {
+    "target": "Dual-boot on Apacer AS2280P4 512 GB (Windows NVMe), 256.00 GB unallocated after C: (s3) and before Windows Recovery (s4)",
+    "method": "Offline install with UnPlugged from the exFAT USB partition",
+    "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
+    "windowsState": "BitLocker off on C:; system image on D:; paging file still disabled and must be re-enabled before install"
+  },
+  "status": "Recovery 15.4.1 boots stably (touchpad works, exFAT mounts); APFS partition not yet created; macOS not yet installed",
+  "nextSteps": [
+    "Re-enable the Windows paging file and confirm the 256 GB gap remains",
+    "In Recovery, verify identifiers with diskutil list physical before creating APFS after the C: partition",
+    "Install with UnPlugged.command; boot each stage via the USB OpenCore picker"
+  ],
   "directoryNote": "Tahoe in this directory name is historical; active target is Sequoia 15.8.1"
 }
