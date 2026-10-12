@@ -1,9 +1,9 @@
 """Assemble candidate EFI (default candidate-v10) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS, USBMap 1.2 adds the macOS 26 usb-port-number/usb-port-type keys; --voodoohda adds VoodooHDA 3.7.0-alpha for Tahoe audio; pass --bt for experimental BT kexts (SimpleMtkBtFw + Patcher; tahoe4 adds BlueToolFixup 2.7.2 and the bluetoothExternalDongleFailed/bluetoothInternalControllerInfo NVRAM keys). Identity fields keep Sample.plist placeholders;
+evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS, USBMap 1.2 adds the macOS 26 usb-port-number/usb-port-type keys; --voodoohda adds VoodooHDA 3.7.0-alpha for Tahoe audio; --nodgpu adds SSDT-Acer-NoHybGfx (RTX 3060 off in Darwin); pass --bt for experimental BT kexts (SimpleMtkBtFw + Patcher; tahoe4 adds BlueToolFixup 2.7.2 and the bluetoothExternalDongleFailed/bluetoothInternalControllerInfo NVRAM keys). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
-Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install] [--voodoohda]
+Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install] [--voodoohda] [--nodgpu]
 Output: <stage-dir>/candidates/<name>/EFI (or <stage-dir>/private-build/<name>/EFI with --private).
 """
 import copy
@@ -17,7 +17,8 @@ PRIVATE = "--private" in sys.argv  # apply private/PlatformInfo.json and write t
 TAHOE = "--tahoe" in sys.argv  # macOS 26: AppleHDA was removed, so AppleALC has nothing to patch; disable it
 INSTALL = "--install" in sys.argv  # install stage: NootedRed off, firmware framebuffer only (as for the Sequoia install)
 VOODOOHDA = "--voodoohda" in sys.argv  # macOS 26 audio: VoodooHDA 3.7.0-alpha (IOAudioFamily embedded, OpenCore-injectable); needs --tahoe
-sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install", "--voodoohda")]
+NODGPU = "--nodgpu" in sys.argv  # SSDT-Acer-NoHybGfx: power off the RTX 3060 in Darwin (its IONDRVFramebuffer disables clamshell sleep)
+sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install", "--voodoohda", "--nodgpu")]
 assert not VOODOOHDA or TAHOE, "--voodoohda requires --tahoe (AppleALC must be disabled)"
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
@@ -37,6 +38,8 @@ for drv in drivers:
     shutil.copy2(oc_pkg / "OC" / "Drivers" / drv, out / "OC" / "Drivers")
 
 acpi = ["SSDT-EC-USBX.aml", "SSDT-XOSI.aml", "SSDT-CPUR.aml", "SSDT-PNLF.aml", "SSDT-ALS0.aml"]
+if NODGPU:
+    acpi.append("SSDT-Acer-NoHybGfx.aml")
 for a in acpi:
     shutil.copy2(stage / "components" / "ACPI" / a, out / "OC" / "ACPI")
 

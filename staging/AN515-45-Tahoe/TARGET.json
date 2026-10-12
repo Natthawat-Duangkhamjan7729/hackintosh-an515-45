@@ -14,9 +14,9 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe4 (tahoe3 + SimpleMtkBtFw/Patcher + BlueToolFixup 2.7.2; BT controller up and discovering; backup config-tahoe3.plist). Apacer ESP still v9",
+  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe5 (tahoe4 + SSDT-Acer-NoHybGfx; lid sleep/wake confirmed; backup config-tahoe4.plist). Apacer ESP still v9",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
-  "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
+  "nvidiaExperiment": "RTX 3060 powered off in Darwin by SSDT-Acer-NoHybGfx (--nodgpu); required for clamshell sleep and S3. NullMoth experiment would need it removed",
   "usbMap": "components/Kexts/UTBMap.kext",
   "usbMapStatus": "USBMap 1.2 (macOS 26 keys) confirmed working on Tahoe 26.7.1; see docs/USB-MAP-REVIEW.md",
   "installation": {
@@ -25,10 +25,10 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "Tahoe 26.7.1 booting from the USB (candidate-tahoe4: USB, graphics, LAN, input OK; audio via VoodooHDA: speakers and mic work; Bluetooth MT7921 via SimpleMtkBtFw + BlueToolFixup: controller on and discovering, pairing untested). Missing: Wi-Fi, NVIDIA.",
+  "status": "Tahoe 26.7.1 booting from the USB (candidate-tahoe5: USB, graphics, LAN, input OK; audio via VoodooHDA: speakers and mic work, IOAudioFamily duplicate-class conflict present, USB audio untested; Bluetooth MT7921 works incl. BT keyboard; RTX 3060 powered off by SSDT; lid sleep/wake works). Missing: Wi-Fi.",
   "nextSteps": [
-    "Audio follow-up: test 3.5 mm headphones, HDMI and USB audio; check IOAudioFamily duplicate-class messages in the boot log",
-    "Bluetooth: test pairing, BT audio (A2DP/HFP), BT HID and sleep/wake on candidate-tahoe4",
+    "Audio follow-up: 3.5 mm headphones, HDMI, USB audio (IOAudioFamily duplicate-class conflict confirmed in kernel log)",
+    "Sleep: longer sleep, battery sleep, pmset sleepnow, keyboard wake on candidate-tahoe5 (hibernatemode 0, standby 0)",
     "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921",
     "Move a working Tahoe EFI to the Apacer ESP (back up v9)",
     "NVIDIA experiment (later, DEV-PLAN phase 4)"
