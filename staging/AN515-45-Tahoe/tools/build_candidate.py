@@ -1,9 +1,9 @@
 """Assemble candidate EFI (default candidate-v10) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS, USBMap 1.2 adds the macOS 26 usb-port-number/usb-port-type keys; --voodoohda adds VoodooHDA 3.7.0-alpha for Tahoe audio; --nodgpu adds SSDT-Acer-NoHybGfx (RTX 3060 off in Darwin); pass --bt for experimental BT kexts (SimpleMtkBtFw + Patcher; tahoe4 adds BlueToolFixup 2.7.2 and the bluetoothExternalDongleFailed/bluetoothInternalControllerInfo NVRAM keys). Identity fields keep Sample.plist placeholders;
+evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS, USBMap 1.2 adds the macOS 26 usb-port-number/usb-port-type keys; --voodoohda adds VoodooHDA 3.7.0-alpha for Tahoe audio; --nodgpu adds SSDT-Acer-NoHybGfx (RTX 3060 off in Darwin); --ps2debug swaps in VoodooPS2 2.3.7 DEBUG; --ps2kbdonly adds boot-arg ps2kbdonly=1; --vhdavolfix sets VoodooHDAEnableVolumeChangeFix; --vhdaverbose sets VoodooHDAVerboseLevel 3; pass --bt for experimental BT kexts (SimpleMtkBtFw + Patcher; tahoe4 adds BlueToolFixup 2.7.2 and the bluetoothExternalDongleFailed/bluetoothInternalControllerInfo NVRAM keys). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
-Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install] [--voodoohda] [--nodgpu]
+Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install] [--voodoohda] [--nodgpu] [--ps2debug] [--ps2kbdonly] [--vhdavolfix] [--vhdaverbose]
 Output: <stage-dir>/candidates/<name>/EFI (or <stage-dir>/private-build/<name>/EFI with --private).
 """
 import copy
@@ -18,8 +18,14 @@ TAHOE = "--tahoe" in sys.argv  # macOS 26: AppleHDA was removed, so AppleALC has
 INSTALL = "--install" in sys.argv  # install stage: NootedRed off, firmware framebuffer only (as for the Sequoia install)
 VOODOOHDA = "--voodoohda" in sys.argv  # macOS 26 audio: VoodooHDA 3.7.0-alpha (IOAudioFamily embedded, OpenCore-injectable); needs --tahoe
 NODGPU = "--nodgpu" in sys.argv  # SSDT-Acer-NoHybGfx: power off the RTX 3060 in Darwin (its IONDRVFramebuffer disables clamshell sleep)
-sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install", "--voodoohda", "--nodgpu")]
+PS2DEBUG = "--ps2debug" in sys.argv  # VoodooPS2Controller 2.3.7 DEBUG: logs scancodes/controller events to diagnose the dying internal keyboard
+PS2KBDONLY = "--ps2kbdonly" in sys.argv  # boot-arg ps2kbdonly=1: keep the i8042 AUX port off (touchpad is I2C); suspected cause of the freezing internal keyboard
+VHDAVOLFIX = "--vhdavolfix" in sys.argv  # VoodooHDAEnableVolumeChangeFix: volume slider drives the PCM (DAC) amp; only full/silent without it
+VHDAVERBOSE = "--vhdaverbose" in sys.argv  # VoodooHDAVerboseLevel 3: log volume/mute handling to dmesg (silent-after-zero-volume diagnosis)
+sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install", "--voodoohda", "--nodgpu", "--ps2debug", "--ps2kbdonly", "--vhdavolfix", "--vhdaverbose")]
 assert not VOODOOHDA or TAHOE, "--voodoohda requires --tahoe (AppleALC must be disabled)"
+assert not VHDAVOLFIX or VOODOOHDA, "--vhdavolfix requires --voodoohda"
+assert not VHDAVERBOSE or VOODOOHDA, "--vhdaverbose requires --voodoohda"
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
@@ -55,7 +61,7 @@ bundles = [
     (pkg / "NootedRed-0.8.10-RELEASE" / "NootedRed.kext", "NootedRed.kext"),
     (pkg / "BrightnessKeys-1.0.3-RELEASE" / "BrightnessKeys.kext", "BrightnessKeys.kext"),
     (pkg / "AppleALC-1.9.8-RELEASE" / "AppleALC.kext", "AppleALC.kext"),
-    (pkg / "VoodooPS2Controller-2.3.7-RELEASE" / "VoodooPS2Controller.kext", "VoodooPS2Controller.kext"),
+    (pkg / ("VoodooPS2Controller-2.3.7-DEBUG" if PS2DEBUG else "VoodooPS2Controller-2.3.7-RELEASE") / "VoodooPS2Controller.kext", "VoodooPS2Controller.kext"),
     (pkg / "VoodooI2C-2.9.1-RELEASE" / "VoodooI2C.kext", "VoodooI2C.kext"),
     (pkg / "VoodooI2C-2.9.1-RELEASE" / "VoodooI2CHID.kext", "VoodooI2CHID.kext"),
     (pkg / "RealtekRTL8111-V3.0.0" / "RealtekRTL8111-V3.0.0" / "Release" / "RealtekRTL8111.kext", "RealtekRTL8111.kext"),
@@ -77,6 +83,12 @@ if VOODOOHDA:
     vinfo = plistlib.loads(vplist.read_bytes())
     assert vinfo["IOKitPersonalities"]["VoodooHDA"]["IONameMatch"] == "HDAS"
     vinfo["IOKitPersonalities"]["VoodooHDA"]["IONameMatch"] = ["HDAS", "pci1022,15e3"]
+    if VHDAVOLFIX:
+        assert vinfo["IOKitPersonalities"]["VoodooHDA"]["VoodooHDAEnableVolumeChangeFix"] is False
+        vinfo["IOKitPersonalities"]["VoodooHDA"]["VoodooHDAEnableVolumeChangeFix"] = True
+    if VHDAVERBOSE:
+        assert vinfo["IOKitPersonalities"]["VoodooHDA"]["VoodooHDAVerboseLevel"] == 0
+        vinfo["IOKitPersonalities"]["VoodooHDA"]["VoodooHDAVerboseLevel"] = 3
     vplist.write_bytes(plistlib.dumps(vinfo, sort_keys=False))
 
 # Native-class USB map derived from the reviewed UTBMap (same ports/types), per ChefKiss guidance
@@ -195,6 +207,8 @@ cfg["Misc"]["Tools"] = []
 guid = "7C436110-AB2A-4BBB-A880-FE41995C9F82"
 add = cfg["NVRAM"]["Add"][guid]
 add["boot-args"] = "-v keepsyms=1 debug=0x100"
+if PS2KBDONLY:
+    add["boot-args"] += " ps2kbdonly=1"
 add["csr-active-config"] = bytes(4)
 add["prev-lang:kbd"] = b"en-US:0"
 if EXPERIMENTAL_BT:  # BrcmPatchRAM README: required with BlueToolFixup for non-Broadcom (Intel) BT; same values macOS writes itself

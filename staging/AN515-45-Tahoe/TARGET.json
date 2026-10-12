@@ -14,7 +14,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe5 (tahoe4 + SSDT-Acer-NoHybGfx; lid sleep/wake confirmed; backup config-tahoe4.plist). Apacer ESP still v9",
+  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe9 (= tahoe8 + VoodooHDAVerboseLevel 3; ps2kbdonly=1, VoodooPS2 DEBUG, VolumeChangeFix; backups Info.plist.tahoe7/.tahoe8, config-tahoe6.plist). Apacer ESP still v9",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "RTX 3060 powered off in Darwin by SSDT-Acer-NoHybGfx (--nodgpu); required for clamshell sleep and S3. NullMoth experiment would need it removed",
   "usbMap": "components/Kexts/UTBMap.kext",
@@ -27,6 +27,7 @@
   },
   "status": "Tahoe 26.7.1 booting from the USB (candidate-tahoe5: USB, graphics, LAN, input OK; audio via VoodooHDA: speakers and mic work, IOAudioFamily duplicate-class conflict present, USB audio untested; Bluetooth MT7921 works incl. BT keyboard; RTX 3060 powered off by SSDT; lid sleep/wake works). Missing: Wi-Fi.",
   "nextSteps": [
+    "Internal keyboard dies at random (lid sleep/wake recovers): capture VoodooPS2 DEBUG log when it dies; test Windows via Windows Boot Manager (no OpenCore); then map Fn+F5/F7 scancodes",
     "Audio follow-up: 3.5 mm headphones, HDMI, USB audio (IOAudioFamily duplicate-class conflict confirmed in kernel log)",
     "Sleep: longer sleep, battery sleep, pmset sleepnow, keyboard wake on candidate-tahoe5 (hibernatemode 0, standby 0)",
     "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921",
