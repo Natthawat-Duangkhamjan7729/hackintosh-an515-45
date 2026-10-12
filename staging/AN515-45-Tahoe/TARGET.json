@@ -14,24 +14,24 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "private-build/candidate-v9 on the Apacer ESP; next: candidate-tahoe-install (USB) then candidate-tahoe",
+  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe4 (tahoe3 + SimpleMtkBtFw/Patcher + BlueToolFixup 2.7.2; BT controller up and discovering; backup config-tahoe3.plist). Apacer ESP still v9",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
-  "usbMapStatus": "Experimental; see docs/USB-MAP-REVIEW.md",
+  "usbMapStatus": "USBMap 1.2 (macOS 26 keys) confirmed working on Tahoe 26.7.1; see docs/USB-MAP-REVIEW.md",
   "installation": {
     "target": "Dual-boot on Apacer AS2280P4 512 GB (Windows NVMe), 256.00 GB unallocated after C: (s3) and before Windows Recovery (s4)",
     "method": "Offline install with UnPlugged from the exFAT USB partition",
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "macOS partition removed; Windows via OpenCore v9. Tahoe candidates schema-validated, not boot-tested. Audio: AppleALC unusable on Tahoe (no AppleHDA).",
+  "status": "Tahoe 26.7.1 booting from the USB (candidate-tahoe4: USB, graphics, LAN, input OK; audio via VoodooHDA: speakers and mic work; Bluetooth MT7921 via SimpleMtkBtFw + BlueToolFixup: controller on and discovering, pairing untested). Missing: Wi-Fi, NVIDIA.",
   "nextSteps": [
-    "Test v10 keyboard fix (same SMBIOS change is in the Tahoe candidates)",
-    "Prepare a new USB (>=32 GB) with private-build/candidate-tahoe-install, Recovery 15.4.1 and the verified 26.7.1 pkg",
-    "Shrink C: and create APFS; install via UnPlugged per docs/TAHOE-PLAN-TH.md",
-    "Tahoe audio: VoodooHDA or AppleHDA root patch",
-    "Bluetooth/Wi-Fi MT7921, USB map review, NVIDIA experiment (later)"
+    "Audio follow-up: test 3.5 mm headphones, HDMI and USB audio; check IOAudioFamily duplicate-class messages in the boot log",
+    "Bluetooth: test pairing, BT audio (A2DP/HFP), BT HID and sleep/wake on candidate-tahoe4",
+    "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921",
+    "Move a working Tahoe EFI to the Apacer ESP (back up v9)",
+    "NVIDIA experiment (later, DEV-PLAN phase 4)"
   ],
   "directoryNote": "Active target is Tahoe 26.7.1 again",
   "identity": "Real PlatformInfo generated locally (macserial); stored only in private/PlatformInfo.json; always build with --private for ESP updates"

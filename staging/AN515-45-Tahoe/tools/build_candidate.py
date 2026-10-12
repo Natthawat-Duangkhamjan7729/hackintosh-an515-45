@@ -1,9 +1,9 @@
 """Assemble candidate EFI (default candidate-v10) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
+evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS, USBMap 1.2 adds the macOS 26 usb-port-number/usb-port-type keys; --voodoohda adds VoodooHDA 3.7.0-alpha for Tahoe audio; pass --bt for experimental BT kexts (SimpleMtkBtFw + Patcher; tahoe4 adds BlueToolFixup 2.7.2 and the bluetoothExternalDongleFailed/bluetoothInternalControllerInfo NVRAM keys). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
-Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install]
+Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install] [--voodoohda]
 Output: <stage-dir>/candidates/<name>/EFI (or <stage-dir>/private-build/<name>/EFI with --private).
 """
 import copy
@@ -16,7 +16,9 @@ EXPERIMENTAL_BT = "--bt" in sys.argv
 PRIVATE = "--private" in sys.argv  # apply private/PlatformInfo.json and write to the gitignored private-build/ folder
 TAHOE = "--tahoe" in sys.argv  # macOS 26: AppleHDA was removed, so AppleALC has nothing to patch; disable it
 INSTALL = "--install" in sys.argv  # install stage: NootedRed off, firmware framebuffer only (as for the Sequoia install)
-sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install")]
+VOODOOHDA = "--voodoohda" in sys.argv  # macOS 26 audio: VoodooHDA 3.7.0-alpha (IOAudioFamily embedded, OpenCore-injectable); needs --tahoe
+sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install", "--voodoohda")]
+assert not VOODOOHDA or TAHOE, "--voodoohda requires --tahoe (AppleALC must be disabled)"
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
@@ -59,9 +61,20 @@ if EXPERIMENTAL_BT:
     bundles += [
     (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw.kext", "SimpleMtkBtFw.kext"),
     (pkg / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtFw-1.0.0-RELEASE" / "SimpleMtkBtPatcher.kext", "SimpleMtkBtPatcher.kext"),
+    (pkg / "BrcmPatchRAM-2.7.2-RELEASE" / "BlueToolFixup.kext", "BlueToolFixup.kext"),
     ]
+if VOODOOHDA:
+    bundles.append((pkg / "VoodooHDA-3.7.0-alpha-560847a" / "VoodooHDA_BL.kext", "VoodooHDA.kext"))
 for src, name in bundles:
     shutil.copytree(src, out / "OC" / "Kexts" / name)
+if VOODOOHDA:
+    # Upstream matches only IONameMatch "HDAS"; this controller is ACPI AZAL (compatible pci1025,151e / pci1022,15e3 / AZAL).
+    # Add the AMD HDA controller ID only, so the RTX 3060 HDMI audio function (10DE) is not claimed.
+    vplist = out / "OC" / "Kexts" / "VoodooHDA.kext" / "Contents" / "Info.plist"
+    vinfo = plistlib.loads(vplist.read_bytes())
+    assert vinfo["IOKitPersonalities"]["VoodooHDA"]["IONameMatch"] == "HDAS"
+    vinfo["IOKitPersonalities"]["VoodooHDA"]["IONameMatch"] = ["HDAS", "pci1022,15e3"]
+    vplist.write_bytes(plistlib.dumps(vinfo, sort_keys=False))
 
 # Native-class USB map derived from the reviewed UTBMap (same ports/types), per ChefKiss guidance
 utb = plistlib.loads((stage / "components" / "Kexts" / "UTBMap.kext" / "Contents" / "Info.plist").read_bytes())
@@ -78,6 +91,13 @@ for name, pers in utb["IOKitPersonalities"].items():
         "IOProviderMergeProperties": copy.deepcopy(pers["IOProviderMergeProperties"]),
         "model": "MacBookPro16,2",
     }
+    # macOS 26 reads usb-port-number/usb-port-type instead of port/UsbConnector; keep both
+    # (corpnewt/USBMap 4689a1a "Update keys for macOS 26")
+    for port in usbmap["IOKitPersonalities"][name]["IOProviderMergeProperties"]["ports"].values():
+        port["usb-port-number"] = port["port"]
+        port["usb-port-type"] = port["UsbConnector"]
+usbmap["CFBundleShortVersionString"] = usbmap["CFBundleVersion"] = "1.2"
+usbmap["CFBundleGetInfoString"] = "v1.2"
 usb_dir = out / "OC" / "Kexts" / "USBMap.kext" / "Contents"
 usb_dir.mkdir(parents=True)
 (usb_dir / "Info.plist").write_bytes(plistlib.dumps(usbmap, sort_keys=True))
@@ -142,7 +162,11 @@ if EXPERIMENTAL_BT:  # insert right after AppleALC
     cfg["Kernel"]["Add"][i:i] = [
         kext("SimpleMtkBtFw.kext", "Contents/MacOS/SimpleMtkBtFw", comment="EXPERIMENTAL: MediaTek BT firmware loader (04CA:3802)"),
         kext("SimpleMtkBtPatcher.kext", "Contents/MacOS/SimpleMtkBtPatcher", comment="EXPERIMENTAL: Lilu patcher for SimpleMtkBtFw"),
+        kext("BlueToolFixup.kext", "Contents/MacOS/BlueToolFixup", comment="BrcmPatchRAM 2.7.2 BlueToolFixup: bluetoothd patches, required on macOS 12+ (2.7.2 adds macOS 26)"),
     ]
+if VOODOOHDA:  # insert right after AppleALC (disabled by --tahoe)
+    i = [e["BundlePath"] for e in cfg["Kernel"]["Add"]].index("AppleALC.kext") + 1
+    cfg["Kernel"]["Add"].insert(i, kext("VoodooHDA.kext", "Contents/MacOS/VoodooHDA_BL", comment="VoodooHDA 3.7.0-alpha 560847a: Tahoe audio (ALC295 on AMD 1022:15E3); IONameMatch += pci1022,15e3"))
 for e in cfg["Kernel"]["Add"]:
     if TAHOE and e["BundlePath"] == "AppleALC.kext":
         e.update(Enabled=False, Comment="AppleALC.kext (disabled: macOS 26 has no AppleHDA)")
@@ -170,6 +194,10 @@ add = cfg["NVRAM"]["Add"][guid]
 add["boot-args"] = "-v keepsyms=1 debug=0x100"
 add["csr-active-config"] = bytes(4)
 add["prev-lang:kbd"] = b"en-US:0"
+if EXPERIMENTAL_BT:  # BrcmPatchRAM README: required with BlueToolFixup for non-Broadcom (Intel) BT; same values macOS writes itself
+    add["bluetoothExternalDongleFailed"] = b"\x00"
+    add["bluetoothInternalControllerInfo"] = bytes(14)
+    cfg["NVRAM"]["Delete"][guid] += ["bluetoothExternalDongleFailed", "bluetoothInternalControllerInfo"]
 cfg["NVRAM"]["WriteFlash"] = True
 
 # PlatformInfo: model only; serial/MLB/UUID/ROM stay as Sample.plist placeholders

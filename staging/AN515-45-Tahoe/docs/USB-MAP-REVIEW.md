@@ -34,3 +34,7 @@ SHA256 of upstream USBToolBox-1.2.0-RELEASE.zip:
 `C315A3A5ACFD496DD97D0D19B4FBD1D487103D2FD541C5651583D4C9CEBCFE07`
 
 These are local integrity records, not independently verified signatures. Upstream general OS support does not constitute a Tahoe boot test on this Acer. To roll back preparation, leave the components unused; original map remains in tools.
+
+## 2026-10-13: macOS 26 keys
+
+macOS 26 (Tahoe) reads `usb-port-number`/`usb-port-type` per port (corpnewt/USBMap 4689a1a, d6eaa0a). `tools/build_candidate.py` now emits USBMap 1.2 with both the old and the new keys, with unchanged port numbers and connector values. Untested on Tahoe hardware at the time of writing.
