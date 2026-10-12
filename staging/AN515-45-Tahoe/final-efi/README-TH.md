@@ -6,7 +6,7 @@
 
 - OpenCore log ล่าสุดของชุดนี้ (2026-10-11 05:14) แสดง `OCAK: Read kernel version 24.6.0`
   และ `OCB: Perform boot Macintosh HD` = macOS Sequoia (Darwin 24.6) บน NVMe ภายใน
-- ไม่ใช่ชุดสำหรับ Tahoe: AppleALC เปิดอยู่ (Tahoe ไม่มี AppleHDA) — ดู `../TAHOE-PLAN-TH.md`
+- ไม่ใช่ชุดสำหรับ Tahoe: AppleALC เปิดอยู่ (Tahoe ไม่มี AppleHDA) — ดู `../docs/TAHOE-PLAN-TH.md`
 
 ## ข้อมูลชุด
 

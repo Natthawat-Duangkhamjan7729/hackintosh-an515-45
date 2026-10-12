@@ -1,9 +1,9 @@
-"""Assemble candidate EFI (default candidate-v9) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
+"""Assemble candidate EFI (default candidate-v10) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
+evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix, v10 UpdateSMBIOSMode=Custom + CustomSMBIOSGuid so Windows keeps the Acer SMBIOS; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
-Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name]
+Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name] [--private] [--bt] [--tahoe] [--install]
 Output: <stage-dir>/candidates/<name>/EFI (or <stage-dir>/private-build/<name>/EFI with --private).
 """
 import copy
@@ -14,11 +14,13 @@ import sys
 
 EXPERIMENTAL_BT = "--bt" in sys.argv
 PRIVATE = "--private" in sys.argv  # apply private/PlatformInfo.json and write to the gitignored private-build/ folder
-sys.argv = [a for a in sys.argv if a not in ("--bt", "--private")]
+TAHOE = "--tahoe" in sys.argv  # macOS 26: AppleHDA was removed, so AppleALC has nothing to patch; disable it
+INSTALL = "--install" in sys.argv  # install stage: NootedRed off, firmware framebuffer only (as for the Sequoia install)
+sys.argv = [a for a in sys.argv if a not in ("--bt", "--private", "--tahoe", "--install")]
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / ("private-build" if PRIVATE else "candidates") / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
+out = stage / ("private-build" if PRIVATE else "candidates") / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v10") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
@@ -141,11 +143,16 @@ if EXPERIMENTAL_BT:  # insert right after AppleALC
         kext("SimpleMtkBtFw.kext", "Contents/MacOS/SimpleMtkBtFw", comment="EXPERIMENTAL: MediaTek BT firmware loader (04CA:3802)"),
         kext("SimpleMtkBtPatcher.kext", "Contents/MacOS/SimpleMtkBtPatcher", comment="EXPERIMENTAL: Lilu patcher for SimpleMtkBtFw"),
     ]
+for e in cfg["Kernel"]["Add"]:
+    if TAHOE and e["BundlePath"] == "AppleALC.kext":
+        e.update(Enabled=False, Comment="AppleALC.kext (disabled: macOS 26 has no AppleHDA)")
+    if INSTALL and e["BundlePath"] == "NootedRed.kext":
+        e.update(Enabled=False, Comment="NootedRed.kext (disabled for the install stage)")
 cfg["Kernel"]["Block"] = []
 cfg["Kernel"]["Force"] = []
 cfg["Kernel"]["Patch"] = plistlib.loads((stage / "components" / "AMD-Vanilla-5800H-8cores.plist").read_bytes())["Kernel"]["Patch"]
 kq = cfg["Kernel"]["Quirks"]
-kq.update(PanicNoKextDump=True, PowerTimeoutKernelPanic=True, ProvideCurrentCpuInfo=True, XhciPortLimit=False)
+kq.update(CustomSMBIOSGuid=True, PanicNoKextDump=True, PowerTimeoutKernelPanic=True, ProvideCurrentCpuInfo=True, XhciPortLimit=False)
 
 # Misc
 mb = cfg["Misc"]["Boot"]
@@ -167,7 +174,9 @@ cfg["NVRAM"]["WriteFlash"] = True
 
 # PlatformInfo: model only; serial/MLB/UUID/ROM stay as Sample.plist placeholders
 cfg["PlatformInfo"]["Generic"]["SystemProductName"] = "MacBookPro16,2"
-cfg["PlatformInfo"]["UpdateSMBIOSMode"] = "Create"
+# Custom keeps the Mac SMBIOS macOS-only (OC 1.0.8 Configuration: "avoiding a collision with ... custom OEM software");
+# with Create, Windows saw Acidanthera/MacBookPro16,2 next to Acer NitroSense/Quick Access, suspected for the intermittent dead internal keyboard
+cfg["PlatformInfo"]["UpdateSMBIOSMode"] = "Custom"
 if PRIVATE:
     import json
     ident = json.loads((stage / "private" / "PlatformInfo.json").read_text(encoding="utf-8-sig"))
