@@ -25,8 +25,8 @@
 
 ทำตามลำดับนี้ทุกครั้ง:
 
-1. **แก้ใน staging เท่านั้น** — แก้ `tools/build_candidate.py` หรือ config ใน candidate ใหม่ (เช่น `candidate-v5`) ห้ามแก้ไฟล์บน EFI partition ตรงๆ
-2. **build + ตรวจ** — `py -3.12 -I tools/build_candidate.py . candidate-v5` แล้ว ocvalidate (สคริปต์ติดตั้งจะตรวจซ้ำอีกครั้ง)
+1. **แก้ใน staging เท่านั้น** — แก้ `tools/build_candidate.py` หรือ config ใน candidate ใหม่ (เช่น `candidates/candidate-v5`) ห้ามแก้ไฟล์บน EFI partition ตรงๆ
+2. **build + ตรวจ** — `py -3.12 -I tools/build_candidate.py . candidate-v5` (ได้ผลที่ `candidates/candidate-v5`) แล้ว ocvalidate (สคริปต์ติดตั้งจะตรวจซ้ำอีกครั้ง)
 3. **ทดสอบจาก USB ก่อน** — วาง config/kext ใหม่ลง USB (`E:\EFI\OC`) แล้ว F12 → USB ถ้าบูตไม่ขึ้น ระบบบน Apacer ยังใช้ได้ตามเดิม
 4. **ติดตั้งลง Apacer เมื่อ USB ผ่านแล้ว** — build อีกครั้งด้วย `--private` เพื่อใส่ serial จริงจาก `private\PlatformInfo.json` (ไม่เข้า git) แล้วติดตั้งจาก `private-build`:
    ```

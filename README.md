@@ -4,9 +4,19 @@ This repository turns the attached OpenCore/Hackintosh knowledge framework into 
 
 ## Scope
 
-These files provide agent instructions and a research/engineering workflow. They are **not a trained model, compatibility database, standalone executable EFI generator, or boot-tested EFI**. No hardware report, existing EFI, or target macOS/OpenCore version was supplied, so this repository does not contain a machine-specific configuration.
+These files provide agent instructions and a research/engineering workflow. They are **not a trained model, compatibility database, or standalone executable EFI generator**. Machine-specific work for one Acer Nitro 5 AN515-45 lives under `staging/AN515-45-Tahoe/`; it applies only to that machine and its recorded inputs.
 
 The framework intentionally treats symptom-to-fix mappings as diagnostic hypotheses. A panic string or generic CPU/GPU family is not enough to safely select quirks or patches. Collect the exact machine details, current EFI, version-matched docs, and relevant logs before proposing changes.
+
+## Repository layout
+
+| Path | Contents |
+| --- | --- |
+| `AGENTS.md`, `CLAUDE.md` | Always-loaded agent rules |
+| `.agents/skills/`, `.claude/skills/` | Agent Skills (kept in sync) |
+| `docs/opencore-framework/` | Shared source policy, knowledge-base and evaluation guidance |
+| `staging/AN515-45-Tahoe/` | AN515-45 machine project: docs, final EFI, candidates, ACPI, tools — start at its `README.md` |
+| `research/mt7921/` | MediaTek MT7921 Wi-Fi driver research and offline build prep |
 
 ## Skills
 

@@ -62,11 +62,11 @@
 
 | ไฟล์ | คืออะไร |
 | --- | --- |
-| `candidate-v3/EFI` | EFI ชุดล่าสุด (v1 + SSDT-CPUR + NootedRed + NVMeFix) |
-| `candidate-v3-test-noNR/config.plist` | config ที่บูตเสถียร (ปิด NootedRed) อยู่บน USB ตอนนี้ |
+| `candidates/candidate-v3/EFI` | EFI ชุดล่าสุด (v1 + SSDT-CPUR + NootedRed + NVMeFix) |
+| `candidates/candidate-v3-test-noNR/config.plist` | config ที่บูตเสถียร (ปิด NootedRed) อยู่บน USB ตอนนี้ |
 | `components/ACPI/SSDT-CPUR.dsl` | SSDT ที่แก้ปัญหา CPU |
 | `tools/build_candidate.py` | สคริปต์สร้าง EFI ใหม่ได้ทุกครั้ง |
-| `USB-INSTALL-TH.md` | ขั้นตอนติดตั้งแบบ offline |
+| `docs/USB-INSTALL-TH.md` | ขั้นตอนติดตั้งแบบ offline |
 | `firmware-evidence/FIRMWARE-FINDINGS.md` | ผลวิเคราะห์เฟิร์มแวร์ |
 
 ## ขั้นต่อไปหลังมีพื้นที่ว่าง

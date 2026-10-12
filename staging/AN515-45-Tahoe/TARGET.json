@@ -16,7 +16,7 @@
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "Separate later candidate; RTX 3060 Laptop with NullMoth, compatibility and display routing unverified",
   "usbMap": "components/Kexts/UTBMap.kext",
-  "usbMapStatus": "Experimental; see USB-MAP-REVIEW.md",
+  "usbMapStatus": "Experimental; see docs/USB-MAP-REVIEW.md",
   "installation": {
     "target": "Dual-boot on Apacer AS2280P4 512 GB (Windows NVMe), 256.00 GB unallocated after C: (s3) and before Windows Recovery (s4)",
     "method": "Offline install with UnPlugged from the exFAT USB partition",
@@ -26,7 +26,7 @@
   "status": "macOS 15.8.1 + Windows dual-boot via OpenCore on Apacer ESP; graphics acceleration, backlight and audio working; Bluetooth (SimpleMtkBtFw) experimental, not deployed",
   "nextSteps": [
     "Bluetooth: retest SimpleMtkBtFw with logs (build with --bt)",
-    "Wi-Fi: external MT7921 driver effort (see MT7921-WIFI-DRIVER-BRIEF.md) or card swap",
+    "Wi-Fi: external MT7921 driver effort (see docs/MT7921-WIFI-DRIVER-BRIEF.md) or card swap",
     "USB map review",
     "Optional: clean old OC.bak-* on ESP; OpenCore first in boot order",
     "Later, user-led: NVIDIA RTX 3060 experiment"

@@ -6,7 +6,7 @@
 #   so Windows Boot Manager stays the default. Choose OpenCore via F12, or pass -MakeDefault.
 # Usage: powershell -ExecutionPolicy Bypass -File Install-OpenCore-ESP.ps1 [-Source <dir containing OC>] [-MakeDefault] [-WhatIf]
 param(
-    [string]$Source = (Join-Path (Split-Path -Parent $PSScriptRoot) 'candidate-v4\EFI\OC'),
+    [string]$Source = (Join-Path (Split-Path -Parent $PSScriptRoot) 'candidates\candidate-v4\EFI\OC'),
     [switch]$MakeDefault,
     [switch]$WhatIf
 )

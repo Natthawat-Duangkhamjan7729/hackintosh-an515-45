@@ -6,7 +6,7 @@ Current progress: see `PROGRESS-2026-10-09.md`. Sequoia 15.8.1 build 24H32 is id
 
 ## Evidence and scope
 
-Hardware audit: `D:/Hackintosh/reports/AN515-45-Tahoe-compatibility.md`.
+Hardware audit: `COMPATIBILITY-AUDIT.md` (this folder).
 User confirmed target: macOS Sequoia 15.8.1, internal display, separate spare SSD (not fitted yet).
 `TARGET.json` records the active target. The directory still contains Tahoe in its name to preserve existing tool/output paths; it is a historical label.
 Initial boot will use the AMD Cezanne iGPU with NootedRed. Any NullMoth RTX 3060 Laptop experiment belongs in a later separate candidate after preserving a working initial EFI. Neither graphics path is boot-tested on this Acer.

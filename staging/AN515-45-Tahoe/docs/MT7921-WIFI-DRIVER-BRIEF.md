@@ -30,7 +30,7 @@ As of 2026-10-09 no released macOS Wi-Fi driver for MT7921 is known. The closest
 - Boot loader: **OpenCore 1.0.8**. Kexts are injected by OpenCore from `EFI/OC/Kexts` + `config.plist` Kernel→Add. They do **not** need Apple signing.
 - Already injected: Lilu 1.7.2, VirtualSMC 1.3.8, NootedRed 0.8.10, AppleALC 1.9.8, VoodooI2C/PS2, NVMeFix, ForgedInvariant, RealtekRTL8111, USBMap. Lilu is available if patching is needed.
 - `SecureBootModel=Disabled`, `csr-active-config=00000000` (SIP on). Boot-args currently `-v keepsyms=1 debug=0x100`.
-- The project repo (private) holds the EFI build script `staging/AN515-45-Tahoe/tools/build_candidate.py`, the progress log and the update workflow `EFI-UPDATE-TH.md`.
+- The project repo (private) holds the EFI build script `staging/AN515-45-Tahoe/tools/build_candidate.py`, the progress log and the update workflow `staging/AN515-45-Tahoe/docs/EFI-UPDATE-TH.md`.
 
 ## 4. Reference material
 

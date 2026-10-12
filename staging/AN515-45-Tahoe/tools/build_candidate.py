@@ -1,9 +1,10 @@
 """Assemble candidate EFI (default candidate-v9) for AN515-45 / Sequoia 15.8.1 from pinned local artifacts.
 
 Starts from OpenCore 1.0.8 Sample.plist. Every non-default value below is tied to
-evidence recorded in CANDIDATE-v1.md and PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
+evidence recorded in candidates/candidate-v1/CANDIDATE-v1.md and docs/PROGRESS (v2 adds SSDT-CPUR, v3 adds NVMeFix, v4 SecureBootModel=Disabled, v5 backlight: SSDT-PNLF/ALS0 + SMCLightSensor + BrightnessKeys, v6 AppleALC alcid test, v7 layout-id 21, v8 SimpleMtkBtFw BT test, v9 PciRoot(0x1) fix; pass --bt for experimental BT kexts). Identity fields keep Sample.plist placeholders;
 generate real values locally and never commit them.
 Usage: py -3.12 -I tools/build_candidate.py <stage-dir> [candidate-name]
+Output: <stage-dir>/candidates/<name>/EFI (or <stage-dir>/private-build/<name>/EFI with --private).
 """
 import copy
 import pathlib
@@ -17,7 +18,7 @@ sys.argv = [a for a in sys.argv if a not in ("--bt", "--private")]
 stage = pathlib.Path(sys.argv[1]).resolve()
 pkg = stage / "packages"
 oc_pkg = pkg / "OpenCore-1.0.8-DEBUG" / "X64" / "EFI"
-out = stage / ("private-build" if PRIVATE else ".") / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
+out = stage / ("private-build" if PRIVATE else "candidates") / (sys.argv[2] if len(sys.argv) > 2 else "candidate-v9") / "EFI"
 if out.parent.exists():
     shutil.rmtree(out.parent)
 (out / "OC").mkdir(parents=True)
