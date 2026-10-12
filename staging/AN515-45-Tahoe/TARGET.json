@@ -14,7 +14,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "USB (OPENCORE): private-build/candidate-tahoe9 (= tahoe8 + VoodooHDAVerboseLevel 3; ps2kbdonly=1, VoodooPS2 DEBUG, VolumeChangeFix; backups Info.plist.tahoe7/.tahoe8, config-tahoe6.plist). Apacer ESP still v9",
+  "activeConfig": "candidate-tahoe10 (private) on the Apacer ESP (macOS boot from Apacer confirmed 2026-10-12, no USB) and on the USB (spare). Previous ESP OC = v10 kept as EFI/OC.bak-20261012-153504; full backup ~/ESP-Backup-20261012-153504",
   "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
   "nvidiaExperiment": "RTX 3060 powered off in Darwin by SSDT-Acer-NoHybGfx (--nodgpu); required for clamshell sleep and S3. NullMoth experiment would need it removed",
   "usbMap": "components/Kexts/UTBMap.kext",
@@ -25,14 +25,13 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "Tahoe 26.7.1 booting from the USB (candidate-tahoe5: USB, graphics, LAN, input OK; audio via VoodooHDA: speakers and mic work, IOAudioFamily duplicate-class conflict present, USB audio untested; Bluetooth MT7921 works incl. BT keyboard; RTX 3060 powered off by SSDT; lid sleep/wake works). Missing: Wi-Fi.",
+  "status": "Tahoe 26.7.1 (candidate-tahoe10): USB, graphics, LAN, input, Bluetooth, graded audio (VoodooHDA VolumeChangeFix), lid sleep/wake (RTX 3060 off via SSDT), internal keyboard freeze addressed by ps2kbdonly=1 (no recurrence so far). Missing: Wi-Fi. USB audio untested (IOAudioFamily duplicate-class conflict).",
   "nextSteps": [
-    "Internal keyboard dies at random (lid sleep/wake recovers): capture VoodooPS2 DEBUG log when it dies; test Windows via Windows Boot Manager (no OpenCore); then map Fn+F5/F7 scancodes",
-    "Audio follow-up: 3.5 mm headphones, HDMI, USB audio (IOAudioFamily duplicate-class conflict confirmed in kernel log)",
-    "Sleep: longer sleep, battery sleep, pmset sleepnow, keyboard wake on candidate-tahoe5 (hibernatemode 0, standby 0)",
-    "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921",
-    "Move a working Tahoe EFI to the Apacer ESP (back up v9)",
-    "NVIDIA experiment (later, DEV-PLAN phase 4)"
+    "Boot Windows from the Apacer OpenCore entry and confirm (macOS confirmed)",
+    "Keep watching the internal keyboard (ps2kbdonly=1); test Windows via Windows Boot Manager as falsifier for the Windows-side freeze",
+    "Optional post-install tuning: remove -v/debug boot-args, OpenCore RELEASE, picker/timeout, ScanPolicy",
+    "Audio follow-up: headphones, HDMI, USB audio",
+    "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921"
   ],
   "directoryNote": "Active target is Tahoe 26.7.1 again",
   "identity": "Real PlatformInfo generated locally (macserial); stored only in private/PlatformInfo.json; always build with --private for ESP updates"
