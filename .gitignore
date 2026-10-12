@@ -35,3 +35,9 @@ research/**/upstream/
 # Private SMBIOS identity and builds that contain it (never commit)
 **/private/
 **/private-build/
+
+# Raw copy of the working USB/ESP: real PlatformInfo, OC logs, Recovery image.
+# Sanitized export lives in staging/AN515-45-Tahoe/final-efi/
+/Final/
+**/final-efi/EFI/OC/Kexts/*
+!**/final-efi/EFI/OC/Kexts/USBMap.kext/
