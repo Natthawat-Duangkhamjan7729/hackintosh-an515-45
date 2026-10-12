@@ -1,17 +1,30 @@
 # การส่งภาพข้าม GPU บน macOS — มีอยู่จริงหรือไม่
 
-ตรวจเมื่อ 2026-10-12 · สถานะ: **งานวิจัยเอกสาร ยังไม่ได้ทดสอบบนเครื่อง**
+ตรวจเมื่อ 2026-10-12 · **แก้ไขครั้งใหญ่ 2026-10-13 หลังการรีวิว** · สถานะ: **งานวิจัยเอกสาร ยังไม่ได้ทดสอบบนเครื่องแม้แต่ข้อเดียว**
 
 คำถามตั้งต้น: เป้าหมายระยะยาวคือให้ RTX 3060 Laptop เรนเดอร์แล้วภาพออกจอในตัว
 ซึ่งต่อกับ Vega iGPU (เครื่องนี้ไม่มี MUX switch) — macOS มีกลไกรองรับหรือไม่
 
+> **บันทึกการแก้ไข 2026-10-13:** ฉบับแรกของเอกสารนี้ตีความเอกสาร Apple เกินจริงหลายจุด
+> และอ้างคำพูดผิดหน้า การรีวิวจับได้และแก้แล้วด้านล่าง รวมถึงเพิ่มอุปสรรคสองข้อที่ฉบับแรกมองข้าม
+> และข้อเท็จจริงเรื่องเวอร์ชัน macOS ที่ทำให้เส้นทางนี้ถูกปิดอยู่ในขณะนี้
+
 ---
 
-## ข้อสรุป
+## ข้อสรุปสั้น
 
-**มี** และเป็นกลไกที่ Apple เขียนไว้ในเอกสาร Metal อย่างชัดเจน ไม่ใช่การเดา
+กลไกคัดลอกเฟรมข้าม GPU **มีอยู่จริงในชั้น presentation ของ macOS** — ข้อนี้ยืนยันได้จากเอกสาร Apple
+แต่ **ไม่ได้แปลว่าเส้นทางนี้ใช้กับเครื่องเราได้** และตอนนี้ถูกปิดด้วยเหตุผลที่ง่ายกว่าเรื่องเทคนิคมาก
+คือ **เวอร์ชัน macOS ไม่ตรงกัน** (ดูหัวข้อ "ตัวปิดเส้นทางที่ใหญ่ที่สุด")
 
-เอกสาร Metal หัวข้อ *Selecting device objects for graphics rendering* (ระบุ macOS 10.13.0 ขึ้นไป) เขียนว่า:
+---
+
+## สิ่งที่เอกสาร Apple พูดจริง ๆ
+
+แหล่ง: *Selecting device objects for graphics rendering* (metadata ระบุ macOS 10.13.0 ขึ้นไป)
+หน้านี้เป็น **บทความประกอบ sample code** ไม่ใช่เอกสารสถาปัตยกรรม
+
+**ข้อความหลัก** อยู่ในหัวข้อ *Drawables, displays, and GPUs* — อยู่ในเนื้อหาจริง:
 
 > "If your app renders with a GPU that isn't driving your view's display, the system needs to copy
 > the drawable from the rendering GPU to the displaying GPU before presenting it. This transfer can
@@ -19,124 +32,123 @@
 > expense is more severe with external GPUs because their Thunderbolt 3 bus has much less bandwidth
 > than an internal PCI Express bus."
 
-และไดอะแกรมในหน้าเดียวกันระบุเส้นทางหนึ่งไว้ตรง ๆ ว่า:
+**ข้อความเรื่อง discrete → integrated → built-in display** มาจาก **alt text ของรูปไดอะแกรม**
+(`FastestDrawablePath_BuiltIn.png`) ไม่ใช่ย่อหน้าหลักของหน้า:
 
 > "The not recommended pathway renders a drawable with a discrete GPU and transfers it to an
 > integrated GPU before presenting it on a built-in display."
 
-เส้นทาง dGPU → คัดลอก → iGPU → จอในตัว **คือสิ่งเดียวกับที่ muxless rendering ต้องการ**
-Apple ไม่แนะนำเพราะช้า แต่ไม่ได้บอกว่าทำไม่ได้ — ระบบรองรับและจัดการ copy ให้เอง
+### บริบทที่ต้องติดมาด้วยเสมอ
 
-ที่สำคัญกว่านั้น: ประโยค "more severe with external GPUs ... than an internal PCI Express bus"
-แปลว่า Apple ถือว่าการคัดลอกข้าม GPU **ผ่าน PCIe ภายในเครื่อง** เป็นกรณีปกติและเร็วกว่า eGPU
-ซึ่งตรงกับสถานการณ์ของเครื่องนี้พอดี
+- หน้านี้เขียนสำหรับ **MacBook Pro ที่มี Automatic Graphics Switching** คือเครื่อง **muxed**
+  และใช้ **ไดรเวอร์ของ Apple เอง** ทั้งสองฝั่ง
+- กรณีในรูปคือช่วงที่ iGPU กำลังขับจอในตัวอยู่ ไม่ใช่เครื่อง muxless
+- หน้านี้ **ไม่พูดถึงไดรเวอร์บุคคลที่สาม** และ **ไม่ได้อธิบายว่าการคัดลอกเกิดที่ชั้นไหน**
+- ประโยคเรื่อง Thunderbolt กับ PCIe เป็นแค่ **การเทียบ bandwidth** — ฉบับแรกของเอกสารนี้
+  ตีความว่า "Apple ถือว่าการคัดลอกผ่าน PCIe ภายในเป็นกรณีปกติ" ซึ่ง **เกินกว่าที่ข้อความบอก**
 
----
-
-## แก้ความเข้าใจผิดที่เคยบันทึกไว้
-
-ก่อนหน้านี้ในการสนทนามีการสรุปว่า "macOS ไม่มีกลไก muxless เลย" — **ไม่ถูกต้อง**
-ที่ถูกคือ macOS ไม่มี *Optimus* ในความหมายของ Windows คือไม่มีสวิตช์ระดับระบบที่ทำให้
-ทุกอย่างรันบน dGPU โดยอัตโนมัติ แต่กลไก **คัดลอกเฟรมข้าม GPU มาออกจอของอีกตัว มีอยู่จริง**
-และทำงานในระดับแอป (ต่อ MTLDevice) ไม่ใช่ระดับทั้งเดสก์ท็อป
-
-ความต่างนี้สำคัญ เพราะสิ่งที่คนส่วนใหญ่ต้องการจริง ๆ คือ "ให้เกม/แอปหนักรันบน dGPU"
-ซึ่งเป็นระดับแอป ไม่ใช่ทั้งระบบ
+**คำพูด "either GPU can drive the built-in display"** ไม่ได้อยู่ในหน้าข้างบน แต่อยู่ในหน้า
+*Assessing multi-GPU and multidisplay setups on an Intel-based Mac* ซึ่งเป็นคนละหน้า
+ฉบับแรกอ้างรวมในตารางเดียวโดยไม่แยกที่มา — แก้แล้ว
 
 ---
 
-## สิ่งที่ Apple รองรับ และไม่รองรับ
+## ตัวปิดเส้นทางที่ใหญ่ที่สุด (ใหม่ 2026-10-13)
 
-| กรณี | สถานะตามเอกสาร Apple |
+| รายการ | ค่า |
 | --- | --- |
-| แอปเรนเดอร์บน GPU ที่ไม่ได้ขับจอ แล้วระบบคัดลอกเฟรมไปให้ GPU ที่ขับจอ | **รองรับ** (ช้ากว่า แต่ทำงาน) |
-| Mac ที่มี iGPU + dGPU ในตัว | "either GPU can drive the built-in display" — **Mac จริงมี MUX** |
-| eGPU ขับจอในตัว | **ไม่ได้** แต่ "accelerate apps on any display connected to the Mac" ได้ |
-| eGPU | ต้อง Intel Mac + Thunderbolt 3 + 10.13.4 ขึ้นไป |
-| การ์ดที่รองรับ eGPU | Apple ลงเฉพาะ AMD Radeon และระบุว่า "only graphics cards that use the same GPU architecture as those built into Mac products are supported" |
+| เป้าหมายปัจจุบันของโปรเจกต์ | **macOS Tahoe 26.7.1 (build 25G241)** ตาม `TARGET.json` |
+| ไดรเวอร์ `nullmoth/nvidia-macos-driver` รองรับ | **macOS 15 Sequoia เท่านั้น** (README ระบุทดสอบบน 15.7.x และ 15.8.1) |
 
-**จุดที่ต้องเข้าใจให้ตรง:** MacBook Pro สองการ์ดของจริงเป็นเครื่อง **muxed** — dGPU ขับจอในตัวได้เอง
-เครื่องเราทำไม่ได้ ดังนั้นเราไม่ได้อยู่ในกรณีที่ Apple ออกแบบไว้ แต่เราอยู่ในกรณี
-"เรนเดอร์ที่หนึ่ง แสดงผลอีกที่หนึ่ง" ซึ่งเป็นกรณีที่ Apple รองรับ
+**บนเป้าหมายปัจจุบัน ไดรเวอร์ NVIDIA ใช้ไม่ได้เลย** ไม่ใช่เรื่อง "ยังไม่ได้ทดสอบ"
+แต่คือคนละเวอร์ชัน OS ดังนั้นการทดลอง dGPU ทุกอย่างต้องเลือกอย่างใดอย่างหนึ่ง:
 
----
+1. รอให้ไดรเวอร์รองรับ macOS 26 (ไม่มีกำหนด ไม่อยู่ในมือเรา)
+2. ทำ candidate แยกที่ยังอยู่บน Sequoia 15.8.1 เพื่อการทดลองนี้โดยเฉพาะ
 
-## ช่องว่างที่เหลือจริง ๆ
-
-กลไกคัดลอกเฟรมไม่ใช่ปัญหา — มันมีอยู่แล้ว ช่องว่างคือสามข้อนี้
-
-| # | ช่องว่าง | ความยาก | สถานะ |
-| --- | --- | --- | --- |
-| A | RTX 3060 ต้องถูก macOS รู้จักเป็น Metal device ที่ใช้งานได้ | สูง แต่**มีคนทำแล้ว** | ไดรเวอร์ `nullmoth/nvidia-macos-driver` — ยังไม่ทดสอบบนการ์ดโน้ตบุ๊ก/Ampere/แพลตฟอร์ม AMD |
-| B | dGPU ที่ไม่มีจอต่อ (headless) ต้องถูกยอมรับและเลือกใช้ได้ | กลาง | ยังไม่ทดสอบ — ดูข้อสังเกตด้านล่าง |
-| C | ต้องมีวิธีให้แอปหรือระบบเลือก dGPU | กลาง | "Prefer External GPU" มีเฉพาะ GPU ที่เป็น external/removable เท่านั้น |
-
-### ข้อสังเกตเรื่อง headless (ข้อ B)
-
-วงการ Hackintosh ใช้ GPU แบบ headless เป็นเรื่องปกติอยู่แล้ว — การตั้ง iGPU ของ Intel
-เป็น headless เพื่อใช้ QuickSync ขณะที่ dGPU ขับจอ เป็นสูตรที่ใช้กันมานาน
-แปลว่า macOS ยอมรับ GPU ที่ไม่มีจอต่อแล้วยังรับงานได้ — **ของเราคือการกลับทิศของสูตรเดียวกัน**
-ไม่ใช่เรื่องที่ไม่เคยมีใครทำในเชิงโครงสร้าง
-
-### ข้อสังเกตเรื่องการเลือก GPU (ข้อ C)
-
-Metal มี property `MTLDeviceLocation` (built-in / slot / external / unspecified) และ
-`isRemovable`, `isHeadless`, `isLowPower` คำถามวิจัยคือ:
-dGPU ภายในที่ถูกมองเป็น `external` จะปลดล็อกตัวเลือก "Prefer External GPU" ให้ผู้ใช้ได้หรือไม่
-และ DeviceProperties ของ OpenCore มีผลต่อค่าเหล่านี้แค่ไหน — **ยังไม่มีคำตอบ ต้องทดลอง**
+ข้อนี้ควรตัดสินใจก่อนลงแรงกับเรื่องอื่น เพราะมันเปลี่ยนว่าแผนทั้งหมดคุ้มหรือไม่
 
 ---
 
-## การทดลองที่ถูกที่สุดถัดไป (ไม่ต้องเขียนโค้ด)
+## อุปสรรคที่ฉบับแรกมองข้าม
 
-ทำบน macOS ที่บูตอยู่ตอนนี้ได้เลย ไม่ต้องแก้ EFI
+### 1. แนวทางของ Apple เองจะทำให้แอปไม่เลือก RTX
 
-1. `ioreg -l | grep -i -A5 "PEGP\|GPP0"` — ตอนนี้ macOS มองเห็น dGPU เป็นอะไร
-   มี IOAccelerator node ขึ้นไหม หรือเป็นแค่ PCI device เฉย ๆ
-2. `system_profiler SPDisplaysDataType` — ระบบรายงาน GPU กี่ตัว
-3. ลิสต์ Metal device ทั้งหมด (โค้ด Swift ไม่กี่บรรทัดเรียก `MTLCopyAllDevices()`
-   แล้วพิมพ์ `name`, `location`, `isHeadless`, `isRemovable`)
-4. ยืนยันว่าพอร์ต HDMI เดินจาก GPU ตัวไหน (ตรวจจากฝั่ง Windows)
+sample code หน้าเดียวกันแนะนำให้แอปเรียก `CGDirectDisplayCopyCurrentMetalDevice()`
+เพื่อหา GPU ที่ขับจออยู่ แล้วเรนเดอร์ด้วยตัวนั้น — **ซึ่งจะได้ Vega เสมอ**
+แอปที่ทำตามแนวทาง Apple จึง **ไม่เลือก RTX โดยธรรมชาติ** และไม่มีสวิตช์ระดับระบบมาบังคับ
+"Prefer External GPU" ก็มีเฉพาะ GPU ที่เป็น external/removable เท่านั้น
 
-ข้อ 1–3 ตอบว่า "ตอนนี้เราอยู่ตรงไหนของเส้นทาง" ข้อ 4 ตัดสินว่าแนวทางจอนอกยังเปิดอยู่ไหม
+นี่คืออุปสรรคเชิงโครงสร้าง ไม่ใช่แค่เรื่องไดรเวอร์
 
-**หมายเหตุ:** `SSDT-Acer-NoHybGfx` ที่เปิดอยู่ใน EFI ปัจจุบันพยายามสั่งปิด dGPU
-ถ้าจะเดินเส้นทางนี้ ต้องปิด SSDT ตัวนั้นใน candidate แยก (ห้ามแตะ ESP ที่ใช้งานได้)
+### 2. SSDT-Acer-NoHybGfx อาจเป็นตัวที่ทำให้ sleep ทำงาน
 
----
+การปิด SSDT ตัวนี้เพื่อให้เห็น dGPU อาจทำให้ sleep/wake พัง
+ต้องถือว่าเป็นการแลก ไม่ใช่การ "ปิดสวิตช์ที่ไม่ใช้"
 
-## ความเสี่ยงเชิงกลยุทธ์
+### 3. ต้องเป็น Metal device ที่ทำงานได้ทั้งสองฝั่ง
 
-- **Intel macOS กำลังหมดอายุ** Apple เดินไปทาง Apple Silicon เต็มตัว หน้าต่างที่ทำแล้วได้ใช้จริงแคบลงทุกปี
-- eGPU ไม่รองรับบน Apple Silicon เลย และ Apple ระบุว่าไดรเวอร์ GPU จากบุคคลที่สามไม่ compatible
-- เส้นทางนี้ต้องให้ไดรเวอร์บุคคลที่สามสองตัว (NootedRed + NVIDIA) ทำงานร่วมกัน
-  ในเส้นทางที่ Apple ออกแบบไว้ให้ไดรเวอร์ของตัวเอง
-- SMBIOS ที่ NootedRed ต้องการ (MacBookPro16,2) ขัดกับที่ไดรเวอร์ NVIDIA ทดสอบไว้ (iMacPro1,1)
+ไม่ใช่แค่ RTX — **Vega ต้องเป็น Metal device ที่ทำงานจริงผ่าน NootedRed ด้วย**
+เพราะเป็นปลายทางที่รับเฟรม ถ้าฝั่งรับไม่พร้อม เส้นทางก็ไม่มีปลายทาง
+
+และ **ไม่มีเอกสารใดรับประกันว่าการคัดลอกจะทำงานระหว่างไดรเวอร์บุคคลที่สามสองตัว**
 
 ---
 
-## สรุปสำหรับคนที่อ่านต่อ
+## เงื่อนไขก่อนพิจารณาสร้าง candidate (G1–G4)
 
-สิ่งที่คิดว่าเป็นกำแพง (macOS ส่งภาพข้าม GPU ไม่ได้) **ไม่ใช่กำแพง** — Apple ทำไว้แล้ว
-กำแพงจริงอยู่ที่ไดรเวอร์ NVIDIA ต้องทำงานบนฮาร์ดแวร์ชุดนี้ก่อน ซึ่งเป็นงานที่มีคนเริ่มแล้ว
-และเราช่วยได้ด้วยการเป็นเคสทดสอบ ไม่ต้องเขียนไดรเวอร์เอง
+ทุกข้ออ่านอย่างเดียว รันบน boot ปัจจุบันได้ ไม่แตะ EFI หรือ ESP
+**ต้องผ่าน G1–G3 ครบทุกข้อ** ถ้าข้อไหนไม่ผ่านให้หยุด ไม่ต้องสร้าง candidate
 
-ขั้นถัดไปที่ควรทำคือเก็บหลักฐานจากเครื่องจริง (ข้อ 1–4 ข้างบน) ไม่ใช่เขียนโค้ด
+| รหัส | ตรวจอะไร | เกณฑ์ผ่าน |
+| --- | --- | --- |
+| **G1** | macOS เห็น dGPU บนบัส PCI และได้ device-id | พบรายการ vendor-id ของ NVIDIA ใน `ioreg -l -w0 -r -c IOPCIDevice` และจด device-id ได้ (ตอนนี้ SSDT สั่งปิดอยู่ ถ้าไม่เจอให้ดู device-id จากฝั่ง Windows แทน **ห้ามแก้ EFI เพื่อให้เจอ**) |
+| **G2** | Vega เป็น Metal device ที่ใช้งานได้ (ฝั่งรับเฟรม) | Vega อยู่ใน `MTLCopyAllDevices()` และมี Metal Support ใน `system_profiler SPDisplaysDataType` |
+| **G3** | ไดรเวอร์รองรับ device-id จาก G1 บน **เวอร์ชัน macOS ที่เราจะใช้จริง** | README หรือโค้ดระบุ device-id นั้นหรือ GA106 Laptop พร้อมเวอร์ชัน macOS ที่ชัดเจน — **"อาจจะใช้ได้" ไม่นับว่าผ่าน** |
+| **G4** | พอร์ต HDMI ต่อกับ GPU ตัวไหน (ไม่ใช่เงื่อนไขผ่าน/ไม่ผ่าน แต่บอกว่าจะทดลองเส้นทางไหน) | เสียบจอนอกแล้วดู `system_profiler SPDisplaysDataType` — ถ้าจอนอกขึ้นใต้ Vega แปลว่า HDMI ต่อกับ iGPU |
+
+สคริปต์ลิสต์ Metal device สำหรับ G2:
+
+```swift
+import Metal
+for d in MTLCopyAllDevices() {
+  print(d.name, "loc=\(d.location.rawValue)", "headless=\(d.isHeadless)",
+        "lowPower=\(d.isLowPower)", "removable=\(d.isRemovable)")
+}
+```
+
+**ผ่าน G1–G3 ครบ = คุ้มที่จะออกแบบ candidate เท่านั้น ไม่ใช่การอนุมัติให้แก้ EFI**
+candidate ต้องอยู่ใน `candidates/` แยกจาก ESP ที่ใช้งานอยู่
+และต้องแก้ปัญหา SMBIOS ที่ขัดกันก่อน (NootedRed ต้องใช้ MacBookPro16,2 ส่วนไดรเวอร์ NVIDIA ทดสอบบน iMacPro1,1)
 
 ---
 
-## แหล่งอ้างอิง (ตรวจ 2026-10-12)
+## สรุปที่ปรับแล้ว
 
-- Apple — Metal: Selecting device objects for graphics rendering
+สิ่งที่เคยคิดว่าเป็นกำแพง — "macOS แสดงภาพที่เรนเดอร์บน GPU อื่นไม่ได้เลย" — **ตัดทิ้งได้**
+เส้นทางนี้มีอยู่ในชั้น presentation ของ macOS และ RTX ไม่จำเป็นต้องขับจอเอง
+
+แต่กำแพงที่เหลือมีมากกว่าที่ฉบับแรกเขียนไว้ และกำแพงที่ใกล้ที่สุดไม่ใช่เรื่องเทคนิคเลย
+คือ **เป้าหมายโปรเจกต์อยู่บน Tahoe 26.7.1 ส่วนไดรเวอร์อยู่บน Sequoia 15** — คนละเวอร์ชันกัน
+
+ขั้นถัดไปคือตัดสินใจเรื่องเวอร์ชันก่อน แล้วค่อยเก็บหลักฐาน G1–G4 **ยังไม่ใช่การเขียนโค้ดหรือแก้ EFI**
+
+---
+
+## แหล่งอ้างอิง (ตรวจ 2026-10-12 / 2026-10-13)
+
+- Apple — Metal: *Selecting device objects for graphics rendering* (availability: macOS 10.13.0 –)
   https://developer.apple.com/documentation/Metal/selecting-device-objects-for-graphics-rendering
-  (ระบุ availability macOS 10.13.0 ขึ้นไป) — ประโยคเรื่อง copy drawable ข้าม GPU
-- Apple — Metal: Assessing multi-GPU and multidisplay setups on an Intel-based Mac
+  หน้า HTML ต้องใช้ JavaScript — ดึงเนื้อหาจริงด้วยการต่อท้าย `.md`
+  (ประโยค copy drawable อยู่ในเนื้อหา · ข้อความ discrete → integrated อยู่ใน alt text ของรูป)
+- Apple — Metal: *Assessing multi-GPU and multidisplay setups on an Intel-based Mac*
   https://developer.apple.com/documentation/Metal/assessing-multi-gpu-and-multi-display-setups-on-an-intel-based-mac
-- Apple — Metal: Multi-GPU systems
+  (ที่มาของ "either GPU can drive the built-in display")
+- Apple — Metal: *Multi-GPU systems*
   https://developer.apple.com/documentation/metal/multi-gpu-systems
-- Apple Support — Use an external graphics processor with your Mac
+- Apple Support — *Use an external graphics processor with your Mac*
   https://support.apple.com/en-us/102363
-- https://github.com/nullmoth/nvidia-macos-driver — ไดรเวอร์ NVIDIA Metal สำหรับ macOS 15
+- https://github.com/nullmoth/nvidia-macos-driver — รองรับ macOS 15 Sequoia เท่านั้น
+- `staging/AN515-45-Tahoe/TARGET.json` — เป้าหมายปัจจุบัน Tahoe 26.7.1 build 25G241
 
-เอกสารนี้เป็นการอ่านเอกสารทางการ **ยังไม่มีการทดสอบบนเครื่องจริงแม้แต่ข้อเดียว**
-ทุกข้อสรุปข้างบนเป็นสมมติฐานที่รอการพิสูจน์
+**ยังไม่มีการทดสอบบนเครื่องจริงแม้แต่ข้อเดียว** ทุกข้อสรุปข้างบนเป็นสมมติฐานที่รอการพิสูจน์
