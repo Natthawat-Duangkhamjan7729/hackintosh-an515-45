@@ -126,9 +126,63 @@
 
 ---
 
+## อัปเดต 2026-10-13 (รอบที่สอง) — ยืนยันจากแหล่งปฐมภูมิแล้ว
+
+### คำยืนยันตรงตัวจาก release notes v1.14.7
+
+> "This release does not qualify every macOS 15 system or **announce official Tahoe support**."
+
+**นี่คือคำตอบที่ชัดที่สุดเท่าที่จะหาได้** มาจาก release ทางการเอง ไม่ใช่เบาะแสจาก Discord
+สถานะ Tahoe = **ไม่รองรับอย่างเป็นทางการ** ณ เวอร์ชันล่าสุด
+
+### ปัญหาที่ยังเปิดอยู่ใน 1.14.7 (จาก release notes)
+
+- high-refresh display switching
+- small-BAR surface failures
+- Chromium hardware composition
+- **sleep/wake failures**
+
+ข้อสุดท้ายกระทบเราโดยตรง เพราะ `SSDT-Acer-NoHybGfx` อาจเป็นตัวที่ทำให้ sleep ทำงานอยู่
+ถ้าปิดมันเพื่อให้เห็น dGPU แล้วไปเจอบั๊ก sleep/wake ของไดรเวอร์อีกชั้น จะกลายเป็นสองปัญหาซ้อนกัน
+
+### หลักฐานแรกของการรันบน Tahoe 26.7.1 — เวอร์ชันเดียวกับเราพอดี
+
+สมาชิก `jeff` (13 ต.ค. 08:58) แนบ crash report ระบุ:
+
+| รายการ | ค่า |
+| --- | --- |
+| macOS | **26.7.1** — build เดียวกับเป้าหมายปัจจุบันของเรา |
+| ไดรเวอร์ | 1.14.4 |
+| SMBIOS | **MacPro7,1** (สอดคล้องกับที่บอตบอกว่า macOS 26 ปฏิเสธ iMacPro1,1) |
+| อาการ | **ค้างทั้งเครื่องเวลาโหลดหนัก** สันนิษฐานว่า `mediaanalysisd` ค้างตอนประมวลผลวิดีโอ |
+
+**ตีความ:** ไดรเวอร์ *รันได้* บน Tahoe 26.7.1 แต่ *ไม่เสถียร* นี่คือข้อมูลที่มีค่าที่สุดในรอบนี้
+เพราะเป็น build เดียวกับที่เราใช้ ไม่ใช่การอนุมานข้ามเวอร์ชัน
+
+### มี fork สำหรับ Tahoe โดยเฉพาะ
+
+สมาชิก `jeff` (13 ต.ค. 08:50):
+
+> "you can use nullmoth's official driver as the changes made by highdelay for tahoe to work were
+> added into the official driver in release 1.14 or so, **i believe**. though, the official driver is
+> only meant for macos 15, so any bugs on tahoe wont be prioritized, and its moreover recommended to
+> use the driver by **highdelay** since fixes might be implemented faster."
+
+- fork ของ HighDelay มีลิงก์ปักหมุดไว้ใน #tahoe
+- **ยังตรวจสอบจากภายนอกไม่ได้** — ค้นเว็บแล้วไม่พบรีโปนี้ ต้องเอาลิงก์จาก pin ใน Discord มาตรวจเอง
+- jeff เขียนเองว่า "i believe" = ไม่ยืนยัน
+
+### ความไม่สอดคล้องของช่องทางประกาศ
+
+ช่อง driver-updates ประกาศล่าสุดแค่ 1.14.6 แต่เว็บทางการและ GitHub มี 1.14.7 แล้ว
+→ **อย่าใช้ Discord เป็นแหล่งตรวจเวอร์ชัน** ให้ดูเว็บทางการหรือ GitHub releases เท่านั้น
+
+---
+
 ## แหล่งอ้างอิง
 
 - https://nullmothsystems.com/downloads — ตรวจ 2026-10-13 (1.14.7, Sequoia เท่านั้น)
+- https://github.com/nullmoth/nvidia-macos-driver/releases/tag/v1.14.7 — release notes ระบุว่าไม่ประกาศรองรับ Tahoe
 - https://github.com/nullmoth/nvidia-macos-driver — README และ `CARD-SUPPORT.md`
 - Discord ของ NullMoth Systems: ช่อง start-here, driver-updates, #tahoe, bug-reports,
   it-boots, nvidia-driver-help, 1401-laptop-help — อ่านผ่านส่วนขยายเบราว์เซอร์ 2026-10-13
