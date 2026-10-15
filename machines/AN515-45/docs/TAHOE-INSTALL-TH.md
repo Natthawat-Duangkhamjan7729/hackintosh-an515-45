@@ -13,7 +13,7 @@
 | E: `OPENCORE` (FAT32) | `EFI` = `private-build/candidate-tahoe10-install` — tahoe10 + **NootedRed ปิด** (ช่วงติดตั้ง), PlatformInfo จริง | ocvalidate 1.0.8 ผ่าน, `diff -rq` ตรง |
 | E: | `EFI.sequoia-bak` = ชุดติดตั้ง Sequoia เดิม (`private-build/sequoia-install`) | เก็บไว้เฉย ๆ firmware ไม่ใช้ |
 | E: | `com.apple.recovery.boot` = Recovery 15.4.1 | ตัวเดิมที่เคยใช้ติดตั้ง Tahoe ได้ |
-| F: `UnPlugged` (exFAT) | `InstallAssistant.pkg` = **Tahoe 26.7.1 (25G241)** 18,380,974,544 bytes | ขนาดตรง catalog; SHA256 ดูใน PROGRESS |
+| F: `UnPlugged` (exFAT) | `InstallAssistant.pkg` = **Tahoe 26.7.1 (25G241)** 18,380,974,544 bytes | ขนาดตรง catalog, SHA256 `CA854F49…B6F48A` ตรงกับไฟล์ที่ตรวจแล้ว |
 | F: | `Sequoia-15.8.1-24H32.pkg.old` | เปลี่ยนชื่อไว้ไม่ให้ UnPlugged หยิบผิด |
 | F: | `UnPlugged.command` | ตัวเดิม |
 
