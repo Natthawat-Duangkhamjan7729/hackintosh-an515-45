@@ -25,15 +25,15 @@
 
 1. BitLocker ต้องปิดอยู่ (Settings → Privacy & security → Device encryption) — รอบก่อนปิดไว้แล้ว
 2. คลิกขวาปุ่ม Start → **Terminal (Admin)**
-3. วางคำสั่งนี้ (C: จะเหลือ 219.9 GiB และมีพื้นที่ว่าง ~256 GiB ต่อท้าย):
+3. วางคำสั่งนี้ (C: จะเหลือ 228 GiB และมีพื้นที่ว่าง ~248 GiB ต่อท้ายสำหรับ macOS):
    ```powershell
-   try { $t = 236118663168; $s = Get-PartitionSupportedSize -DriveLetter C -ErrorAction Stop; if ($t -lt $s.SizeMin) { "ย่อไม่ได้: C: ต้องเหลืออย่างน้อย {0:N1} GB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t -ErrorAction Stop; $n = (Get-Partition -DriveLetter C).Size; if ($n -eq $t) { "OK: C: = {0:N0} bytes" -f $n } else { "ไม่สำเร็จ: C: = {0:N0} bytes" -f $n } } } catch { "ERROR: $($_.Exception.Message)" }
+   try { $t = 244813135872; $s = Get-PartitionSupportedSize -DriveLetter C -ErrorAction Stop; if ($t -lt $s.SizeMin) { "CANNOT SHRINK: C: minimum is {0:N1} GiB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t -ErrorAction Stop; $n = (Get-Partition -DriveLetter C).Size; if ($n -eq $t) { "OK: C: = {0:N0} bytes" -f $n } else { "FAILED: C: = {0:N0} bytes" -f $n } } } catch { "ERROR: $($_.Exception.Message)" }
    ```
-   (คำสั่งเวอร์ชันเดิมพิมพ์ `OK` ได้แม้จะย่อไม่สำเร็จ เช่น ตอนไม่ได้เปิดแบบ Admin — แก้แล้ว 2026-10-15)
-4. ขึ้น `OK: C: = 236,118,663,168 bytes` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
-   - ขึ้น `ERROR: ... Access ... denied` หรือ `not available` = ไม่ได้เปิด Terminal แบบ Admin
-   - หลังย่อ C: จะเหลือที่ว่างประมาณ 10 GB เท่านั้น (ใช้อยู่ ~209 GiB)
-   - ถ้าขึ้น "ย่อไม่ได้" → ส่งข้อความมา (มักเกิดจาก pagefile/hiberfil ขวางอยู่)
+   ข้อความเป็นภาษาอังกฤษเพราะ Windows PowerShell 5.1 แสดงภาษาไทยในคำสั่งไม่ได้
+   (เป้าเดิม 219.9 GiB ย่อไม่ได้ เพราะ Windows ให้ C: เหลือไม่ต่ำกว่า 226.5 GiB — ตรวจ 2026-10-15)
+4. ขึ้น `OK: C: = 244,813,135,872 bytes` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
+   - หลังย่อ C: เหลือที่ว่างประมาณ 19 GiB (ใช้อยู่ ~209 GiB)
+   - `CANNOT SHRINK` / `ERROR` → ส่งข้อความมา
 5. บอกผมว่าเสร็จแล้ว ผมจะตรวจ layout ให้
 
 ## ขั้นที่ 2 — เตรียมเครื่อง
@@ -58,16 +58,16 @@
    /dev/diskX (internal, physical):
       1: EFI                     EFI           209.7 MB   diskXs1
       2: Microsoft Reserved                    16.8 MB    diskXs2
-      3: Microsoft Basic Data                  236.1 GB   diskXs3   ← C:
+      3: Microsoft Basic Data                  244.8 GB   diskXs3   ← C:
       4: Windows Recovery                      886.0 MB   diskXs4
    ```
    **ถ่ายรูปส่งมาก่อน** เพื่อยืนยันตัวเลข X
-3. แทน `diskXs3` ด้วยตัวระบุของ C: (Microsoft Basic Data 236.1 GB):
+3. แทน `diskXs3` ด้วยตัวระบุของ C: (Microsoft Basic Data 244.8 GB):
    ```
    diskutil addPartition diskXs3 APFS "Macintosh HD" 0
    ```
    ไม่แตะข้อมูลใน C: — ใช้แค่ช่องว่างหลังมัน
-4. `diskutil list physical` อีกครั้ง: ต้องเห็น `Apple_APFS Container` ~274.9 GB อยู่ระหว่าง C: กับ Windows Recovery
+4. `diskutil list physical` อีกครั้ง: ต้องเห็น `Apple_APFS Container` ~266 GB อยู่ระหว่าง C: กับ Windows Recovery
 
 ## ขั้นที่ 5 — Mount USB และรัน UnPlugged
 
