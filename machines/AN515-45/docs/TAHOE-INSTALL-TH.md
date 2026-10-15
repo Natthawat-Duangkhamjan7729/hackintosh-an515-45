@@ -34,6 +34,26 @@
 4. ขึ้น `OK: C: = 244,813,135,872 bytes` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
    - หลังย่อ C: เหลือที่ว่างประมาณ 19 GiB (ใช้อยู่ ~209 GiB)
    - `CANNOT SHRINK` / `ERROR` → ส่งข้อความมา
+### ทางเลือก: ได้ macOS 256 GiB เต็ม (ปิด pagefile ชั่วคราว)
+
+ตัวที่ขวางคือ `\pagefile.sys` (Event 259 ของ Defrag, 2026-10-15) — hibernation ปิดอยู่แล้ว ทำใน **Terminal (Admin)** ทุกขั้น:
+
+1. ปิด pagefile:
+   ```powershell
+   $cs = Get-CimInstance Win32_ComputerSystem; Set-CimInstance -InputObject $cs -Property @{AutomaticManagedPagefile=$false}; Get-CimInstance Win32_PageFileSetting | Remove-CimInstance; "Pagefile off - restart now"
+   ```
+2. **Restart** เครื่อง
+3. ย่อ C: ให้เหลือ 219.9 GiB (macOS ได้ 256 GiB):
+   ```powershell
+   try { $t = 236118663168; $s = Get-PartitionSupportedSize -DriveLetter C -ErrorAction Stop; if ($t -lt $s.SizeMin) { "CANNOT SHRINK: C: minimum is {0:N1} GiB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t -ErrorAction Stop; $n = (Get-Partition -DriveLetter C).Size; if ($n -eq $t) { "OK: C: = {0:N0} bytes" -f $n } else { "FAILED: C: = {0:N0} bytes" -f $n } } } catch { "ERROR: $($_.Exception.Message)" }
+   ```
+4. **เปิด pagefile กลับ (ห้ามข้าม)** แล้ว Restart อีกครั้ง:
+   ```powershell
+   $cs = Get-CimInstance Win32_ComputerSystem; Set-CimInstance -InputObject $cs -Property @{AutomaticManagedPagefile=$true}; "Pagefile back to automatic - restart now"
+   ```
+   หลังเปิด pagefile กลับ C: จะเหลือที่ว่างประมาณ 10 GiB
+   ถ้าใช้ทางนี้ ตัวเลขใน `diskutil` ขั้นที่ 4 จะเป็น C: = 236.1 GB และ APFS ~274.9 GB
+
 5. บอกผมว่าเสร็จแล้ว ผมจะตรวจ layout ให้
 
 ## ขั้นที่ 2 — เตรียมเครื่อง
