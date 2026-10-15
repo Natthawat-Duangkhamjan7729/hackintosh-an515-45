@@ -163,6 +163,6 @@ candidate ต้องอยู่ใน `candidates/` แยกจาก ESP �
 - Apple Support — *Use an external graphics processor with your Mac*
   https://support.apple.com/en-us/102363
 - https://github.com/nullmoth/nvidia-macos-driver — รองรับ macOS 15 Sequoia เท่านั้น
-- `staging/AN515-45-Tahoe/TARGET.json` — เป้าหมายปัจจุบัน Tahoe 26.7.1 build 25G241
+- `machines/AN515-45/TARGET.json` — เป้าหมายปัจจุบัน Tahoe 26.7.1 build 25G241
 
 **ยังไม่มีการทดสอบบนเครื่องจริงแม้แต่ข้อเดียว** ทุกข้อสรุปข้างบนเป็นสมมติฐานที่รอการพิสูจน์

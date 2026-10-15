@@ -19,8 +19,9 @@ This repository contains reusable, cross-agent workflows and knowledge reference
 - Third-party skills from `thananon/9arm-skills` are installed into both skill trees; review their instructions before use.
 - `.agents/skills/build-opencore-efi/SKILL.md` — required workflow for building a machine-specific EFI.
 - `docs/opencore-framework/` — shared source policy, knowledge-base and evaluation guidance.
-- `staging/AN515-45-Tahoe/` — Acer Nitro 5 AN515-45 machine project; index in its `README.md`. Documents in `docs/`, working sanitized EFI in `final-efi/`, experimental builds in `candidates/`, scripts in `tools/`.
+- `machines/AN515-45/` — Acer Nitro 5 AN515-45 machine project; index in its `README.md`. Documents in `docs/`, working sanitized EFI in `final-efi/`, experimental builds in `candidates/`, scripts in `tools/`.
 - `research/mt7921/` — MT7921 Wi-Fi driver research.
+- `research/macos-cross-gpu/`, `research/nullmoth-driver-status/` — dGPU/iGPU display research (Thai).
 - `README.md` — entry point, skill routing, and scope.
 
 ## Project facts

@@ -3,8 +3,6 @@
 **/firmware-evidence/opencore-*.txt
 **/MSDM*.aml
 **/MSDM*.dsl
-SSDTTime-master/
-SSDTTime-master.zip
 
 # Generated identity values must never be committed
 **/PlatformInfo*.plist
@@ -18,6 +16,7 @@ SSDTTime-master.zip
 **/packages/
 **/tools/*.exe
 **/tools/UTBMap.kext/
+**/tools/SSDTTime/
 *.efi
 **/components/Kexts/USBToolBox.kext/
 **/candidate-*/EFI/OC/Kexts/*
@@ -36,8 +35,10 @@ research/**/upstream/
 **/private/
 **/private-build/
 
-# Raw copy of the working USB/ESP: real PlatformInfo, OC logs, Recovery image.
-# Sanitized export lives in staging/AN515-45-Tahoe/final-efi/
-/Final/
+# Sanitized export of the working USB/ESP lives in machines/AN515-45/final-efi/
+# (the raw snapshot is in private/usb-snapshot-2026-10-11/)
 **/final-efi/EFI/OC/Kexts/*
 !**/final-efi/EFI/OC/Kexts/USBMap.kext/
+
+# Verified duplicates waiting for the user to delete
+/_delete-me/
