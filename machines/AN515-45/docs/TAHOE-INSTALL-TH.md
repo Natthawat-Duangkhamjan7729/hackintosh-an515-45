@@ -27,9 +27,11 @@
 2. คลิกขวาปุ่ม Start → **Terminal (Admin)**
 3. วางคำสั่งนี้ (C: จะเหลือ 219.9 GiB และมีพื้นที่ว่าง ~256 GiB ต่อท้าย):
    ```powershell
-   $s = Get-PartitionSupportedSize -DriveLetter C; $t = 236118663168; if ($t -lt $s.SizeMin) { "ย่อไม่ได้: C: ต้องเหลืออย่างน้อย {0:N1} GB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t; "OK" }
+   try { $t = 236118663168; $s = Get-PartitionSupportedSize -DriveLetter C -ErrorAction Stop; if ($t -lt $s.SizeMin) { "ย่อไม่ได้: C: ต้องเหลืออย่างน้อย {0:N1} GB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t -ErrorAction Stop; $n = (Get-Partition -DriveLetter C).Size; if ($n -eq $t) { "OK: C: = {0:N0} bytes" -f $n } else { "ไม่สำเร็จ: C: = {0:N0} bytes" -f $n } } } catch { "ERROR: $($_.Exception.Message)" }
    ```
-4. ขึ้น `OK` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
+   (คำสั่งเวอร์ชันเดิมพิมพ์ `OK` ได้แม้จะย่อไม่สำเร็จ เช่น ตอนไม่ได้เปิดแบบ Admin — แก้แล้ว 2026-10-15)
+4. ขึ้น `OK: C: = 236,118,663,168 bytes` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
+   - ขึ้น `ERROR: ... Access ... denied` หรือ `not available` = ไม่ได้เปิด Terminal แบบ Admin
    - หลังย่อ C: จะเหลือที่ว่างประมาณ 10 GB เท่านั้น (ใช้อยู่ ~209 GiB)
    - ถ้าขึ้น "ย่อไม่ได้" → ส่งข้อความมา (มักเกิดจาก pagefile/hiberfil ขวางอยู่)
 5. บอกผมว่าเสร็จแล้ว ผมจะตรวจ layout ให้

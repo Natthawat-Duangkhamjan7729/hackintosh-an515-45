@@ -25,9 +25,9 @@
 2. คลิกขวาปุ่ม Start → **Terminal (Admin)** หรือ **Windows PowerShell (Admin)**
 3. วางคำสั่งนี้ (C: จะเหลือ 236.1 GB และมีพื้นที่ว่าง 256 GiB ต่อท้าย):
    ```powershell
-   $s = Get-PartitionSupportedSize -DriveLetter C; $t = 236118663168; if ($t -lt $s.SizeMin) { "ย่อไม่ได้: C: ต้องเหลืออย่างน้อย {0:N1} GB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t; "OK" }
+   try { $t = 236118663168; $s = Get-PartitionSupportedSize -DriveLetter C -ErrorAction Stop; if ($t -lt $s.SizeMin) { "ย่อไม่ได้: C: ต้องเหลืออย่างน้อย {0:N1} GB" -f ($s.SizeMin/1GB) } else { Resize-Partition -DriveLetter C -Size $t -ErrorAction Stop; $n = (Get-Partition -DriveLetter C).Size; if ($n -eq $t) { "OK: C: = {0:N0} bytes" -f $n } else { "ไม่สำเร็จ: C: = {0:N0} bytes" -f $n } } } catch { "ERROR: $($_.Exception.Message)" }
    ```
-4. ขึ้น `OK` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
+4. ขึ้น `OK: C: = 236,118,663,168 bytes` = สำเร็จ **ไม่ต้องสร้าง partition ใน Windows** ปล่อยเป็น Unallocated
    - ถ้าขึ้น "ย่อไม่ได้" → ส่งข้อความมา (มักเกิดจาก pagefile/hiberfil ขวางอยู่ แก้ได้ด้วยการปิด pagefile ชั่วคราว + `powercfg /h off` แล้วรีสตาร์ต)
 5. บอกผมว่าเสร็จแล้ว ผมจะตรวจ layout ให้ว่ามีช่องว่าง ~256 GiB อยู่ระหว่าง C: กับ Windows Recovery
 
