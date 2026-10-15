@@ -262,10 +262,35 @@
 - `docs/MULTI-GPU.md` — เป็นวิธีแก้สำหรับเครื่องที่ใส่ RTX 4090 สี่ใบ ไม่เกี่ยวกับโน้ตบุ๊ก
 - `CARD-SUPPORT.md` ที่ root ของ repo ตอนนี้เปิดแล้วได้ 404 (ถูกย้ายหรือเปลี่ยนชื่อ)
 
+### ค้น Discord หาเคสที่คล้ายเครื่องเรา (2026-10-15)
+
+อ่านอย่างเดียว ค้นด้วยคำว่า `3060 laptop`, `nitro`, `muxless`, `muxless amd`, `nootedred`, `5800H`, `internal display`
+
+| ใคร (ระดับแหล่ง) | วันที่ | ข้อความ / ข้อมูล | ผลต่อเรา |
+| --- | --- | --- | --- |
+| **`nullmoth` (ผู้พัฒนา)** | 12 ต.ค. | "AMD iGPU support is coming but **not with NootedRed** since i cant redistribute his work" | ไดรเวอร์ NVIDIA จะไม่ทำงานคู่กับ NootedRed ส่วน iGPU AMD จะมีไดรเวอร์ของตัวเอง (น่าจะเป็น NMXGPU ใน 2.0.0) |
+| `Jult` (สมาชิก) กระทู้ it-boots "Booted on R7-5800H + RTX 3060 Mobile" | 12 / 15 ต.ค. | รูป About This Mac: Ryzen 7 5800H + RTX 3060 Laptop 6 GB บน **Sequoia 15.8.1** ใช้ไดรเวอร์ 1.13 "apps and games is smooth" แต่ "**you need to disable the nootedred kext** after install nullmoth driver" และต้องปิด SSDT ที่ปิด dGPU | ฮาร์ดแวร์ตรงกับเรามากที่สุดเท่าที่เจอ **แต่ไม่ได้บอกว่าภาพออกจอในตัวหรือจอนอก** และไม่ได้บอกว่ามี MUX หรือเปล่า |
+| `zaelggk` / repo `aquanjsw/R9000P-2021H-OC-EFI` (สมาชิก + GitHub) | 15 ต.ค. | Legion R9000P 2021H (5800H + 3060 Laptop) บน **Tahoe 26.7.1 + ไดรเวอร์ 2.0.0** จอในตัว 2560×1600@165Hz และ HDMI ใช้ได้ ตอนติดตั้งใช้ hybrid mode แล้วสลับเป็น "**dGPU only mode**" หลังลงไดรเวอร์ | **Legion รุ่นนี้มี MUX** (dGPU-only ทำให้จอในตัวไปต่อกับ RTX) แต่ AN515-45 ไม่มี MUX เลยนำมาใช้ตรง ๆ ไม่ได้ ส่วนที่ยังใช้อ้างอิงได้คือ kext, ACPI และ Tahoe + 2.0.0 บน 5800H |
+| `Mido T.` (สมาชิก) | 12 ต.ค. | ถามตรงกับเคสเรา "Does the driver work on muxless amd? (Nvidia on HDMI, AMD iGPU with NootedRed)" | **ยังไม่มีใครตอบ** (คำตอบที่เกี่ยวข้องคือข้อความของ nullmoth ด้านบน) |
+| `Batu` (สมาชิก) | 15 ต.ค. | ไม่มี MUX, 3060 ต่อ HDMI, iGPU (Intel) ต่อจอในตัว ถามว่าจอในตัวจะใช้ได้ไหม | ยังไม่มีคำตอบ |
+| `azucar` (สมาชิก) | 15 ต.ค. | ถาม nullmoth ว่ามีแผนให้ dGPU ขับจอในตัวของโน้ตบุ๊ก MUXless ไหม | ยังไม่มีคำตอบ |
+| `Sealsealy` (Admin) | 15 ต.ค. | "do muxless laptop works now with internal display" | ยังไม่มีคำตอบ และแอดมินเองก็ยังไม่รู้ |
+| `ist` (สมาชิก) #tahoe | 15 ต.ค. | "didn't work for me cuz of internal display" | เป็นสัญญาณลบสำหรับโน้ตบุ๊กที่ไม่มี MUX |
+| Big Brother (บอต) ประกาศ 2.0 | 15 ต.ค. | changelog มี "correct DPI for your panel, **muxless laptops**" และ "AMD RX 9070 display and **MediaTek Wi-Fi drivers** are now opt-in" | มีไดรเวอร์ **MediaTek Wi-Fi** แบบทดลองแล้ว อาจเกี่ยวกับ MT7921 ของเรา (ยังไม่ได้ตรวจว่ารองรับชิปไหนบ้าง) |
+
+**สรุปจาก Discord:**
+
+1. **ไม่พบใครยืนยันว่าโน้ตบุ๊กที่ไม่มี MUX ใช้จอในตัวผ่าน RTX ได้** แม้แต่แอดมินก็ยังถามอยู่ (15 ต.ค.)
+2. เคสที่จอในตัวใช้ได้จริง (Legion R9000P) **มี MUX** ส่วนเคส 5800H + 3060 ของ Jult ไม่ได้บอกว่าภาพออกทางไหน
+3. **ลงไดรเวอร์ NVIDIA แล้วต้องปิด NootedRed** (ทั้ง Jult และ nullmoth พูดตรงกัน) แปลว่าบนเครื่องที่ไม่มี MUX จอในตัว (ต่อกับ iGPU) จะไม่มีไดรเวอร์เร่งความเร็ว
+4. ทางที่เป็นไปได้สำหรับ AN515-45 ยังเหมือนเดิม: ใช้จอนอกที่ต่อกับพอร์ต NVIDIA (ต้องตรวจ G4 ก่อน) หรือรอไดรเวอร์ iGPU AMD (NMXGPU) ที่ใช้คู่กันได้
+
 ---
 
 ## แหล่งอ้างอิง
 
+- https://github.com/aquanjsw/R9000P-2021H-OC-EFI (tahoe branch) — ตรวจ 2026-10-15
+- Discord NullMoth Systems ช่อง general, it-boots, nvidia-driver-laptop-help-1, tahoe, driver-updates — อ่านผ่านแอป Discord 2026-10-15
 - https://github.com/nullmoth/nvidia-macos-driver/releases/tag/v2.0.0 — ตรวจ 2026-10-15 (รองรับ Tahoe, known issues)
 - https://github.com/nullmoth/nvidia-macos-driver/releases — v1.15.0, v2.0.1, v2.0.2
 
