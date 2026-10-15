@@ -49,6 +49,28 @@
    - ถ้าค้างนาน > 5 นาที, รีบูตเอง หรือขึ้น panic → **ถ่ายรูปบรรทัดล่างสุด** แล้วหยุด
 5. เลือกภาษา → ถึงหน้า macOS Utilities (ภาพช้า/ไม่มี acceleration เป็นเรื่องปกติ ทัชแพดใช้ได้)
 
+## ขั้นที่ 4 (กรณีมี Tahoe ติดตั้งอยู่แล้ว — 2026-10-15) — ล้าง partition APFS ของ Tahoe
+
+ใช้แทนขั้นที่ 4 ปกติด้านล่าง เพราะพื้นที่ 256 GiB ถูก Tahoe ใช้ไปแล้ว (Sequoia ติดตั้งทับ Tahoe ไม่ได้ ต้องล้างก่อน)
+
+1. **Utilities → Terminal** แล้วรัน `diskutil list physical`
+2. Apacer ควรเห็นประมาณ:
+   ```
+   /dev/diskX (internal, physical):
+      1: EFI                     EFI           209.7 MB   diskXs1
+      2: Microsoft Reserved                    16.8 MB    diskXs2
+      3: Microsoft Basic Data                  236.1 GB   diskXs3   ← C: (ห้ามแตะ)
+      4: Apple_APFS Container diskY            274.9 GB   diskXs4   ← Tahoe
+      5: Windows Recovery                      886.0 MB   diskXs5
+   ```
+   **ถ่ายรูปส่งมาก่อน** แล้วรอผมยืนยันตัวระบุ
+3. ล้างเฉพาะ partition ที่ 4 (APFS ของ Tahoe) ให้เป็น APFS ใหม่ว่างเปล่า — แทน `diskXs4` ด้วยตัวระบุที่ผมยืนยัน:
+   ```
+   diskutil eraseVolume APFS "Macintosh HD" diskXs4
+   ```
+   ลบทุกอย่างใน Tahoe (รวม Preboot/Recovery ของมัน) แต่ไม่แตะ C:, EFI และ Windows Recovery
+4. ตรวจด้วย `diskutil list physical`: partition 4 ยังเป็น `Apple_APFS Container` 274.9 GB และมี volume `Macintosh HD` ว่าง → ข้ามไปขั้นที่ 5
+
 ## ขั้นที่ 4 — สร้าง APFS "Macintosh HD" ในพื้นที่ว่าง
 
 1. เมนูบน **Utilities → Terminal**
