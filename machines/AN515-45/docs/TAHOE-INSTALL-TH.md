@@ -10,7 +10,7 @@
 
 | Partition | เนื้อหา | ตรวจ |
 | --- | --- | --- |
-| E: `OPENCORE` (FAT32) | `EFI` = `private-build/candidate-tahoe10-install` — **NootedRed ปิด** (ช่วงติดตั้ง), PlatformInfo จริง; `EFI/OC/config-tahoe10.plist` = config หลังติดตั้ง (NootedRed เปิด) เตรียมไว้สลับ | ocvalidate 1.0.8 ผ่าน, `cmp` ตรง |
+| E: `OPENCORE` (FAT32) | `EFI` = `private-build/candidate-tahoe10` — **NootedRed เปิด** (ผู้ใช้เลือก 2026-10-15), PlatformInfo จริง; `EFI/OC/config-install.plist` = config ชุดติดตั้ง (NootedRed ปิด) สำรองไว้ | ocvalidate 1.0.8 ผ่าน, `cmp` ตรง |
 | E: | `EFI.sequoia-bak` = ชุดติดตั้ง Sequoia เดิม (`private-build/sequoia-install`) | เก็บไว้เฉย ๆ firmware ไม่ใช้ |
 | E: | `com.apple.recovery.boot` = Recovery 15.4.1 | ตัวเดิมที่เคยใช้ติดตั้ง Tahoe ได้ |
 | F: `UnPlugged` (exFAT) | `InstallAssistant.pkg` = **Tahoe 26.7.1 (25G241)** 18,380,974,544 bytes | ขนาดตรง catalog, SHA256 `CA854F49…B6F48A` ตรงกับไฟล์ที่ตรวจแล้ว |
@@ -63,6 +63,9 @@
 3. BIOS (F2): **Secure Boot = Disabled**, F12 Boot Menu = Enabled
 
 ## ขั้นที่ 3 — บูต Recovery จาก USB
+
+> ⚠️ NootedRed เปิดอยู่: รอบก่อน Recovery 15.4.1 + NootedRed **จอดำ** ถ้าจอดำหลังข้อความ verbose หยุดวิ่ง (รอ ~3 นาที)
+> → กดปุ่ม power ค้างให้ดับ กลับเข้า Windows แล้วบอกผม — ผมจะสลับ `config-install.plist` → `config.plist` ให้
 
 
 1. เปิดเครื่อง กด **F12** → **USB HDD: KINGSTON**
@@ -125,7 +128,7 @@
 
 ## ขั้นที่ 8 — เปิดกราฟิกและย้าย OpenCore ไป Apacer (ผมช่วยทำ)
 
-1. สลับ config บน USB: `config-tahoe10.plist` → `config.plist` (NootedRed เปิด) → บูตจาก USB อีกครั้ง ภาพควรลื่น
+1. config บน USB เปิด NootedRed อยู่แล้ว (ถ้าเคยสลับกลับเป็นชุดติดตั้ง ให้เปิดคืน) → บูตจาก USB อีกครั้ง ภาพควรลื่น
 2. ยืนยัน Windows ยังบูตได้ (ถอด USB → F12 → Windows Boot Manager)
 3. ลง tahoe10 ลง ESP ของ Apacer จาก Windows (Admin):
    ```
