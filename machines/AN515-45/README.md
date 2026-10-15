@@ -5,7 +5,7 @@
 - **ตอนนี้ไม่มี macOS ติดตั้งอยู่ และไม่มี OpenCore บน ESP ของ Apacer** (ถอดออกเมื่อ 2026-10-13)
 - เคยบูตได้จริงทั้ง Sequoia 15.8.1 (2026-10-09/11) และ Tahoe 26.7.1 (`candidate-tahoe10`, 2026-10-12)
 - 2026-10-14 เตรียม USB KINGSTON สำหรับติดตั้ง Sequoia ใหม่ไว้ครบแล้ว แต่ยกเลิกก่อนสร้าง APFS
-- จะกลับมาทำต่อ: เริ่มที่ `docs/SEQUOIA-REINSTALL-TH.md` (หรือ `docs/TAHOE-PLAN-TH.md` ถ้าเลือก Tahoe)
+- **2026-10-15 เริ่มใหม่ด้วย Tahoe 26.7.1** — USB เตรียมชุดติดตั้ง Tahoe แล้ว ทำต่อที่ `docs/TAHOE-INSTALL-TH.md`
 
 `TARGET.json` บันทึกสถานะ Tahoe ณ 2026-10-12 ส่วนเหตุการณ์หลังจากนั้นอยู่ท้าย `docs/PROGRESS-2026-10-09.md`
 
@@ -13,7 +13,8 @@
 
 | อยากรู้ | อ่าน |
 | --- | --- |
-| ติดตั้ง Sequoia ใหม่ (USB พร้อมแล้ว) | `docs/SEQUOIA-REINSTALL-TH.md` |
+| **ติดตั้ง Tahoe (USB พร้อมแล้ว)** | `docs/TAHOE-INSTALL-TH.md` |
+| ติดตั้ง Sequoia (ชุดสำรองบน USB) | `docs/SEQUOIA-REINSTALL-TH.md` |
 | แผนติดตั้ง Tahoe | `docs/TAHOE-PLAN-TH.md` |
 | EFI ที่บูต macOS ได้จริง (sanitized) | `final-efi/README-TH.md` |
 | ติดตั้ง/อัปเดต OpenCore ลง ESP | `docs/EFI-UPDATE-TH.md` |
@@ -25,6 +26,7 @@
 
 | ไฟล์ | เนื้อหา |
 | --- | --- |
+| `TAHOE-INSTALL-TH.md` | คู่มือติดตั้ง Tahoe 26.7.1 รอบ 2026-10-15 |
 | `SEQUOIA-REINSTALL-TH.md` | คู่มือติดตั้ง Sequoia 15.8.1 รอบ 2026-10-14 |
 | `TAHOE-PLAN-TH.md` | แผนและผลติดตั้ง Tahoe 26.7.1 |
 | `EFI-UPDATE-TH.md` | ติดตั้ง/อัปเดต OpenCore บน ESP ของ Apacer |
@@ -80,7 +82,7 @@ git checkout 34293f5 -- staging/AN515-45-Tahoe/candidates/candidate-v9
 | `installer/` | ตัวติดตั้ง Sequoia 15.8.1, Tahoe 26.7.1 (ตรวจ SHA แล้ว) และ Recovery 15.4.1 |
 | `packages/` | OpenCore/kext ที่แตก zip แล้ว ใช้โดย `build_candidate.py` |
 | `private/` | `PlatformInfo.json` (serial จริง) และ `usb-snapshot-2026-10-11/` (สำเนา USB เดิม: EFI, rescue configs) |
-| `private-build/` | EFI ที่ใส่ serial จริงแล้ว เช่น `sequoia-install` (ชุดบน USB KINGSTON), `usb-backup-2026-10-14` |
+| `private-build/` | EFI ที่ใส่ serial จริงแล้ว: `candidate-tahoe10-install` (ชุดบน USB KINGSTON ตอนนี้), `candidate-tahoe10` (หลังติดตั้ง), `sequoia-install`, `usb-backup-2026-10-14` |
 | `boot-logs/` | OpenCore logs และรูปหน้าจอจากการทดลอง |
 | `tools/SSDTTime/` | เครื่องมือ SSDTTime + ACPI dump จากเครื่องนี้ (`Results/OEM`) |
 | `firmware-evidence/SysReport/` | SysReport ดิบ |
