@@ -1,6 +1,6 @@
 # สถานะไดรเวอร์ NullMoth NVIDIA — Tahoe และการ์ดโน้ตบุ๊ก
 
-ตรวจ 2026-10-13 · สถานะ: **หลักฐานจากภายนอก ยังไม่ได้ทดสอบบนเครื่องนี้**
+ตรวจ 2026-10-13 · อัปเดต 2026-10-15 (v2.0.0 รองรับ Tahoe ดู[ท้ายเอกสาร](#อัปเดต-2026-10-15--v200-รองรับ-tahoe-อย่างเป็นทางการแล้ว)) · สถานะ: **หลักฐานจากภายนอก ยังไม่ได้ทดสอบบนเครื่องนี้**
 
 ตอบคำถาม G3 ใน [`../macos-cross-gpu/README-TH.md`](../macos-cross-gpu/README-TH.md)
 ว่าไดรเวอร์รองรับ RTX 3060 Laptop (GA106) บนเวอร์ชัน macOS ที่เราจะใช้หรือไม่
@@ -222,7 +222,52 @@
 
 ---
 
+## อัปเดต 2026-10-15 — v2.0.0 รองรับ Tahoe อย่างเป็นทางการแล้ว
+
+ตรวจจาก GitHub releases โดยตรง (แหล่งระดับ 1)
+
+### Releases ตั้งแต่ตรวจครั้งก่อน
+
+| เวอร์ชัน | วันที่ | สาระ |
+| --- | --- | --- |
+| 1.15.0 | 13 ต.ค. | release สุดท้ายที่เป็นสาย macOS 15 แก้จอดำบนการ์ดที่ไม่มี Resizable BAR, เพิ่ม T-series laptop GPU |
+| **2.0.0** | **15 ต.ค.** | **"supports macOS 15 Sequoia and macOS 26 Tahoe"** + security fixes ชุดใหญ่ + แก้ไดรเวอร์หลายจุด |
+| 2.0.1 | 15 ต.ค. | 1401 (Windows) ให้เครื่องที่มีการ์ด NVIDIA build Tahoe ได้ ซึ่ง 2.0.0 ยังบล็อกอยู่ |
+| 2.0.2 | 15 ต.ค. | แก้ 1401 ฝั่ง Windows เท่านั้น ไดรเวอร์ไม่เปลี่ยน |
+
+ข้อความใน 2.0.0: "Tahoe ships the macOS 26 accelerator built for this release." (1.15 ยังใช้ตัวเก่าที่ทำให้จอดำบน Tahoe)
+→ **ปิดคำถามข้อ 2 แล้ว: Tahoe รองรับทางการตั้งแต่ 2.0.0**
+
+### เรื่องที่ตรงกับเครื่องเรา (RTX 3060 Laptop, จอในตัวต่อกับ AMD iGPU)
+
+| หัวข้อ | สิ่งที่ release 2.0.0 บอก | ผลต่อเรา |
+| --- | --- | --- |
+| โน้ตบุ๊ก | Known issue: "Laptops with the screen on the **Intel** GPU: the built-in screen is not accelerated" | กล่าวถึงแค่โน้ตบุ๊ก Intel ไม่พูดถึง AMD iGPU เลย คาดว่าจอในตัวของเราก็ไม่ได้ acceleration เหมือนกัน (ยังไม่ยืนยัน) |
+| muxless | "Muxless Turing GPUs get the startup settle they need" | ระบุเฉพาะ Turing ส่วน RTX 3060 ของเราเป็น Ampere |
+| RTX 30 / 3060 | ไม่มีบรรทัดไหนพูดถึง | README ยังบอกว่าทดสอบหลักบน RTX 5060 |
+| sleep/wake | ไม่ได้พูดถึง (ครั้งสุดท้ายคือ 1.14.7: "remain open") | ถือว่ายังเป็นปัญหาค้าง |
+| SMBIOS | ไม่ได้พูดถึง | README ยังเขียนว่า `iMacPro1,1` และยังไม่ได้อัปเดตเรื่อง Tahoe (ขัดกับ release) ใช้ข้อมูลจาก release เป็นหลัก |
+| **ใหม่: AMD/Intel GPU (NMXGPU)** | ฟีเจอร์ทดลอง ปิดไว้เป็นค่าเริ่มต้น: "AMD and Intel GPU support (NMXGPU) and the NPU driver for macOS 15 and 26" | **อาจเป็นทางเลือกแทน NootedRed สำหรับ iGPU Vega ของเรา** แต่ยังไม่รู้ว่ารองรับ Cezanne หรือเปล่า ต้องตรวจต่อ |
+| Known issue อื่น | เสียงผ่าน HDMI/DP ยังไม่ทำงาน, eGPU ผ่าน Thunderbolt ไม่มีภาพ, Chrome decode วิดีโอด้วย CPU | — |
+
+### อัปเดตเงื่อนไข G3
+
+**G3 บน Tahoe: จาก "ไม่ผ่าน" เปลี่ยนเป็น "ผ่านในระดับทางการ"** แต่ RTX 3060 Laptop ยังไม่มีผลทดสอบ
+ข้อสรุปเรื่องจอยังเหมือนเดิม: จอในตัวที่ต่อกับ iGPU จะไม่ได้ acceleration ต้องใช้จอนอกที่ต่อกับพอร์ตของ NVIDIA
+**G4 (พอร์ต HDMI ต่อกับ GPU ตัวไหน) ยังคงเป็นการทดลองชี้ขาด**
+
+### อื่น ๆ บนบัญชี nullmoth
+
+- `1401-probe` (repo ใหม่) — เครื่องมือสแกนฮาร์ดแวร์แบบ offline บน USB อ่านอย่างเดียว ไม่เขียนลงดิสก์
+- `docs/MULTI-GPU.md` — เป็นวิธีแก้สำหรับเครื่องที่ใส่ RTX 4090 สี่ใบ ไม่เกี่ยวกับโน้ตบุ๊ก
+- `CARD-SUPPORT.md` ที่ root ของ repo ตอนนี้เปิดแล้วได้ 404 (ถูกย้ายหรือเปลี่ยนชื่อ)
+
+---
+
 ## แหล่งอ้างอิง
+
+- https://github.com/nullmoth/nvidia-macos-driver/releases/tag/v2.0.0 — ตรวจ 2026-10-15 (รองรับ Tahoe, known issues)
+- https://github.com/nullmoth/nvidia-macos-driver/releases — v1.15.0, v2.0.1, v2.0.2
 
 - https://nullmothsystems.com/downloads — ตรวจ 2026-10-13 (1.14.7, Sequoia เท่านั้น)
 - https://github.com/nullmoth/nvidia-macos-driver/releases/tag/v1.14.7 — release notes ระบุว่าไม่ประกาศรองรับ Tahoe
