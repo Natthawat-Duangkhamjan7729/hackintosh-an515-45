@@ -42,3 +42,6 @@ research/**/upstream/
 
 # Verified duplicates waiting for the user to delete
 /_delete-me/
+
+# NullMoth 1401 tool package (third-party binaries, 414 MB)
+/1401/

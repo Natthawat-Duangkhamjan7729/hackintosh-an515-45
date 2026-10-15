@@ -285,6 +285,25 @@
 3. **ลงไดรเวอร์ NVIDIA แล้วต้องปิด NootedRed** (ทั้ง Jult และ nullmoth พูดตรงกัน) แปลว่าบนเครื่องที่ไม่มี MUX จอในตัว (ต่อกับ iGPU) จะไม่มีไดรเวอร์เร่งความเร็ว
 4. ทางที่เป็นไปได้สำหรับ AN515-45 ยังเหมือนเดิม: ใช้จอนอกที่ต่อกับพอร์ต NVIDIA (ต้องตรวจ G4 ก่อน) หรือรอไดรเวอร์ iGPU AMD (NMXGPU) ที่ใช้คู่กันได้
 
+### G4 ตอบแล้วจาก Windows (2026-10-15) — ใช้วิธีเดียวกับที่ 1401 ใช้
+
+1401 (`panel_guard.py`, `nullmoth.mux_help`) ดูจาก Windows ว่าจอไหนต่อกับ GPU ตัวไหน ตรวจแบบเดียวกันบนเครื่องนี้ (อ่านอย่างเดียว, `Get-PnpDevice -Class Monitor` + `DEVPKEY_Device_Parent`):
+
+| จอ | GPU ที่ขับ |
+| --- | --- |
+| Integrated Monitor (แผง CMN1521, internal) | **AMD Radeon (1002:1638, Cezanne iGPU)** → ยืนยันว่า muxless |
+| Generic Monitor (SAMSUNG) — จอนอกที่เคยเสียบ | **NVIDIA RTX 3060 Laptop (10DE:2520)** |
+
+→ **พอร์ตที่เคยเสียบจอ Samsung เดินตรงจาก RTX 3060** (ต้องถามผู้ใช้ว่าเป็นพอร์ต HDMI หรือ USB-C)
+เส้นทาง NVIDIA บน macOS จึงเป็นไปได้ผ่านจอนอกที่พอร์ตนั้น
+
+### สิ่งที่อยู่ในแพ็กเกจ 1401 2.0.2 (`D:\Hackintosh`1`, ไม่เข้า git)
+
+- `NullMoth/nullmoth-nvidia-2.0.2.tar.gz`: ไดรเวอร์ NVIDIA + **NMXGPU 1.0.0** แยกรุ่น macOS 15 และ 26; NMXGPU จับคู่อุปกรณ์ AMD ทุกตัว (`0x00001002&0x0000ffff`) และ Intel ทุกตัว — **ยังไม่รู้ว่ารองรับ Cezanne จริงหรือไม่** (ตัดสินในโค้ด)
+- `amd_gpu.py`: จัด 1002:1638 เป็น "Cezanne (Vega iGPU)" ใช้ firmware framebuffer, ไม่รวม NootedRed (ติดเรื่องสัญญาอนุญาต)
+- `engine.py`: หมายเหตุว่า build NVIDIA 15 ชุดบน Ryzen 4800H/5800H/5600H เคยลง Ventura/Sonoma ซึ่งไดรเวอร์ไม่โหลด
+- `known_machines.json`: มีแค่ 2 เครื่อง (เดสก์ท็อป) ไม่มีโน้ตบุ๊ก
+
 ---
 
 ## แหล่งอ้างอิง
