@@ -2,10 +2,10 @@
 
 ## สถานะล่าสุด (2026-10-15)
 
-- **ตอนนี้ไม่มี macOS ติดตั้งอยู่ และไม่มี OpenCore บน ESP ของ Apacer** (ถอดออกเมื่อ 2026-10-13)
+- **Tahoe 26 ติดตั้งอยู่ใน APFS container (partition 4) ของ Apacer** และ ESP ของ Apacer ยังไม่มี OpenCore (บูตผ่าน USB)
+- แผนตอนนี้: ลบ Tahoe แล้วติดตั้ง Sequoia 15.8.1 แทน → `docs/SEQUOIA-OVER-TAHOE-TH.md`
+- USB KINGSTON มีชุดติดตั้ง Sequoia (NootedRed ปิด, Recovery 15.4.1, InstallAssistant 15.8.1) และ `EFI.tahoe-bak`
 - เคยบูตได้จริงทั้ง Sequoia 15.8.1 (2026-10-09/11) และ Tahoe 26.7.1 (`candidate-tahoe10`, 2026-10-12)
-- 2026-10-14 เตรียม USB KINGSTON สำหรับติดตั้ง Sequoia ใหม่ไว้ครบแล้ว แต่ยกเลิกก่อนสร้าง APFS
-- จะกลับมาทำต่อ: เริ่มที่ `docs/SEQUOIA-REINSTALL-TH.md` (หรือ `docs/TAHOE-PLAN-TH.md` ถ้าเลือก Tahoe)
 
 `TARGET.json` บันทึกสถานะ Tahoe ณ 2026-10-12 ส่วนเหตุการณ์หลังจากนั้นอยู่ท้าย `docs/PROGRESS-2026-10-09.md`
 
@@ -13,7 +13,8 @@
 
 | อยากรู้ | อ่าน |
 | --- | --- |
-| ติดตั้ง Sequoia ใหม่ (USB พร้อมแล้ว) | `docs/SEQUOIA-REINSTALL-TH.md` |
+| ลบ Tahoe แล้วติดตั้ง Sequoia แทน (แผนปัจจุบัน) | `docs/SEQUOIA-OVER-TAHOE-TH.md` |
+| ติดตั้ง Sequoia ลงพื้นที่ว่าง (รอบ 2026-10-14) | `docs/SEQUOIA-REINSTALL-TH.md` |
 | แผนติดตั้ง Tahoe | `docs/TAHOE-PLAN-TH.md` |
 | EFI ที่บูต macOS ได้จริง (sanitized) | `final-efi/README-TH.md` |
 | ติดตั้ง/อัปเดต OpenCore ลง ESP | `docs/EFI-UPDATE-TH.md` |
@@ -25,7 +26,8 @@
 
 | ไฟล์ | เนื้อหา |
 | --- | --- |
-| `SEQUOIA-REINSTALL-TH.md` | คู่มือติดตั้ง Sequoia 15.8.1 รอบ 2026-10-14 |
+| `SEQUOIA-OVER-TAHOE-TH.md` | ลบ Tahoe แล้วติดตั้ง Sequoia 15.8.1 แทน (2026-10-15) |
+| `SEQUOIA-REINSTALL-TH.md` | คู่มือติดตั้ง Sequoia 15.8.1 ลงพื้นที่ว่าง รอบ 2026-10-14 |
 | `TAHOE-PLAN-TH.md` | แผนและผลติดตั้ง Tahoe 26.7.1 |
 | `EFI-UPDATE-TH.md` | ติดตั้ง/อัปเดต OpenCore บน ESP ของ Apacer |
 | `DEV-PLAN-TH.md` | งานหลังติดตั้ง (ไม่จำเป็นต่อการบูต) |
