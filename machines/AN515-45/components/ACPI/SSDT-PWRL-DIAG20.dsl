@@ -1,0 +1,68 @@
+/*
+ * SSDT-PWRL-DIAG20: DIAGNOSTIC ONLY. Forces STAPM/slow/fast PPT to 20 W under macOS
+ * on AC and battery, to test whether \CDPC -> ALIB has any effect at all.
+ * Derived from SSDT-PWRL (same objects); do not use both tables together.
+ *
+ * Original SSDT-PWRL description:
+ *
+ * Firmware path (DSDT, AN515-45): the EC raises query _Q20 and the DSDT
+ * method \CDPC (func, watts) passes the EC's values to \_SB.ALIB (0x0C):
+ *   func 0x05 = STAPM limit, 0x07 = slow PPT, 0x06 = fast PPT, 0x03 = Tctl limit.
+ * Measured on 2026-11-06 under macOS on AC: package power flat at ~34 W while
+ * Tctl was 71-74 C, i.e. a power limit, not a thermal one.
+ *
+ * This table:
+ *  - replaces EC0._Q20 (the DSDT copy must be renamed _Q20 -> XQ20, DSDT only):
+ *    it first runs the original XQ20 (EC values), then on AC applies the targets.
+ *  - applies the targets once at boot from \_SB.PWRL._INI when on AC.
+ * On battery the EC values stay unchanged. The Tctl limit (func 0x03) is never touched.
+ * Targets are inside AMD's 35-54 W cTDP range for the Ryzen 7 5800H.
+ */
+DefinitionBlock ("", "SSDT", 2, "ACER", "PWRLD20", 0x00001000)
+{
+    External (\CDPC, MethodObj)                           // 2 Arguments
+    External (_SB_.PCI0.LPC0.ACAD._PSR, MethodObj)        // 0 Arguments
+    External (_SB_.PCI0.LPC0.EC0_, DeviceObj)
+    External (_SB_.PCI0.LPC0.EC0_.XQ20, MethodObj)        // 0 Arguments
+
+    Device (_SB.PWRL)
+    {
+        Name (_HID, "PWRL0000")
+        Name (STPW, 20)   // STAPM limit, W
+        Name (SLPW, 20)   // slow PPT, W
+        Name (FSPW, 20)   // fast PPT, W
+
+        Method (_STA, 0, NotSerialized)
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0B)   // present, enabled, functioning; not shown in UI
+            }
+            Return (Zero)
+        }
+
+        Method (APLY, 0, Serialized)
+        {
+            If (_OSI ("Darwin"))
+            {
+                \CDPC (0x05, STPW)   // DIAG: no AC check
+                \CDPC (0x07, SLPW)
+                \CDPC (0x06, FSPW)
+            }
+        }
+
+        Method (_INI, 0, NotSerialized)
+        {
+            APLY ()
+        }
+    }
+
+    Scope (_SB.PCI0.LPC0.EC0)
+    {
+        Method (_Q20, 0, NotSerialized)  // _Qxx: EC Query
+        {
+            XQ20 ()
+            \_SB.PWRL.APLY ()
+        }
+    }
+}
