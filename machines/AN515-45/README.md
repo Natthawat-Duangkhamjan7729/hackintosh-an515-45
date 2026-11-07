@@ -1,6 +1,14 @@
 # Acer Nitro 5 AN515-45-R375 — Hackintosh
 
-## สถานะล่าสุด (2026-10-15)
+## สถานะล่าสุด (2026-11-07)
+
+- **macOS Tahoe 26.7.1 ติดตั้งอยู่บน Apacer (APFS disk1s4) และบูตจาก OpenCore บน USB KINGSTON** (OpenCore 1.0.8 DEBUG, SMBIOS MacBookPro16,2)
+- จอนอก LG ต่อ HDMI ผ่าน RTX 3060 ใช้ไดรเวอร์ NullMoth 2.7.2 (Metal 3) ส่วน NootedRed, AppleALC และ VoodooHDA ปิดไว้
+- CPU: AMDRyzenCPUPowerManagement + SMCAMDProcessor 0.7.2f1 และ `SSDT-PWRL` v2 ยกเพดานพลังงานตอนเสียบไฟจาก ~34 W เป็น ~44 W (ตอนใช้แบตยังใช้ค่าของ EC)
+- เสียง: NMXAudio ของ NullMoth ขับ ALC295 (ลำโพงยืนยันแล้ว; ไมค์และช่องหูฟังยังไม่ได้ทดสอบ) และ HDMI ของ RTX (ยังไม่ได้ฟังจริง เพราะจอไม่มีลำโพง)
+- ผลวัดและขั้นตอนทั้งหมดอยู่ท้าย `docs/PROGRESS-2026-10-09.md` เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
+
+### ก่อนหน้า (2026-10-15)
 
 - **ตอนนี้ไม่มี macOS ติดตั้งอยู่ และไม่มี OpenCore บน ESP ของ Apacer** (ถอดออกเมื่อ 2026-10-13)
 - เคยบูตได้จริงทั้ง Sequoia 15.8.1 (2026-10-09/11) และ Tahoe 26.7.1 (`candidate-tahoe10`, 2026-10-12)
