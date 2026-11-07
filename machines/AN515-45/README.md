@@ -2,26 +2,24 @@
 
 ## สถานะล่าสุด (2026-11-07)
 
-- **macOS Tahoe 26.7.1 ติดตั้งอยู่บน Apacer (APFS disk1s4) และบูตจาก OpenCore บน USB KINGSTON** (OpenCore 1.0.8 DEBUG, SMBIOS MacBookPro16,2)
-- จอนอก LG ต่อ HDMI ผ่าน RTX 3060 ใช้ไดรเวอร์ NullMoth 2.7.2 (Metal 3) ส่วน NootedRed, AppleALC และ VoodooHDA ปิดไว้
-- CPU: AMDRyzenCPUPowerManagement + SMCAMDProcessor 0.7.2f1 และ `SSDT-PWRL` v2 ยกเพดานพลังงานตอนเสียบไฟจาก ~34 W เป็น ~44 W (ตอนใช้แบตยังใช้ค่าของ EC)
-- เสียง: NMXAudio ของ NullMoth ขับ ALC295 (ลำโพงยืนยันแล้ว; ไมค์และช่องหูฟังยังไม่ได้ทดสอบ) และ HDMI ของ RTX (ยังไม่ได้ฟังจริง เพราะจอไม่มีลำโพง)
-- ผลวัดและขั้นตอนทั้งหมดอยู่ท้าย `docs/PROGRESS-2026-10-09.md` เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
+- **macOS Tahoe 26.7.1 ติดตั้งอยู่บน Apacer** (APFS 249.5 GB) **บูตจาก USB KINGSTON** — ESP ของ Apacer ไม่มี OpenCore ตั้งแต่ 2026-10-27
+- config บน USB = `candidate-tahoe-nullmoth-pwrl2-nmxaudio` (private-build, `cmp` ตรงกัน ตรวจ 2026-11-07) = `pwrl2` + ปิด VoodooHDA
+- **จอนอก LG 1080p@100Hz ต่อ HDMI ขับด้วย RTX 3060 ผ่าน NullMoth 2.7.2** (Metal 3) · จอในตัวไม่ได้ออนไลน์ · NootedRed ปิด · iGPU ไม่มีไดรเวอร์
+- CPU: AMDRyzenCPUPowerManagement + SMCAMDProcessor อ่าน sensor ได้ · **SSDT-PWRL v2** ยกเพดานไฟตอนเสียบสายจาก ~34 W เป็น ~44 W (แบตเตอรี่คงเดิม 18.5 W)
+- เสียง: **NMXAudio ของ NullMoth** ขับ ALC295 (ลำโพงยืนยันแล้ว) และ HDMI ของ RTX · VoodooHDA ปิด เพราะทำให้ IOAudioFamily โหลดไม่ได้
+- ใช้ได้: LAN, Bluetooth, touchpad/keyboard · ยังไม่มี: Wi-Fi · วิดีโอ: มี H.264/HEVC encode/decode แบบฮาร์ดแวร์ แต่ 4K HEVC decode ได้ ~10 fps และกิน CPU
+- ยังไม่ทดสอบในชุดนี้: ไมค์, ช่องหูฟัง, เสียงผ่าน HDMI, sleep/wake (SSDT-Acer-NoHybGfx ปิดอยู่), โหลดหนักต่อเนื่องนาน, CPU+GPU พร้อมกัน
+- ช่วง 2026-10-27 → 11-06 (ติดตั้งใหม่และตั้ง NullMoth) **ไม่มีบันทึก** — ดูท้าย `docs/PROGRESS-2026-10-09.md` · เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
 
-### ก่อนหน้า (2026-10-15)
-
-- **ตอนนี้ไม่มี macOS ติดตั้งอยู่ และไม่มี OpenCore บน ESP ของ Apacer** (ถอดออกเมื่อ 2026-10-13)
-- เคยบูตได้จริงทั้ง Sequoia 15.8.1 (2026-10-09/11) และ Tahoe 26.7.1 (`candidate-tahoe10`, 2026-10-12)
-- 2026-10-14 เตรียม USB KINGSTON สำหรับติดตั้ง Sequoia ใหม่ไว้ครบแล้ว แต่ยกเลิกก่อนสร้าง APFS
-- **2026-10-15 เริ่มใหม่** — เตรียม Tahoe แล้วผู้ใช้เปลี่ยนเป็น **Sequoia 15.8.1** · C: ย่อแล้ว (ว่าง 256 GiB) · USB = ชุดติดตั้ง Sequoia ทำต่อที่ `docs/SEQUOIA-REINSTALL-TH.md` ขั้นที่ 2
-
-`TARGET.json` บันทึกสถานะ Tahoe ณ 2026-10-12 ส่วนเหตุการณ์หลังจากนั้นอยู่ท้าย `docs/PROGRESS-2026-10-09.md`
+ประวัติโดยย่อ: Sequoia 15.8.1 บูตได้ 2026-10-09/11 · Tahoe `candidate-tahoe10` 2026-10-12 · ถอดออก 2026-10-16 และ 2026-10-27 · ติดตั้ง Tahoe ใหม่ 2026-10-26 และอีกครั้งหลัง 10-27
+`TARGET.json` สรุปสถานะและงานถัดไป (อัปเดต 2026-11-06)
 
 ## เริ่มอ่านที่ไหน
 
 | อยากรู้ | อ่าน |
 | --- | --- |
-| **ติดตั้ง Tahoe (USB พร้อมแล้ว)** | `docs/TAHOE-INSTALL-TH.md` |
+| ติดตั้ง Tahoe | `docs/TAHOE-INSTALL-TH.md` |
+| วัดผล CPU/GPU, SSDT-PWRL | `tools/cpu-bench/`, `tools/gpu-bench/`, `components/ACPI/SSDT-PWRL.dsl` |
 | ติดตั้ง Sequoia (ชุดสำรองบน USB) | `docs/SEQUOIA-REINSTALL-TH.md` |
 | แผนติดตั้ง Tahoe | `docs/TAHOE-PLAN-TH.md` |
 | EFI ที่บูต macOS ได้จริง (sanitized) | `final-efi/README-TH.md` |
@@ -34,7 +32,7 @@
 
 | ไฟล์ | เนื้อหา |
 | --- | --- |
-| `TAHOE-INSTALL-TH.md` | คู่มือติดตั้ง Tahoe 26.7.1 รอบ 2026-10-15 |
+| `TAHOE-INSTALL-TH.md` | คู่มือติดตั้ง Tahoe 26.7.1 รอบ 2026-10-15 (ใช้ซ้ำ 2026-10-26) |
 | `SEQUOIA-REINSTALL-TH.md` | คู่มือติดตั้ง Sequoia 15.8.1 รอบ 2026-10-14 |
 | `TAHOE-PLAN-TH.md` | แผนและผลติดตั้ง Tahoe 26.7.1 |
 | `EFI-UPDATE-TH.md` | ติดตั้ง/อัปเดต OpenCore บน ESP ของ Apacer |
@@ -50,7 +48,7 @@
 
 | โฟลเดอร์/ไฟล์ | เนื้อหา |
 | --- | --- |
-| `TARGET.json` | สรุปเป้าหมาย สถานะ และขั้นต่อไป (ณ 2026-10-12) |
+| `TARGET.json` | สรุปเป้าหมาย สถานะ และขั้นต่อไป (ณ 2026-11-06) |
 | `checksums.json` | SHA256 ของไฟล์ที่ดาวน์โหลด (ไบนารีไม่ได้ commit) |
 | `docs/` | เอกสาร (ตารางด้านบน) |
 | `final-efi/` | EFI ที่บูต Sequoia 15.8.1 ได้จริง (sanitized, ไม่มี PlatformInfo จริงและไม่มีไบนารี) |

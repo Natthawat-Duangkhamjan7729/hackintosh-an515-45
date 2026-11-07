@@ -1,4 +1,4 @@
-# ติดตั้ง macOS Tahoe 26.7.1 (รอบ 2026-10-15)
+# ติดตั้ง macOS Tahoe 26.7.1 (รอบ 2026-10-15, ใช้ซ้ำ 2026-10-26 สำหรับงาน RE NootedRed)
 
 ทำซ้ำเส้นทางที่เคยติดตั้ง Tahoe สำเร็จเมื่อ 2026-10-12 (Recovery 15.4.1 + UnPlugged, บันทึกใน `PROGRESS-2026-10-09.md`)
 แล้วใช้ `candidate-tahoe10` ซึ่งเป็นชุดที่บูต Tahoe จาก Apacer ได้จริง
@@ -6,12 +6,12 @@
 > ⚠️ **ห้าม Erase ดิสก์ทั้งลูกใน Disk Utility เด็ดขาด** — Apacer มี Windows อยู่ การ Erase ทั้งลูกจะลบ Windows ทั้งหมด
 > ⚠️ **หมายเลขดิสก์ (`diskN`) เปลี่ยนได้ทุกครั้งที่บูต** — ใช้ค่าที่เห็นบนจอรอบนั้นเสมอ ถ้าไม่แน่ใจ ถ่ายรูปส่งมาก่อนรันคำสั่งที่เขียนดิสก์
 
-## สถานะ USB KINGSTON (เตรียมและตรวจแล้ว 2026-10-15)
+## สถานะ USB KINGSTON (สลับกลับเป็นชุด Tahoe และตรวจแล้ว 2026-10-26)
 
 | Partition | เนื้อหา | ตรวจ |
 | --- | --- | --- |
-| E: `OPENCORE` (FAT32) | `EFI` = `private-build/candidate-tahoe10` — **NootedRed เปิด** (ผู้ใช้เลือก 2026-10-15), PlatformInfo จริง; `EFI/OC/config-install.plist` = config ชุดติดตั้ง (NootedRed ปิด) สำรองไว้ | ocvalidate 1.0.8 ผ่าน, `cmp` ตรง |
-| E: | `EFI.sequoia-bak` = ชุดติดตั้ง Sequoia เดิม (`private-build/sequoia-install`) | เก็บไว้เฉย ๆ firmware ไม่ใช้ |
+| E: `OPENCORE` (FAT32) | `EFI` = `private-build/candidate-tahoe10-install` — **NootedRed ปิด** (ชุดติดตั้ง), PlatformInfo จริง; `EFI/OC/config-tahoe10.plist` = config หลังติดตั้ง (NootedRed เปิด) | ocvalidate 1.0.8 ผ่านทั้งสองไฟล์, `diff -rq`/`cmp` ตรง |
+| E: | `EFI.sequoia-bak` = ชุด Sequoia เดิม (`sequoia-install` + ไฟล์ที่ถูกเพิ่ม 2026-10-16: AMFIPass, NullMothSafe.efi, config สำรองจาก nullmoth) | เก็บไว้ทั้งชุด ไม่แตะข้างใน |
 | E: | `com.apple.recovery.boot` = Recovery 15.4.1 | ตัวเดิมที่เคยใช้ติดตั้ง Tahoe ได้ |
 | F: `UnPlugged` (exFAT) | `InstallAssistant.pkg` = **Tahoe 26.7.1 (25G241)** 18,380,974,544 bytes | ขนาดตรง catalog, SHA256 `CA854F49…B6F48A` ตรงกับไฟล์ที่ตรวจแล้ว |
 | F: | `Sequoia-15.8.1-24H32.pkg.old` | เปลี่ยนชื่อไว้ไม่ให้ UnPlugged หยิบผิด |
@@ -64,8 +64,8 @@
 
 ## ขั้นที่ 3 — บูต Recovery จาก USB
 
-> ⚠️ NootedRed เปิดอยู่: รอบก่อน Recovery 15.4.1 + NootedRed **จอดำ** ถ้าจอดำหลังข้อความ verbose หยุดวิ่ง (รอ ~3 นาที)
-> → กดปุ่ม power ค้างให้ดับ กลับเข้า Windows แล้วบอกผม — ผมจะสลับ `config-install.plist` → `config.plist` ให้
+> ℹ️ NootedRed ปิดอยู่ (รอบก่อน Recovery 15.4.1 + NootedRed **จอดำ**) ภาพจะช้าเป็นเรื่องปกติ
+> ถ้าจอดำหลังข้อความ verbose หยุดวิ่ง (รอ ~3 นาที) → กดปุ่ม power ค้างให้ดับ กลับเข้า Windows แล้วบอกผม
 
 
 1. เปิดเครื่อง กด **F12** → **USB HDD: KINGSTON**
@@ -128,11 +128,11 @@
 
 ## ขั้นที่ 8 — เปิดกราฟิกและย้าย OpenCore ไป Apacer (ผมช่วยทำ)
 
-1. config บน USB เปิด NootedRed อยู่แล้ว (ถ้าเคยสลับกลับเป็นชุดติดตั้ง ให้เปิดคืน) → บูตจาก USB อีกครั้ง ภาพควรลื่น
+1. บอกผม ผมจะสลับ `config-tahoe10.plist` (NootedRed เปิด) เป็น `config.plist` บน USB → บูตจาก USB อีกครั้ง ภาพควรลื่น (อาการเพี้ยนใน Chromium/Safari คือเป้าของงาน RE)
 2. ยืนยัน Windows ยังบูตได้ (ถอด USB → F12 → Windows Boot Manager)
 3. ลง tahoe10 ลง ESP ของ Apacer จาก Windows (Admin):
    ```
-   powershell -ExecutionPolicy Bypass -File "D:\Hackintosh\machines\AN515-45\tools\Install-OpenCore-ESP.ps1" -Source "D:\Hackintosh\machines\AN515-45\private-build\candidate-tahoe10\EFI\OC" -WhatIf
+   powershell -ExecutionPolicy Bypass -File "D:\Projects\Hackintosh\machines\AN515-45\tools\Install-OpenCore-ESP.ps1" -Source "D:\Projects\Hackintosh\machines\AN515-45\private-build\candidate-tahoe10\EFI\OC" -WhatIf
    ```
    ผ่านแล้วค่อยรันซ้ำโดยไม่มี `-WhatIf`
 

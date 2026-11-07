@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-11-06",
   "machine": "Acer Nitro 5 AN515-45-R375",
   "macOS": {
     "name": "Tahoe",
@@ -7,32 +7,37 @@
     "build": "25G241",
     "catalogProduct": "142-28081",
     "installerVerified": "size + catalog Digest (xar TOC SHA-1) + all payload SHA-1s (tools/verify_pkg.py); SHA256 recorded; Apple signature not checked",
-    "recovery": "bootstrap with Recovery 15.4.1 (24E263), untested with the 26.7.1 installer",
-    "previous": "Sequoia 15.8.1 (installed, then removed 2026-10-12)"
+    "recovery": "Recovery 15.4.1 (24E263) bootstrap worked for the 26.7.1 install (2026-10-15 and 2026-10-26)",
+    "previous": "Sequoia 15.8.1 (installed 2026-10-15, removed 2026-10-16)"
   },
   "openCore": {
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-tahoe10 (private) on the Apacer ESP (macOS boot from Apacer confirmed 2026-10-12, no USB) and on the USB (spare). Previous ESP OC = v10 kept as EFI/OC.bak-20261012-153504; full backup ~/ESP-Backup-20261012-153504",
-  "initialGraphics": "NootedRed 0.8.10 drives the internal panel on installed macOS 15.8.1 (black only in Recovery 15.4.1)",
-  "nvidiaExperiment": "RTX 3060 powered off in Darwin by SSDT-Acer-NoHybGfx (--nodgpu); required for clamshell sleep and S3. NullMoth experiment would need it removed",
-  "usbMap": "components/Kexts/UTBMap.kext",
+  "activeConfig": "candidate-tahoe-nullmoth-pwrl2-nmxaudio (private; pwrl2 with VoodooHDA disabled) on the KINGSTON USB, config.plist cmp identical (checked 2026-11-07). macOS boots from the USB; no OpenCore on the Apacer ESP since 2026-10-27. Earlier configs kept on the USB as config.plist.pre-* and config-*.plist",
+  "initialGraphics": "NootedRed disabled. The RTX 3060 drives the internal panel through NullMoth 2.7.2 (Metal 3, 1920x1080). The AMD iGPU has no driver",
+  "nvidiaExperiment": "Active: NullMoth 2.7.2 kexts in /Library/Extensions; SSDT-Acer-NoHybGfx disabled, so the earlier sleep fix no longer applies. Needs AMFIPass, AMFI boot-arg relaxations and SIP kext/filesystem protections off. How it was set up (after 2026-10-27) is not logged",
+  "usbMap": "USBToolBox 1.2.0 with UTBMap (loaded, 2026-11-06)",
   "usbMapStatus": "USBMap 1.2 (macOS 26 keys) confirmed working on Tahoe 26.7.1; see docs/USB-MAP-REVIEW.md",
   "installation": {
-    "target": "Dual-boot on Apacer AS2280P4 512 GB (Windows NVMe), 256.00 GB unallocated after C: (s3) and before Windows Recovery (s4)",
+    "target": "Dual-boot on Apacer AS2280P4 512 GB: APFS container disk0s4 249.5 GB (reinstalled after 2026-10-27; exact steps not logged)",
     "method": "Offline install with UnPlugged from the exFAT USB partition",
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "Tahoe 26.7.1 (candidate-tahoe10): USB, graphics, LAN, input, Bluetooth, graded audio (VoodooHDA VolumeChangeFix), lid sleep/wake (RTX 3060 off via SSDT), internal keyboard freeze addressed by ps2kbdonly=1 (no recurrence so far). Missing: Wi-Fi. USB audio untested (IOAudioFamily duplicate-class conflict).",
+  "status": "Tahoe 26.7.1 with NullMoth (RTX 3060 drives the display), booted from the USB. Working (checked 2026-11-07): external LG display on HDMI/Metal 3, LAN (RTL8111), Bluetooth on, internal speakers through NullMoth NMXAudio (VoodooHDA disabled; NVIDIA HDMI audio device present), touchpad/keyboard, CPU sensors and the 44 W AC limit. Missing: Wi-Fi, iGPU driver. Untested in this setup: microphone, headphone jack, HDMI sound, sleep/wake, long sustained load, combined CPU+GPU load",
   "nextSteps": [
-    "Boot Windows from the Apacer OpenCore entry and confirm (macOS confirmed)",
-    "Keep watching the internal keyboard (ps2kbdonly=1); test Windows via Windows Boot Manager as falsifier for the Windows-side freeze",
-    "Optional post-install tuning: remove -v/debug boot-args, OpenCore RELEASE, picker/timeout, ScanPolicy",
-    "Audio follow-up: headphones, HDMI, USB audio",
-    "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921"
+    "Document how NullMoth and the current USB EFI were set up after 2026-10-27 (which config-*.plist on the USB came from which session)",
+    "Test sleep/wake with NullMoth and SSDT-Acer-NoHybGfx off; check that the PWRL limits survive wake",
+    "PWRL v2: 10-15 min sustained load and combined CPU+GPU load; bisect ALIB 0x13 vs 0x2E; look into 13.5-20 W idle power",
+    "Watch for the reported ~1 s mouse freezes with AMDRyzenCPUPowerManagement on Tahoe",
+    "Decide whether to install OpenCore on the Apacer ESP (macOS currently needs the USB)",
+    "Post-install tuning: remove -v/debug boot-args, OpenCore RELEASE, picker/timeout, ScanPolicy; record why each AMFI/SIP relaxation is needed",
+    "Keep watching the internal keyboard (ps2kbdonly=1); test Windows via Windows Boot Manager as falsifier",
+    "Wi-Fi MT7921: hardware decision (replace card / USB dongle) or research/mt7921",
+    "Verify both USB-C orientations for the USB map"
   ],
-  "directoryNote": "Active target is Tahoe 26.7.1 again",
-  "identity": "Real PlatformInfo generated locally (macserial); stored only in private/PlatformInfo.json; always build with --private for ESP updates"
+  "directoryNote": "Active target: Tahoe 26.7.1 with NullMoth (RTX 3060)",
+  "identity": "Real PlatformInfo generated locally (macserial); stored only in private/PlatformInfo.json; always build with --private for ESP updates",
+  "cpuPower": "AMDRyzenCPUPowerManagement 0.7.2 + SMCAMDProcessor for sensors; SSDT-PWRL v2 (+ _Q20->XQ20 patch) raises the AC package limit from ~34 W to ~44 W (STAPM/slow/fast 45/45/54 W, ALIB 0x13 and 0x2E 45 W); battery stays at the EC limit 18.5 W"
 }
