@@ -1,14 +1,15 @@
 # Acer Nitro 5 AN515-45-R375 — Hackintosh
 
-## สถานะล่าสุด (2026-11-06)
+## สถานะล่าสุด (2026-11-07)
 
 - **macOS Tahoe 26.7.1 ติดตั้งอยู่บน Apacer** (APFS 249.5 GB) **บูตจาก USB KINGSTON** — ESP ของ Apacer ไม่มี OpenCore ตั้งแต่ 2026-10-27
-- config บน USB = `candidate-tahoe-nullmoth-pwrl2` (private-build, `cmp` ตรงกัน ตรวจ 2026-11-06)
-- **จอในตัวขับด้วย RTX 3060 ผ่าน NullMoth 2.7.2** (Metal 3) · NootedRed ปิด · iGPU ไม่มีไดรเวอร์
+- config บน USB = `candidate-tahoe-nullmoth-pwrl2-nmxaudio` (private-build, `cmp` ตรงกัน ตรวจ 2026-11-07) = `pwrl2` + ปิด VoodooHDA
+- **จอนอก LG 1080p@100Hz ต่อ HDMI ขับด้วย RTX 3060 ผ่าน NullMoth 2.7.2** (Metal 3) · จอในตัวไม่ได้ออนไลน์ · NootedRed ปิด · iGPU ไม่มีไดรเวอร์
 - CPU: AMDRyzenCPUPowerManagement + SMCAMDProcessor อ่าน sensor ได้ · **SSDT-PWRL v2** ยกเพดานไฟตอนเสียบสายจาก ~34 W เป็น ~44 W (แบตเตอรี่คงเดิม 18.5 W)
-- ใช้ได้: LAN, Bluetooth, เสียงลำโพง/ไมค์ (VoodooHDA), touchpad/keyboard · ยังไม่มี: Wi-Fi
-- ยังไม่ทดสอบในชุดนี้: sleep/wake (SSDT-Acer-NoHybGfx ปิดอยู่), โหลดหนักต่อเนื่องนาน, CPU+GPU พร้อมกัน
-- ช่วง 2026-10-27 → 11-06 (ติดตั้งใหม่และตั้ง NullMoth) **ไม่มีบันทึก** — ดูท้าย `docs/PROGRESS-2026-10-09.md`
+- เสียง: **NMXAudio ของ NullMoth** ขับ ALC295 (ลำโพงยืนยันแล้ว) และ HDMI ของ RTX · VoodooHDA ปิด เพราะทำให้ IOAudioFamily โหลดไม่ได้
+- ใช้ได้: LAN, Bluetooth, touchpad/keyboard · ยังไม่มี: Wi-Fi · วิดีโอ: มี H.264/HEVC encode/decode แบบฮาร์ดแวร์ แต่ 4K HEVC decode ได้ ~10 fps และกิน CPU
+- ยังไม่ทดสอบในชุดนี้: ไมค์, ช่องหูฟัง, เสียงผ่าน HDMI, sleep/wake (SSDT-Acer-NoHybGfx ปิดอยู่), โหลดหนักต่อเนื่องนาน, CPU+GPU พร้อมกัน
+- ช่วง 2026-10-27 → 11-06 (ติดตั้งใหม่และตั้ง NullMoth) **ไม่มีบันทึก** — ดูท้าย `docs/PROGRESS-2026-10-09.md` · เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
 
 ประวัติโดยย่อ: Sequoia 15.8.1 บูตได้ 2026-10-09/11 · Tahoe `candidate-tahoe10` 2026-10-12 · ถอดออก 2026-10-16 และ 2026-10-27 · ติดตั้ง Tahoe ใหม่ 2026-10-26 และอีกครั้งหลัง 10-27
 `TARGET.json` สรุปสถานะและงานถัดไป (อัปเดต 2026-11-06)

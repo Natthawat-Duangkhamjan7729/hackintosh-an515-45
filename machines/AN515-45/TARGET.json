@@ -14,7 +14,7 @@
     "version": "1.0.8",
     "variant": "DEBUG"
   },
-  "activeConfig": "candidate-tahoe-nullmoth-pwrl2 (private) on the KINGSTON USB, config.plist cmp identical (checked 2026-11-06). macOS boots from the USB; no OpenCore on the Apacer ESP since 2026-10-27. Earlier configs kept on the USB as config.plist.pre-* and config-*.plist",
+  "activeConfig": "candidate-tahoe-nullmoth-pwrl2-nmxaudio (private; pwrl2 with VoodooHDA disabled) on the KINGSTON USB, config.plist cmp identical (checked 2026-11-07). macOS boots from the USB; no OpenCore on the Apacer ESP since 2026-10-27. Earlier configs kept on the USB as config.plist.pre-* and config-*.plist",
   "initialGraphics": "NootedRed disabled. The RTX 3060 drives the internal panel through NullMoth 2.7.2 (Metal 3, 1920x1080). The AMD iGPU has no driver",
   "nvidiaExperiment": "Active: NullMoth 2.7.2 kexts in /Library/Extensions; SSDT-Acer-NoHybGfx disabled, so the earlier sleep fix no longer applies. Needs AMFIPass, AMFI boot-arg relaxations and SIP kext/filesystem protections off. How it was set up (after 2026-10-27) is not logged",
   "usbMap": "USBToolBox 1.2.0 with UTBMap (loaded, 2026-11-06)",
@@ -25,7 +25,7 @@
     "excludedDisk": "Micron 2200V MTFDHBA512TCK: IONVMeFamily timeout panic even with NVMeFix and APST off; physically removed",
     "windowsState": "BitLocker off on C:; system image on D:; paging file re-enabled; Windows boot verified after APFS creation"
   },
-  "status": "Tahoe 26.7.1 with NullMoth (RTX 3060 drives the display), booted from the USB. Working (checked 2026-11-06): display/Metal 3, LAN (RTL8111), Bluetooth on, VoodooHDA internal speakers/mic, touchpad/keyboard, CPU sensors and the 44 W AC limit. Missing: Wi-Fi, iGPU driver. Untested in this setup: sleep/wake, long sustained load, combined CPU+GPU load",
+  "status": "Tahoe 26.7.1 with NullMoth (RTX 3060 drives the display), booted from the USB. Working (checked 2026-11-07): external LG display on HDMI/Metal 3, LAN (RTL8111), Bluetooth on, internal speakers through NullMoth NMXAudio (VoodooHDA disabled; NVIDIA HDMI audio device present), touchpad/keyboard, CPU sensors and the 44 W AC limit. Missing: Wi-Fi, iGPU driver. Untested in this setup: microphone, headphone jack, HDMI sound, sleep/wake, long sustained load, combined CPU+GPU load",
   "nextSteps": [
     "Document how NullMoth and the current USB EFI were set up after 2026-10-27 (which config-*.plist on the USB came from which session)",
     "Test sleep/wake with NullMoth and SSDT-Acer-NoHybGfx off; check that the PWRL limits survive wake",
