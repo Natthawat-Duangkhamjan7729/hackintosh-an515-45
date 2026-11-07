@@ -33,7 +33,7 @@
 2. ~~**`final-efi/README-TH.md` อ้างถึง `../TAHOE-PLAN-TH.md` ซึ่งไม่มีอยู่ในรีโป**~~
    — แก้แล้ว (2026-10-12): ไฟล์อยู่ที่ `docs/TAHOE-PLAN-TH.md` และแก้ลิงก์ให้ชี้ไปที่นั่นแล้ว
 
-หมายเหตุสำคัญ: `PROGRESS-2026-10-09.md` บันทึกไว้ว่า `PEGP._PS3` มีเงื่อนไข `OPCE == 3`
+หมายเหตุสำคัญ: `../PROGRESS-2026-10.md` บันทึกไว้ว่า `PEGP._PS3` มีเงื่อนไข `OPCE == 3`
 ดังนั้น **การเรียก `_PS3` ไม่ได้แปลว่า dGPU ถูกปิดจริง** ต้องพิสูจน์ด้วย ioreg ไม่ใช่สมมติจากชื่อ SSDT
 
 ---
@@ -160,7 +160,7 @@
 ## แหล่งอ้างอิงที่ใช้ในแผนนี้
 
 - `final-efi/EFI/OC/config.plist` และ `MANIFEST.md` (commit `3790943`)
-- `GRAPHICS-ISSUE-TH.md`, `PROGRESS-2026-10-09.md`, `TARGET.json`
+- `GRAPHICS-ISSUE-TH.md`, `../PROGRESS-2026-10.md`, `TARGET.json`
 - https://github.com/nullmoth/nvidia-macos-driver — ตรวจ 2026-10-12
 - https://nullmothsystems.com/ — ตรวจ 2026-10-12 (ไดรเวอร์ 1.13.0)
 - https://chefkiss.dev/applehax/nootedred — ตามที่บันทึกไว้ใน `GRAPHICS-ISSUE-TH.md`

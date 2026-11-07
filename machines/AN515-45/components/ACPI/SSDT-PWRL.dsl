@@ -4,7 +4,7 @@
  * Firmware path (DSDT, AN515-45): the EC raises query _Q20 and the DSDT
  * method \CDPC (func, watts) passes the EC's values to \_SB.ALIB (0x0C):
  *   func 0x05 = STAPM limit, 0x07 = slow PPT, 0x06 = fast PPT, 0x03 = Tctl limit.
- * Measured on 2026-11-06 under macOS on AC (see docs/PROGRESS-2026-10-09.md):
+ * Measured on 2026-11-06 under macOS on AC (see docs/PROGRESS-2026-11.md):
  *  - EC defaults: package flat at ~34 W, Tctl 71-79 C (a power limit, not thermal).
  *  - STAPM/slow/fast 20 W via \CDPC: 19.5 W  -> the ALIB path works.
  *  - STAPM/slow/fast 45/45/54 W alone: still ~34 W -> another limit.

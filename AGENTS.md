@@ -19,7 +19,7 @@ This repository contains reusable, cross-agent workflows and knowledge reference
 - Third-party skills from `thananon/9arm-skills` are installed into both skill trees; review their instructions before use.
 - `.agents/skills/build-opencore-efi/SKILL.md` — required workflow for building a machine-specific EFI.
 - `docs/opencore-framework/` — shared source policy, knowledge-base and evaluation guidance.
-- `machines/AN515-45/` — Acer Nitro 5 AN515-45 machine project; index in its `README.md`. Documents in `docs/`, working sanitized EFI in `final-efi/`, experimental builds in `candidates/`, scripts in `tools/`.
+- `machines/AN515-45/` — Acer Nitro 5 AN515-45 machine project; index in its `README.md`. Documents in `docs/` (monthly logs `PROGRESS-YYYY-MM.md`, superseded guides in `docs/archive/`), current sanitized EFI (Tahoe + NullMoth) in `final-efi-tahoe/`, the earlier Sequoia EFI in `final-efi/`, experimental builds in `candidates/`, scripts and measurement tools in `tools/`.
 - `research/mt7921/` — MT7921 Wi-Fi driver research.
 - `research/macos-cross-gpu/`, `research/nullmoth-driver-status/` — dGPU/iGPU display research (Thai).
 - `README.md` — entry point, skill routing, and scope.
@@ -27,5 +27,5 @@ This repository contains reusable, cross-agent workflows and knowledge reference
 ## Project facts
 
 - **Purpose:** build a cautious, evidence-based assistant workflow for OpenCore EFI analysis and configuration.
-- **Machine profile:** not supplied. Do not generate a machine-specific EFI or assume a CPU, motherboard, GPU, macOS target, or OpenCore release.
+- **Machine profile:** only `machines/AN515-45/` has recorded hardware inputs; its EFI work applies to that machine alone. For any other machine none is supplied: do not generate a machine-specific EFI or assume a CPU, motherboard, GPU, macOS target, or OpenCore release.
 - **Build/test commands:** none defined; this repository currently contains Markdown guidance and skills only.

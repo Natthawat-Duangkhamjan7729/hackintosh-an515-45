@@ -1,6 +1,6 @@
 # สรุปงาน Hackintosh: Acer Nitro 5 AN515-45-R375 → macOS Sequoia
 
-อัปเดต: 2026-10-09 · รายละเอียดเต็ม: `PROGRESS-2026-10-09.md` · ประวัติ: git log ใน `D:\Hackintosh`
+อัปเดต: 2026-10-09 · รายละเอียดเต็ม: `../PROGRESS-2026-10.md` · ประวัติ: git log ใน `D:\Hackintosh`
 
 ## สถานะตอนนี้
 

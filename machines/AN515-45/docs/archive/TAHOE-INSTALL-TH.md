@@ -1,6 +1,6 @@
 # ติดตั้ง macOS Tahoe 26.7.1 (รอบ 2026-10-15, ใช้ซ้ำ 2026-10-26 สำหรับงาน RE NootedRed)
 
-ทำซ้ำเส้นทางที่เคยติดตั้ง Tahoe สำเร็จเมื่อ 2026-10-12 (Recovery 15.4.1 + UnPlugged, บันทึกใน `PROGRESS-2026-10-09.md`)
+ทำซ้ำเส้นทางที่เคยติดตั้ง Tahoe สำเร็จเมื่อ 2026-10-12 (Recovery 15.4.1 + UnPlugged, บันทึกใน `../PROGRESS-2026-10.md`)
 แล้วใช้ `candidate-tahoe10` ซึ่งเป็นชุดที่บูต Tahoe จาก Apacer ได้จริง
 
 > ⚠️ **ห้าม Erase ดิสก์ทั้งลูกใน Disk Utility เด็ดขาด** — Apacer มี Windows อยู่ การ Erase ทั้งลูกจะลบ Windows ทั้งหมด

@@ -2,7 +2,7 @@
 
 Updated: 2026-10-09. Status: preparation bundle, not an assembled or boot-ready EFI.
 
-Current progress: see `PROGRESS-2026-10-09.md`. Sequoia 15.8.1 build 24H32 is identified in Apple's catalog; partial downloads are paused for a firmware collection reboot. A separately schema-validated firmware-only diagnostic EFI is now on USB E:. The earlier preparation notes below are historical where superseded by that progress record.
+Current progress: see `../PROGRESS-2026-10.md`. Sequoia 15.8.1 build 24H32 is identified in Apple's catalog; partial downloads are paused for a firmware collection reboot. A separately schema-validated firmware-only diagnostic EFI is now on USB E:. The earlier preparation notes below are historical where superseded by that progress record.
 
 ## Evidence and scope
 
