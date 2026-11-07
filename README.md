@@ -15,7 +15,7 @@ The framework intentionally treats symptom-to-fix mappings as diagnostic hypothe
 | `AGENTS.md`, `CLAUDE.md` | Always-loaded agent rules |
 | `.agents/skills/`, `.claude/skills/` | Agent Skills (kept in sync) |
 | `docs/opencore-framework/` | Shared source policy, knowledge-base and evaluation guidance |
-| `machines/AN515-45/` | AN515-45 machine project: docs, final EFI, candidates, ACPI, tools — start at its `README.md` |
+| `machines/AN515-45/` | AN515-45 machine project: docs, current EFI (`final-efi-tahoe/`), earlier Sequoia EFI, candidates, ACPI, tools — start at its `README.md` |
 | `research/mt7921/` | MediaTek MT7921 Wi-Fi driver research and offline build prep |
 | `research/macos-cross-gpu/` | Notes on running macOS graphics across AMD iGPU / NVIDIA dGPU |
 | `research/nullmoth-driver-status/` | Status of the NullMoth NVIDIA driver |

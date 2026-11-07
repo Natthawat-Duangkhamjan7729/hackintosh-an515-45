@@ -39,6 +39,10 @@ research/**/upstream/
 # (the raw snapshot is in private/usb-snapshot-2026-10-11/)
 **/final-efi/EFI/OC/Kexts/*
 !**/final-efi/EFI/OC/Kexts/USBMap.kext/
+# Same for the Tahoe + NullMoth export (USB maps are plist-only and machine-specific)
+**/final-efi-tahoe/EFI/OC/Kexts/*
+!**/final-efi-tahoe/EFI/OC/Kexts/USBMap.kext/
+!**/final-efi-tahoe/EFI/OC/Kexts/UTBMap.kext/
 
 # Verified duplicates waiting for the user to delete
 /_delete-me/

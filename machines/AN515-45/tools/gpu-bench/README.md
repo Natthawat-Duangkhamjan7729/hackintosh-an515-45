@@ -9,7 +9,7 @@ Each dispatch takes roughly 2–12 ms, because the same GPU drives the display. 
 
 Build: `swiftc -O -o metalbench metalbench.swift`. Run: `./metalbench <seconds-per-test>`.
 
-GPU temperature and utilization come from `ioreg -r -c NVAccel -l -d1` (`PerformanceStatistics`). NullMoth 2.7.2 exposes no clock or power values. Results are in `../../docs/PROGRESS-2026-10-09.md`.
+GPU temperature and utilization come from `ioreg -r -c NVAccel -l -d1` (`PerformanceStatistics`). NullMoth 2.7.2 exposes no clock or power values. Results are in `../../docs/PROGRESS-2026-11.md`.
 
 Other tools (2026-11-07):
 

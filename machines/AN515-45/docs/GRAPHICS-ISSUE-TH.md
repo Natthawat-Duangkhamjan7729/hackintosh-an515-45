@@ -113,6 +113,6 @@
 1. เก็บข้อมูลก่อนแก้: `system_profiler SPDisplaysDataType`, `ioreg -l | grep -i "VRAM\|nootedred"`, ผลข้อ 1 และ 3
 2. ทุกการเปลี่ยน EFI: แก้ใน staging → `tools/build_candidate.py` → ocvalidate → **ทดสอบจาก USB** → ถ้าผ่านค่อย build `--private` แล้วติดตั้งด้วย `tools/Install-OpenCore-ESP.ps1`
 3. DeviceProperties ต้องใช้ path `PciRoot(0x1)/...` (PCI0 _UID = 1)
-4. เปลี่ยนทีละอย่าง บันทึกผลใน `PROGRESS-2026-10-09.md`
+4. เปลี่ยนทีละอย่าง บันทึกผลใน `PROGRESS-2026-11.md` (บันทึกของเดือนปัจจุบัน)
 
 แหล่งอ้างอิง: https://chefkiss.dev/applehax/nootedred · https://github.com/ChefKissInc/NootedRed/issues/158 · https://github.com/ChefKissInc/NootedRed/issues/28

@@ -9,7 +9,7 @@
 - เสียง: **NMXAudio ของ NullMoth** ขับ ALC295 (ลำโพงยืนยันแล้ว) และ HDMI ของ RTX · VoodooHDA ปิด เพราะทำให้ IOAudioFamily โหลดไม่ได้
 - ใช้ได้: LAN, Bluetooth, touchpad/keyboard · ยังไม่มี: Wi-Fi · วิดีโอ: มี H.264/HEVC encode/decode แบบฮาร์ดแวร์ แต่ 4K HEVC decode ได้ ~10 fps และกิน CPU
 - ยังไม่ทดสอบในชุดนี้: ไมค์, ช่องหูฟัง, เสียงผ่าน HDMI, sleep/wake (SSDT-Acer-NoHybGfx ปิดอยู่), โหลดหนักต่อเนื่องนาน, CPU+GPU พร้อมกัน
-- ช่วง 2026-10-27 → 11-06 (ติดตั้งใหม่และตั้ง NullMoth) **ไม่มีบันทึก** — ดูท้าย `docs/PROGRESS-2026-10-09.md` · เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
+- ช่วง 2026-10-27 → 11-06 (ติดตั้งใหม่และตั้ง NullMoth) **ไม่มีบันทึก** — ดูท้าย `docs/PROGRESS-2026-10.md` และ `docs/PROGRESS-2026-11.md` · เครื่องมือวัดอยู่ใน `tools/cpu-bench/` และ `tools/gpu-bench/`
 
 ประวัติโดยย่อ: Sequoia 15.8.1 บูตได้ 2026-10-09/11 · Tahoe `candidate-tahoe10` 2026-10-12 · ถอดออก 2026-10-16 และ 2026-10-27 · ติดตั้ง Tahoe ใหม่ 2026-10-26 และอีกครั้งหลัง 10-27
 `TARGET.json` สรุปสถานะและงานถัดไป (อัปเดต 2026-11-06)
@@ -18,31 +18,27 @@
 
 | อยากรู้ | อ่าน |
 | --- | --- |
-| ติดตั้ง Tahoe | `docs/TAHOE-INSTALL-TH.md` |
+| EFI ที่ใช้อยู่ตอนนี้ (Tahoe + NullMoth, sanitized) | `final-efi-tahoe/README-TH.md` |
+| ผลวัดและการปรับ CPU/GPU/เสียง ล่าสุด | `docs/PROGRESS-2026-11.md` |
 | วัดผล CPU/GPU, SSDT-PWRL | `tools/cpu-bench/`, `tools/gpu-bench/`, `components/ACPI/SSDT-PWRL.dsl` |
-| ติดตั้ง Sequoia (ชุดสำรองบน USB) | `docs/SEQUOIA-REINSTALL-TH.md` |
-| แผนติดตั้ง Tahoe | `docs/TAHOE-PLAN-TH.md` |
-| EFI ที่บูต macOS ได้จริง (sanitized) | `final-efi/README-TH.md` |
+| EFI Sequoia เดิมที่บูตได้ (sanitized) | `final-efi/README-TH.md` |
 | ติดตั้ง/อัปเดต OpenCore ลง ESP | `docs/EFI-UPDATE-TH.md` |
-| จะทำอะไรต่อหลังติดตั้ง | `docs/DEV-PLAN-TH.md` |
-| ปัญหาจอ/กราฟิก | `docs/GRAPHICS-ISSUE-TH.md` |
-| บันทึกการทดลองทั้งหมด (อังกฤษ) | `docs/PROGRESS-2026-10-09.md` |
+| ปัญหาจอ/กราฟิก (NootedRed) | `docs/GRAPHICS-ISSUE-TH.md` |
+| คู่มือติดตั้ง Tahoe/Sequoia และแผนเก่า | `docs/archive/README.md` |
+| บันทึกการทดลองทั้งหมด (อังกฤษ) | `docs/PROGRESS-2026-10.md`, `docs/PROGRESS-2026-11.md` |
 
 ## เอกสารใน `docs/`
 
 | ไฟล์ | เนื้อหา |
 | --- | --- |
-| `TAHOE-INSTALL-TH.md` | คู่มือติดตั้ง Tahoe 26.7.1 รอบ 2026-10-15 (ใช้ซ้ำ 2026-10-26) |
-| `SEQUOIA-REINSTALL-TH.md` | คู่มือติดตั้ง Sequoia 15.8.1 รอบ 2026-10-14 |
-| `TAHOE-PLAN-TH.md` | แผนและผลติดตั้ง Tahoe 26.7.1 |
+| `PROGRESS-2026-11.md` | บันทึกความคืบหน้า 2026-11 (engineering log): CPU 44 W, GPU, เสียง NMXAudio |
+| `PROGRESS-2026-10.md` | บันทึกความคืบหน้า 2026-10-09 → 2026-11-06 (ชื่อเดิม `PROGRESS-2026-10-09.md`) |
 | `EFI-UPDATE-TH.md` | ติดตั้ง/อัปเดต OpenCore บน ESP ของ Apacer |
-| `DEV-PLAN-TH.md` | งานหลังติดตั้ง (ไม่จำเป็นต่อการบูต) |
 | `GRAPHICS-ISSUE-TH.md` | ปัญหาภาพเพี้ยน/จอดำกับ NootedRed |
 | `COMPATIBILITY-AUDIT.md` | ตรวจความเข้ากันได้ของฮาร์ดแวร์ |
 | `USB-MAP-REVIEW.md` | ตรวจ USB map |
 | `MT7921-WIFI-DRIVER-BRIEF.md` | โจทย์ไดรเวอร์ Wi-Fi MT7921 (ดู `../../research/mt7921/` ด้วย) |
-| `PROGRESS-2026-10-09.md` | บันทึกความคืบหน้าทุกวัน (engineering log) |
-| `archive/` | เอกสารช่วงเตรียมการ 2026-10-09 ที่ล้าสมัยแล้ว: `SUMMARY-TH.md`, `USB-INSTALL-TH.md`, `PREPARATION.md` |
+| `archive/` | คู่มือติดตั้งและแผนที่ไม่ตรงกับเครื่องแล้ว (Sequoia/Tahoe ช่วง 10-09 → 10-26) ดู `archive/README.md` |
 
 ## โครงสร้างโฟลเดอร์
 
@@ -51,14 +47,15 @@
 | `TARGET.json` | สรุปเป้าหมาย สถานะ และขั้นต่อไป (ณ 2026-11-06) |
 | `checksums.json` | SHA256 ของไฟล์ที่ดาวน์โหลด (ไบนารีไม่ได้ commit) |
 | `docs/` | เอกสาร (ตารางด้านบน) |
+| `final-efi-tahoe/` | EFI ที่ใช้อยู่ตอนนี้: Tahoe 26.7.1 + NullMoth (sanitized, ไม่มี PlatformInfo จริงและไม่มีไบนารี) |
 | `final-efi/` | EFI ที่บูต Sequoia 15.8.1 ได้จริง (sanitized, ไม่มี PlatformInfo จริงและไม่มีไบนารี) |
 | `candidates/` | EFI/config ที่ build ไว้ — เก็บเฉพาะชุดสำคัญ (ตารางด้านล่าง) |
-| `components/` | SSDT ที่ทำเอง (`.dsl`/`.aml`), USB map, AMD patches |
+| `components/` | SSDT ที่ทำเอง (`.dsl`/`.aml`, ชุดทดสอบอยู่ใน `ACPI/diagnostics/`), USB map, AMD patches |
 | `acpi-analysis/` | ACPI tables ที่ dump จากเครื่องและ disassembly |
 | `firmware-diagnostics/` | USB สำหรับเก็บข้อมูลเฟิร์มแวร์ (ไม่ใช่ตัวติดตั้ง macOS) |
 | `firmware-evidence/` | ผลวิเคราะห์เฟิร์มแวร์ |
 | `downloads/` | สำเนาเอกสาร/ซอร์สอ้างอิงจาก upstream (Dortania, ChefKiss, Apple) |
-| `tools/` | สคริปต์ build/ติดตั้ง (`build_candidate.py`, `Install-OpenCore-ESP.ps1`, `Resume-Installer.ps1`, `verify_pkg.py`, …) |
+| `tools/` | สคริปต์ build/ติดตั้ง (`build_candidate.py`, `Install-OpenCore-ESP.ps1`, `Resume-Installer.ps1`, `verify_pkg.py`, …) และเครื่องมือวัด `cpu-bench/`, `gpu-bench/` |
 
 `build_candidate.py` เขียน candidate ใหม่ไปที่ `candidates/<ชื่อ>/EFI` ส่วน `--private` เขียนไปที่ `private-build/<ชื่อ>/EFI` (gitignored)
 `Install-OpenCore-ESP.ps1` ต้องระบุ `-Source` ทุกครั้ง (ไม่มีค่า default แล้ว)
